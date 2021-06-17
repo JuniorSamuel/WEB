@@ -1,0 +1,47 @@
+<div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto my-3">
+    <form>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card1 px-4">
+                    <h2 class="t-2">Registro</h2>
+                    <div class="row px-3">
+                        <label for="nombre" class="mb-1">Usuario</label>
+                        <input type="text" name="nombre" id="nombre" placeholder="Nombre">
+                    </div>
+                    <div class="row px-3">
+                        <label for="apellido" class="mb-1">Apellido</label>
+                        <input type="text" name="nombre" id="apellido" placeholder="Apellido">
+                    </div>
+                    <div class="row px-3">
+                        <label for="tipo" class="mb-1">Tipo:</label>
+                        <mat-radio-group aria-label="Select an option">
+                            <mat-radio-button value="1" class="px-2 bg-radio-blup" checked>Usuario</mat-radio-button>
+                            <mat-radio-button value="2" class="px-2 bg-radio-blup">Administrador</mat-radio-button>
+                          </mat-radio-group>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card1 px-4 py-4">
+                    <div class="row px-3">
+                        <label for="correo" class="mb-1">Correo</label>
+                        <input type="text" name="nombre" id="correo" placeholder="Apellido">
+                    </div>
+                    <div class="row px-3">
+                        <label for="contrasena" class="mb-1">Contraseña</label>
+                        <input type="password" name="nombre" id="contrasena" placeholder="Apellido">
+                    </div>
+                    <div class="row px-3">
+                        <label for="contrasena2" class="mb-1">Contraseña</label>
+                        <input type="password" name="nombre" id="contrasena2" placeholder="Apellido">
+                    </div>
+                </div>
+                <div class="row mb-3 px-5">
+                    <button type="submit" class="btn bg-blue-p text-center">Login</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<app-pie></app-pie>

@@ -26,8 +26,9 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
-              "src/styles.css"
+            "styles": ["src/styles.css",
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+              
             ],
             "scripts": []
           },
@@ -94,7 +95,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
+              "styles.css",
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
             ],
             "scripts": [
