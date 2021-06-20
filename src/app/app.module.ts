@@ -4,6 +4,7 @@ import { MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/rad
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BarraNavegacionesComponent } from './barra-navegaciones/barra-navegaciones.component';
 import { LoginComponent } from './vista/login/login.component';
 import { RegistroComponent } from './vista/registro/registro.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,6 +14,7 @@ import { PrincipalComponent } from './vista/principal/principal.component';
 @NgModule({
   declarations: [
     AppComponent,
+    BarraNavegacionesComponent,
     LoginComponent,
     RegistroComponent,
     PieComponent,

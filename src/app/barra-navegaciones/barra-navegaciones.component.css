@@ -1,0 +1,29 @@
+.barra-navegaciones{
+    width: 100px;
+    /* height: 80px; */
+    /* padding: 20px; */
+    /* border: 8px solid red; */
+    background-color: white;
+    border-bottom: blue;
+}
+
+.menu{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    /* background-color: #0E609C; */
+}
+
+.menu li{
+    font-weight: 500;
+    padding: .3rem;
+    text-align: center;
+}
+
+.logo{
+    height: 2rem;
+}

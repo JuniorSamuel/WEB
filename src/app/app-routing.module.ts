@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BarraNavegacionesComponent } from './barra-navegaciones/barra-navegaciones.component';
 
 import { LoginComponent } from './vista/login/login.component';
 import { PrincipalComponent } from './vista/principal/principal.component';
@@ -10,6 +11,7 @@ const routes: Routes = [
   { path: "Login", component: LoginComponent},
   { path: "Registro", component: RegistroComponent},
   { path: "Principal", component: PrincipalComponent}
+  {path: "Navegacion", component: BarraNavegacionesComponent}
 ];
 
 @NgModule({
