@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from './vista/login/login.component';
+import { PrincipalComponent } from './vista/principal/principal.component';
 import { RegistroComponent } from './vista/registro/registro.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'Login', pathMatch: 'full' },
   { path: "Login", component: LoginComponent},
-  { path: "Registro", component: RegistroComponent}
+  { path: "Registro", component: RegistroComponent},
+  { path: "Principal", component: PrincipalComponent}
 ];
 
 @NgModule({

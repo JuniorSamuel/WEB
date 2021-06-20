@@ -16,14 +16,16 @@ import { PrincipalComponent } from './vista/principal/principal.component';
     LoginComponent,
     RegistroComponent,
     PieComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    
   ],
   imports: [
     BrowserModule,
+    MatRadioModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    MatRadioModule
+    BrowserAnimationsModule
   ],
+
   providers: [
     {
       provide: MAT_RADIO_DEFAULT_OPTIONS,
