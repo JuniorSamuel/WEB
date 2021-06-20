@@ -15,12 +15,12 @@
     align-items: center;
     align-content: center;
     justify-content: space-between;
-    background-color: #0E609C;
+    /* background-color: #0E609C; */
 }
 
 .menu li{
-    font-weight: 600;
-    padding: .5rem;
+    font-weight: 500;
+    padding: .3rem;
     text-align: center;
 }
 
