@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BarraNavegacionesComponent } from './barra-navegaciones/barra-navegaciones.component';
+import { NavegacionComponent } from './compomente/navegacion/navegacion.component';
+import { AgregarPostComponent } from './vista/agregar-post/agregar-post.component';
 
 import { LoginComponent } from './vista/login/login.component';
 import { PrincipalComponent } from './vista/principal/principal.component';
@@ -10,8 +11,12 @@ const routes: Routes = [
   { path: '', redirectTo: 'Login', pathMatch: 'full' },
   { path: "Login", component: LoginComponent},
   { path: "Registro", component: RegistroComponent},
-  { path: "Principal", component: PrincipalComponent}
-  {path: "Navegacion", component: BarraNavegacionesComponent}
+  { path: "Principal", component: PrincipalComponent},
+  { path: "Agregar_Post", component: AgregarPostComponent}
+
+
+  // Prueba
+  ,{ path: "Nav", component: NavegacionComponent}
 ];
 
 @NgModule({

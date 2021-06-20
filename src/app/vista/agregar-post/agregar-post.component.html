@@ -1,0 +1,56 @@
+<app-navegacion></app-navegacion>
+
+<div class="container">
+    <h2>Postear vacante</h2>
+    <hr>
+    <form>
+        <div class="form-group row mt-3 ">
+            <div class="col-xs-2">
+                <label for="validationServer01">Categoria:</label>
+                <input class="form-control lg-3" type="text" name="categoria" id="validationServer01"
+                    placeholder="Categoria" required>
+                <div class="valid-feedback">
+                    Perfecto
+                </div>
+            </div>
+        </div>
+        <div class="form-group  mt-3">
+            <label for="tiempo">Tiempo:</label>
+            <mat-radio-group id="tiempo" aria-label="Select an option">
+                <mat-radio-button value="1" class="px-2 bg-radio-blup" checked>Tiempo completo</mat-radio-button>
+                <mat-radio-button value="2" class="px-2 bg-radio-blup">Medio tiempo</mat-radio-button>
+                <mat-radio-button value="3" class="px-2 bg-radio-blup">Freelance</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div class="form-group  mt-3">
+            <label for="campania">Campañía:</label>
+            <input class="form-control" type="text" name="campania" id="campania" placeholder="Compañía">
+        </div>
+        <div class="form-group  mt-3">
+            <label for="url">URL:</label>
+            <input class="form-control" type="text" name="url" id="url" placeholder="URL">
+        </div>
+        <div class="form-group  mt-3">
+            <label for="posicion">Posición:</label>
+            <input class="form-control" type="text" name="posicion" id="posicion" placeholder="Posición">
+        </div>
+        <div class="form-group  mt-3">
+            <label for="ubicacion">Ubicación:</label>
+            <input class="form-control" type="text" name="ubicacion" id="ubicacion" placeholder="Ubicación">
+        </div>
+        <div class="form-group mt-3">
+            <label for="descripcion">Descripción:</label>
+            <textarea class="form-control" name="descripcion" id="descripcion" cols="30" rows="10"
+                placeholder="Descripción">
+
+            </textarea>
+        </div>
+
+        <div class="form-group row mt-3">
+            <div class="col-sm-2">
+                <input type="submit" value="Agregar" class="btn btn-success">
+                <input type="reset" value="Cancelar" class="btn btn-danger">
+            </div>
+        </div>
+    </form>
+</div>
