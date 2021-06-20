@@ -12,6 +12,9 @@ import { PieComponent } from './compomente/pie/pie.component';
 import { PrincipalComponent } from './vista/principal/principal.component';
 import { AgregarPostComponent } from './vista/agregar-post/agregar-post.component';
 import { NavegacionComponent } from './compomente/navegacion/navegacion.component';
+import { TrabajoDetallesComponent } from './vista/trabajo-detalles/trabajo-detalles.component';
+import { AgregarcategoriaComponent } from './vista/agregarcategoria/agregarcategoria.component';
+import { PerfilComponent } from './vista/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +24,10 @@ import { NavegacionComponent } from './compomente/navegacion/navegacion.componen
     PieComponent,
     PrincipalComponent,
     AgregarPostComponent,
-    NavegacionComponent,
-    
+    NavegacionComponent,    
+    TrabajoDetallesComponent,
+    AgregarcategoriaComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
