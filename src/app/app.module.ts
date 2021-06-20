@@ -10,6 +10,9 @@ import { RegistroComponent } from './vista/registro/registro.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PieComponent } from './compomente/pie/pie.component';
 import { PrincipalComponent } from './vista/principal/principal.component';
+import { TrabajoDetallesComponent } from './vista/trabajo-detalles/trabajo-detalles.component';
+import { AgregarcategoriaComponent } from './vista/agregarcategoria/agregarcategoria.component';
+import { PerfilComponent } from './vista/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { PrincipalComponent } from './vista/principal/principal.component';
     LoginComponent,
     RegistroComponent,
     PieComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    TrabajoDetallesComponent,
+    AgregarcategoriaComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
