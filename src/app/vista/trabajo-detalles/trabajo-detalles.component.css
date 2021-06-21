@@ -14,10 +14,14 @@ h2{
     color: gray;
     font-weight:bold;
 }
-label{
+/* label{
     font-weight:bold;
-}
+} */
 .Descripcion {
     text-align: justify;
     color: gray;
   }
+.fill{
+    font-style:italic;
+    /* font-weight: italic; */
+}
