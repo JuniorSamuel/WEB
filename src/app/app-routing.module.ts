@@ -20,6 +20,7 @@ const routes: Routes = [
 
   // Prueba
   ,{ path: "Nav", component: NavegacionComponent},
+  //hasta aqui
   {path: "Detalles_Trabajo", component: TrabajoDetallesComponent},
   {path: "Agregar_Categoria", component: AgregarcategoriaComponent},
   {path: "PerfilU", component: PerfilComponent}
