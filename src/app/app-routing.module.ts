@@ -9,13 +9,14 @@ import { AgregarPostComponent } from './vista/agregar-post/agregar-post.componen
 import { LoginComponent } from './vista/login/login.component';
 import { PrincipalComponent } from './vista/principal/principal.component';
 import { RegistroComponent } from './vista/registro/registro.component';
+import { PieComponent } from './compomente/pie/pie.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'Login', pathMatch: 'full' },
   { path: "Login", component: LoginComponent},
   { path: "Registro", component: RegistroComponent},
   { path: "Principal", component: PrincipalComponent},
-  { path: "Agregar_Post", component: AgregarPostComponent}
+  { path: "Agregar_post", component: AgregarPostComponent}
 
 
   // Prueba
@@ -31,3 +32,17 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+export const routesComponent = [
+  LoginComponent,
+  RegistroComponent,
+  PrincipalComponent,
+  AgregarPostComponent
+
+  // Prueba
+  ,NavegacionComponent,
+  AgregarcategoriaComponent,
+  PerfilComponent,
+  TrabajoDetallesComponent,
+  PieComponent
+];
