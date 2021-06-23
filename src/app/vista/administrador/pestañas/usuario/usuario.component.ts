@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatFormField } from '@angular/material/form-field';
+
 
 
 export interface usuario{
@@ -61,7 +61,7 @@ export class UsuarioComponent implements OnInit {
     }
   }
 
-  	usuarioFiltro(evento: Event){
+  setFiltro(evento: Event){
     console.log(evento)
     
     this.dataSource.filter = this.filtro.trim().toLowerCase();

@@ -4,6 +4,10 @@
     color: whitesmoke;
 }
 
+table{
+    width: 100%;
+}
+
 .hm{
     min-height: 500px;
 }

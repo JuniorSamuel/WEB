@@ -17,11 +17,12 @@ const posterDatos: usuario[] = [
 ]
 
 @Component({
-  selector: 'app-categoria',
-  templateUrl: './categoria.component.html',
-  styleUrls: ['./categoria.component.css']
+  selector: 'app-admit',
+  templateUrl: './admit.component.html',
+  styleUrls: ['./admit.component.css']
 })
-export class CategoriaComponent implements OnInit {
+
+export class AdmitComponent implements OnInit {
 
   constructor() { }
 
@@ -55,9 +56,13 @@ export class CategoriaComponent implements OnInit {
     }
   }
 
-  setFiltro(evento: Event){
+  	setFiltro(evento: Event){
     console.log(evento)
     
     this.dataSource.filter = this.filtro.trim().toLowerCase();
+  }
+
+  agregar(){
+    
   }
 }

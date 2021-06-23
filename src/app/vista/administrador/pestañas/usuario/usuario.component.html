@@ -1,11 +1,19 @@
 <div>
-    <form>
-        <input class=" form-control" type="text" name="buscarUsuario" id="buscarUsuario" placeholder="Buscar usuario"
-        (keyup)="usuarioFiltro($event)"  value="" [(ngModel)]="filtro"  >
-    </form>
+   
+    <div class=" justify-content-between row">
+        <div class="col-12 col-md-4">
+            <form>
+                <input class=" form-control" type="text" name="buscarUsuario" id="buscarUsuario"
+                    placeholder="Buscar usuario" (keyup)="setFiltro($event)" value="" [(ngModel)]="filtro">
+            </form>
+        </div>
 
-    <button class="btn btn-success mt-3">
-        <i class="bi bi-person-plus mx-1"></i> Agregar usuario</button>
+        <div class="col-12 col-md-auto">
+            <button class="btn btn-success"> 
+                <i class="bi bi-person-plus mx-1"></i> Agregar Poster
+            </button>
+        </div>
+    </div>
 
     <div class="mt-2">
         <div class="mat-elevation-z8">
