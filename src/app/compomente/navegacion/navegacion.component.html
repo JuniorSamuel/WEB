@@ -1,12 +1,72 @@
-<nav class="navbar navbar-dark bg-blue-p mb-4">
-    <a class="navbar-brand  mx-3" routerLink="../Principal">
+<!-- <nav class="navbar navbar-dark bg-blue-p mb-4">
+    <a class="navbar-brand  mx-3" routerLink="/Principal">
         <img src="assets/login-white.svg" alt=""  width="30" height="30" class="d-inline-block align-top" >
         Job.com
     </a>
-    <div class="justify-content-between">
-        <a class="btn btn-primary mx-1 bg"> Administrador</a>
-        <a class="btn btn-primary mx-1 bg" routerLink="../Agregar_Post">Post</a>
-        <a class="btn btn-primary mx-1 bg" >Usuario</a>
+
+    <div class="">
+        <a class="btn btn-primary mx-1 bg" routerLink="/Administrador" > Administrador</a>
+        <a class="btn btn-primary mx-1 bg" routerLink="/Agregar_post">Mis post</a>
+        <a class="btn btn-primary mx-1 bg" routerLink="/PerfilU">Usuario</a>
         <a class="btn btn-primary mx-1 bg bi bi-power"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="/Administrador" > Administrador <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Post
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#"> Ver mis post </a>
+              <a class="dropdown-item" routerLink="/Agregar_post"> Agregar </a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"> Perfil </a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+</nav> -->
+
+<nav class="navbar navbar-expand-lg navbar-dark  bg-blue-p mb-4">
+    <div class="container-fluid">
+        <a class="navbar-brand  mx-3" routerLink="/Principal">
+            <img src="assets/login-white.svg" alt="" width="30" height="30" class="d-inline-block align-top">
+            Job.com
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" routerLink="/Administrador"> Administrador </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Post
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#"> Ver mis post </a>
+                            </li>
+                        <li><a class="dropdown-item" routerLink="/Agregar_post"> Agregar </a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"> Perfil </a>
+                </li>
+
+            </ul>
+        </div>
     </div>
 </nav>

@@ -35,6 +35,8 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   
+  //Filtro
+  filtro: string = ''
   // MatPaginator Inputs
   length = 100;
   pageSize = 10;
@@ -57,6 +59,10 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
     if (setPageSizeOptionsInput) {
       this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
     }
+  }
+
+  setFiltro(){
+    this.dataSource.filter = this.filtro.trim().toLowerCase();
   }
 }
 
