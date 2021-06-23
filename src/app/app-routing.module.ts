@@ -1,6 +1,3 @@
-import { PerfilComponent } from './vista/perfil/perfil.component';
-import { AgregarcategoriaComponent } from './vista/agregarcategoria/agregarcategoria.component';
-import { TrabajoDetallesComponent } from './vista/trabajo-detalles/trabajo-detalles.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NavegacionComponent } from './compomente/navegacion/navegacion.component';
@@ -10,17 +7,24 @@ import { LoginComponent } from './vista/login/login.component';
 import { PrincipalComponent } from './vista/principal/principal.component';
 import { RegistroComponent } from './vista/registro/registro.component';
 import { PieComponent } from './compomente/pie/pie.component';
+import { AdministradorComponent } from './vista/administrador/administrador.component';
+
+import { PerfilComponent } from './vista/perfil/perfil.component';
+import { AgregarcategoriaComponent } from './vista/agregarcategoria/agregarcategoria.component';
+import { TrabajoDetallesComponent } from './vista/trabajo-detalles/trabajo-detalles.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'Login', pathMatch: 'full' },
   { path: "Login", component: LoginComponent},
   { path: "Registro", component: RegistroComponent},
   { path: "Principal", component: PrincipalComponent},
-  { path: "Agregar_post", component: AgregarPostComponent}
+  { path: "Agregar_post", component: AgregarPostComponent},
+  { path: "Administrador", component: AdministradorComponent},
 
 
   // Prueba
-  ,{ path: "Nav", component: NavegacionComponent},
+  { path: "Nav", component: NavegacionComponent},
+  
   //hasta aqui
   {path: "Detalles_Trabajo", component: TrabajoDetallesComponent},
   {path: "Agregar_Categoria", component: AgregarcategoriaComponent},
@@ -37,7 +41,8 @@ export const routesComponent = [
   LoginComponent,
   RegistroComponent,
   PrincipalComponent,
-  AgregarPostComponent
+  AgregarPostComponent,
+  AdministradorComponent
 
   // Prueba
   ,NavegacionComponent,
