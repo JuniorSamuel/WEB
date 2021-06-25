@@ -4,19 +4,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import { IVacante } from 'src/app/modelo/vacante';
+import { ApiService } from 'src/app/servicios/Api/api.service';
 
-export interface usuario{
-  nombre:string,
-  apellido:string,
-  edad:number
-}
-
-const posterDatos: usuario[] = [
-  {nombre: 'Junior', apellido: 'De Los Santos', edad: 17},
-  {nombre: 'Elian', apellido: 'mtg', edad: 19},
-  {nombre: 'Jose', apellido: 'Upia', edad: 20},
-  {nombre: 'Keutyn', apellido: 'Ramirez', edad: 20},
-]
 
 @Component({
   selector: 'app-post',
@@ -25,33 +15,43 @@ const posterDatos: usuario[] = [
 })
 export class PostComponent implements OnInit {
 
-  constructor(
-    private dialog: MatDialog,
-  ) { }
+  // constructor(
+  //   private dialog: MatDialog,
+  // ) { }
+  //#region Variables 
+    datoCargada: boolean = false;
+
+    vacantes: IVacante[] = [];
+  
+
+    //Table
+    displayedColumns: string[] = ['Compañia', 'Posición', 'Ubicación', 'Opciones'];
+    dataSource = new MatTableDataSource<IVacante>(this.vacantes);
+
+    //Filtro
+    filtro: string = ''
+
+    // MatPaginator Inputs
+    length = 100;
+    pageSize = 10;
+    pageSizeOptions: number[] = [5, 10, 25, 100];
+  //#endregion
+  constructor(private dialog: MatDialog, private _api: ApiService) { }
 
   ngOnInit(): void {
+    this.getVacantes();
   }
 
-  //Table
-  displayedColumns: string[] = ['Nombre', 'Apellido', 'Edad'];
-  dataSource = new MatTableDataSource<usuario>(posterDatos);
 
-  //Filtro
-  filtro: string = ''
 
-  // MatPaginator Inputs
-  length = 100;
-  pageSize = 10;
-  pageSizeOptions: number[] = [5, 10, 25, 100];
 
-  
-  @ViewChild(MatPaginator)  paginator!: MatPaginator;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator
   }
 
-  
+
   // MatPaginator Output
   pageEvent: PageEvent = new PageEvent;
   setPageSizeOptions(setPageSizeOptionsInput: string) {
@@ -60,9 +60,7 @@ export class PostComponent implements OnInit {
     }
   }
 
-  setFiltro(evento: Event){
-    console.log(evento)
-    
+  setFiltro(evento: Event) {
     this.dataSource.filter = this.filtro.trim().toLowerCase();
   }
   //PROBANDO MODAL
@@ -73,4 +71,17 @@ export class PostComponent implements OnInit {
     dialogConfig.width = "50%";
     dialogConfig.height = "96%";
     this.dialog.open(AgregarPostComponent,dialogConfig);  }
+
+  //Api
+  getVacantes() {
+    this._api.getVacantes().subscribe((respuesta: IVacante[]) => {
+      this.dataSource = new MatTableDataSource<IVacante>(respuesta);
+      this.dataSource.paginator = this.paginator;
+      if (respuesta != []) {
+        this.datoCargada = true;
+      } else {
+        this.datoCargada = false;
+      }    
+    });
+  }
 }

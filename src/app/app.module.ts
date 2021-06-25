@@ -6,7 +6,7 @@ import { MatInputModule} from '@angular/material/input';
 
 import { AppRoutingModule, routesComponent } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { HttpClientModule } from "@angular/common/http";
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -21,6 +21,7 @@ import { AdmitComponent } from './vista/administrador/pestañas/admit/admit.comp
 import { PieComponent } from './compomente/pie/pie.component';
 import { NavegacionComponent } from './compomente/navegacion/navegacion.component';
 import { ModalpruebaComponent } from './vista/administrador/pestañas/usuario/modalprueba/modalprueba.component';
+import { OfertasComponent } from './vista/ofertas/ofertas.component';
 
 import {MatDialogModule} from '@angular/material/dialog';//PARA PRUEBA
 import { AgregarcategoriaComponent } from './vista/agregarcategoria/agregarcategoria.component';//PARA PRUEBA
@@ -40,9 +41,11 @@ import { AgregarPostComponent } from './vista/agregar-post/agregar-post.componen
     NavegacionComponent,
     ModalpruebaComponent,
     // MatDialogModule,
+    OfertasComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     MatRadioModule,
     FormsModule,
     AppRoutingModule,

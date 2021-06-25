@@ -12,6 +12,7 @@ import { AdministradorComponent } from './vista/administrador/administrador.comp
 import { PerfilComponent } from './vista/perfil/perfil.component';
 import { AgregarcategoriaComponent } from './vista/agregarcategoria/agregarcategoria.component';
 import { TrabajoDetallesComponent } from './vista/trabajo-detalles/trabajo-detalles.component';
+import { OfertasComponent } from './vista/ofertas/ofertas.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'Login', pathMatch: 'full' },
@@ -20,13 +21,13 @@ const routes: Routes = [
   { path: "Principal", component: PrincipalComponent},
   { path: "Agregar_post", component: AgregarPostComponent},
   { path: "Administrador", component: AdministradorComponent},
-
-
+  { path: "Ofertas/:id/:categoria", component: OfertasComponent},
+  { path: "Vacante/:id/:categoria/:compania/:posicion/:descripcion/:horario/:ubicacion", component: TrabajoDetallesComponent},
   // Prueba
   { path: "Nav", component: NavegacionComponent},
   
   //hasta aqui
-  {path: "Detalles_Trabajo", component: TrabajoDetallesComponent},
+ 
   {path: "Agregar_Categoria", component: AgregarcategoriaComponent},
   {path: "PerfilU", component: PerfilComponent}
 ];
@@ -42,7 +43,8 @@ export const routesComponent = [
   RegistroComponent,
   PrincipalComponent,
   AgregarPostComponent,
-  AdministradorComponent
+  AdministradorComponent,
+  OfertasComponent
 
   // Prueba
   ,NavegacionComponent,
