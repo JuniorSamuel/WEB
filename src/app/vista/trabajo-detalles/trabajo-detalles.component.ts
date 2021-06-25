@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { IVacante } from 'src/app/modelo/vacante';
 
 @Component({
   selector: 'app-trabajo-detalles',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrabajoDetallesComponent implements OnInit {
 
-  constructor() { }
+  categoria!: string;
+  vacante!: IVacante;
+  constructor(private rutaParametro: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.rutaParametro.params.subscribe((parametro: Params) => {
+      console.log(parametro)
+      this.vacante = {
+        idVacante: parametro.id, 
+        idCategoria: 0, 
+        compania: parametro.compania, 
+        posicion: parametro.posicion,
+        descripcion: parametro.descripcion,
+        horario: parametro.horario,
+        ubicacion: parametro.ubicacion,
+      };
+      this.categoria = parametro.categoria;
+    });
   }
 
 }

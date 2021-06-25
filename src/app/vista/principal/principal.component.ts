@@ -1,27 +1,8 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import {PageEvent} from '@angular/material/paginator';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { ICategoria } from 'src/app/modelo/categoria';
+import { ApiService } from 'src/app/servicios/Api/api.service';
 
 @Component({
   selector: 'app-principal',
@@ -30,19 +11,27 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 
 export class PrincipalComponent implements OnInit, AfterViewInit {
-  
-  //Table
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  
-  //Filtro
-  filtro: string = ''
-  // MatPaginator Inputs
-  length = 100;
-  pageSize = 10;
-  pageSizeOptions: number[] = [5, 10, 25, 100];
 
-  constructor() { }
+  //#region Variables    
+    datoCargada = false;
+    categorias: ICategoria[] = [{nombre: 'Sin registros', idCategoria: 0}];
+    dataSource= new MatTableDataSource<ICategoria>(this.categorias)
+
+    //Table
+    displayedColumns: string[] = ['Nombre', 'Opciones'];
+    
+    
+    //Filtro
+    filtro: string = ''
+
+    // MatPaginator Inputs
+    length = 100;
+    pageSize = 10;
+    pageSizeOptions: number[] = [5, 10, 25, 100];
+  //#endregion
+
+  constructor(private _api: ApiService) { }
+
 
   @ViewChild(MatPaginator)  paginator!: MatPaginator;
   
@@ -51,6 +40,7 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.getCategoria();
   }
   
   // MatPaginator Output
@@ -63,6 +53,18 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
 
   setFiltro(){
     this.dataSource.filter = this.filtro.trim().toLowerCase();
+  }
+
+  //Api
+  getCategoria(){
+    this.categorias = [];
+    this._api.getCategorias().subscribe((respuesta: ICategoria[]) => {
+      this.dataSource = new MatTableDataSource<ICategoria>(respuesta);
+      this.datoCargada = true;
+    }, (err: any) => {
+      this.datoCargada = false;
+      console.error(err);
+    });
   }
 }
 

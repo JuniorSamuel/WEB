@@ -6,6 +6,11 @@
 
 table{
     width: 100%;
+    background-color: #094068;
+}
+
+thead{
+    background-color: #094068;
 }
 
 .hm{

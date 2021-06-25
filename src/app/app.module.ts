@@ -6,7 +6,7 @@ import { MatInputModule} from '@angular/material/input';
 
 import { AppRoutingModule, routesComponent } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { HttpClientModule } from "@angular/common/http";
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -20,6 +20,7 @@ import { ConfigComponent } from './vista/administrador/pestañas/config/config.c
 import { AdmitComponent } from './vista/administrador/pestañas/admit/admit.component';
 import { PieComponent } from './compomente/pie/pie.component';
 import { NavegacionComponent } from './compomente/navegacion/navegacion.component';
+import { OfertasComponent } from './vista/ofertas/ofertas.component';
 
 
 @NgModule({
@@ -33,10 +34,12 @@ import { NavegacionComponent } from './compomente/navegacion/navegacion.componen
     ConfigComponent,
     AdmitComponent,
     PieComponent,
-    NavegacionComponent
+    NavegacionComponent,
+    OfertasComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     MatRadioModule,
     FormsModule,
     AppRoutingModule,
