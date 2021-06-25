@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 
 export interface ICategoria {
     idCategoria: number;
@@ -22,7 +22,7 @@ export interface ICategoria {
 export class AgregarcategoriaComponent implements OnInit {
 
    //Table
-   displayedColumns: string[] = ['Nombre'];
+   displayedColumns: string[] = ['Nombre', 'Acciones'];
    dataSource = new MatTableDataSource<ICategoria>(Datos);
    
    // MatPaginator Inputs
@@ -30,7 +30,9 @@ export class AgregarcategoriaComponent implements OnInit {
    pageSize = 10;
    pageSizeOptions: number[] = [5, 10, 25, 100];
 
-  constructor() { }
+  constructor(
+    private dialog: MatDialog
+  ) { }
 
   @ViewChild(MatPaginator)  paginator!: MatPaginator;
   
@@ -47,4 +49,13 @@ export class AgregarcategoriaComponent implements OnInit {
       this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
     }
   }
+
+  onCreate(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "50%";
+    this.dialog.open(AgregarcategoriaComponent,dialogConfig);
+  }
+
 }

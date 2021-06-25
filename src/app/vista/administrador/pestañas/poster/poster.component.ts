@@ -1,6 +1,9 @@
+import { AgregarPostComponent } from './../../../agregar-post/agregar-post.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+
 
 export interface usuario{
   nombre:string,
@@ -23,7 +26,9 @@ const posterDatos: usuario[] = [
 export class PosterComponent implements OnInit {
 
   
-  constructor() { }
+  constructor(
+    private dialog: MatDialog,
+  ) { }
 
   ngOnInit(): void {
   }
@@ -60,5 +65,14 @@ export class PosterComponent implements OnInit {
     console.log(evento)
     
     this.dataSource.filter = this.filtro.trim().toLowerCase();
+  }
+  //PROBANDO MODAL
+  onCreate(){
+    const dialogConfig = new MatDialogConfig();
+    // dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "50%";
+    dialogConfig.height = "96%";
+    this.dialog.open(AgregarPostComponent,dialogConfig);  
   }
 }

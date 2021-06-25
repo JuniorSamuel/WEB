@@ -20,7 +20,11 @@ import { ConfigComponent } from './vista/administrador/pestañas/config/config.c
 import { AdmitComponent } from './vista/administrador/pestañas/admit/admit.component';
 import { PieComponent } from './compomente/pie/pie.component';
 import { NavegacionComponent } from './compomente/navegacion/navegacion.component';
+import { ModalpruebaComponent } from './vista/administrador/pestañas/usuario/modalprueba/modalprueba.component';
 
+import {MatDialogModule} from '@angular/material/dialog';//PARA PRUEBA
+import { AgregarcategoriaComponent } from './vista/agregarcategoria/agregarcategoria.component';//PARA PRUEBA
+import { AgregarPostComponent } from './vista/agregar-post/agregar-post.component';//PARA PRUEBA
 
 @NgModule({
   declarations: [
@@ -33,7 +37,9 @@ import { NavegacionComponent } from './compomente/navegacion/navegacion.componen
     ConfigComponent,
     AdmitComponent,
     PieComponent,
-    NavegacionComponent
+    NavegacionComponent,
+    ModalpruebaComponent,
+    // MatDialogModule,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +49,8 @@ import { NavegacionComponent } from './compomente/navegacion/navegacion.componen
     BrowserAnimationsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatInputModule
+    MatInputModule, 
+    MatDialogModule,
   ],
 
   providers: [
@@ -52,6 +59,9 @@ import { NavegacionComponent } from './compomente/navegacion/navegacion.componen
       useValue: { color: 'primary' },
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
+  entryComponents:[AgregarcategoriaComponent, AgregarPostComponent] //PARA ABRIR DIALOG
+
 })
 export class AppModule { }
