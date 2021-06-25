@@ -69,7 +69,7 @@ export class CategoriaComponent implements OnInit {
     // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "50%";
-    dialogConfig.height = "96%";
+    dialogConfig.height = "30%";
     this.dialog.open(AgregarcategoriaComponent,dialogConfig);  
   }
 }
