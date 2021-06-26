@@ -17,6 +17,11 @@ thead{
     min-height: 500px;
 }
 
+h1{
+    color: chartreuse;
+}
+
+
 /*  */
 
 
@@ -122,11 +127,6 @@ a {
 .bg-blue {
     color: #fff;
     background-color: #1A237E
-}
-
-.t-2{
-    font-size: 4em;
-    color: #707070;
 }
 
 @media screen and (max-width: 991px) {

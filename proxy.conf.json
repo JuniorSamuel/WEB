@@ -1,6 +1,6 @@
 {
     "/api/*":{
-        "target": "https://localhost:44319",
+        "target": "https://api-job.azurewebsites.net/",
         "secure": false,
         "logLevel": "debug"
     }

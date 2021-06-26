@@ -20,7 +20,7 @@ export class ApiService {
 
   constructor(private _http: HttpClient) { }
 
-  host: string = 'https://localhost:44319/';
+  private host: string = 'https://api-job.azurewebsites.net/';
 
   public getCategorias(): Observable<ICategoria[]>{
     return this._http.get<ICategoria[]>('api/Categoria');
