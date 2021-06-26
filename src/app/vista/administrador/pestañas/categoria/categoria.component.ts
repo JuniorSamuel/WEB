@@ -2,13 +2,9 @@ import { AgregarcategoriaComponent } from './../../../agregarcategoria/agregarca
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-<<<<<<< HEAD
 import { ICategoria } from 'src/app/modelo/categoria';
-import { ApiService } from 'src/app/servicios/Api/api.service';
 import { AdministradorComponent } from '../../administrador.component';
-=======
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
->>>>>>> d799e155d2a5a298c11023901f1cb729dea18206
 
 
 
@@ -19,12 +15,6 @@ import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 })
 export class CategoriaComponent implements OnInit {
 
-<<<<<<< HEAD
-=======
-  constructor(
-    private dialog: MatDialog,
-  ) { }
->>>>>>> d799e155d2a5a298c11023901f1cb729dea18206
 
   datoCargada: boolean = true
 
@@ -40,7 +30,7 @@ export class CategoriaComponent implements OnInit {
   pageSize = 10;
   pageSizeOptions: number[] = [5, 10, 25, 100];
 
-  constructor(private padreComp: AdministradorComponent) { }
+  constructor(private padreComp: AdministradorComponent, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.padreComp.getCategoria().subscribe((respuesta: ICategoria[]) =>{

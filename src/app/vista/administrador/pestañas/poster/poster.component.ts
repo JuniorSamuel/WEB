@@ -2,28 +2,10 @@ import { AgregarPostComponent } from './../../../agregar-post/agregar-post.compo
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-<<<<<<< HEAD
 import { IUsuario } from 'src/app/modelo/usuario';
-import { ApiService } from 'src/app/servicios/Api/api.service';
+
 import { AdministradorComponent } from '../../administrador.component';
-import { AdmitComponent } from '../admit/admit.component';
-=======
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
-
-
-export interface usuario{
-  nombre:string,
-  apellido:string,
-  edad:number
-}
-
-const posterDatos: usuario[] = [
-  {nombre: 'Junior', apellido: 'De Los Santos', edad: 17},
-  {nombre: 'Elian', apellido: 'mtg', edad: 19},
-  {nombre: 'Jose', apellido: 'Upia', edad: 20},
-  {nombre: 'Keutyn', apellido: 'Ramirez', edad: 20},
-]
->>>>>>> d799e155d2a5a298c11023901f1cb729dea18206
 
 @Component({
   selector: 'app-poster',
@@ -32,16 +14,10 @@ const posterDatos: usuario[] = [
 })
 export class PosterComponent implements OnInit {
 
-<<<<<<< HEAD
   datoCargada: boolean = true;
 
-  constructor(private _api: ApiService, private padreComp: AdministradorComponent) { }
-=======
-  
-  constructor(
-    private dialog: MatDialog,
-  ) { }
->>>>>>> d799e155d2a5a298c11023901f1cb729dea18206
+  constructor(private padreComp: AdministradorComponent, private dialog: MatDialog) { }
+
 
   ngOnInit(): void {
     this.padreComp.getUsuario().subscribe((respuesta: IUsuario[]) =>{
