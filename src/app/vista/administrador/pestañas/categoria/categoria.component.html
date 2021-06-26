@@ -15,7 +15,7 @@
     </div>
 
     <div class="mt-2">
-        <div class="mat-elevation-z8">
+        <div *ngIf='datoCargada; else sinData'>
             <table mat-table [dataSource]="dataSource">
 
                 <!-- Position Column -->
@@ -58,5 +58,11 @@
 
             <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
         </div>
+        <ng-template #sinData>
+            <div class="w-25 mx-auto">
+                <img src="assets/ic_file.svg" class="" alt="">
+                <h2>Sin registro</h2>
+            </div>
+        </ng-template>
     </div>
 </div>

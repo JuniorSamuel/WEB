@@ -16,6 +16,9 @@ const posterDatos: usuario[] = [
   {nombre: 'Jose', apellido: 'Upia', edad: 20},
   {nombre: 'Keutyn', apellido: 'Ramirez', edad: 20},
 ]
+import { IUsuario } from 'src/app/modelo/usuario';
+import { ApiService } from 'src/app/servicios/Api/api.service';
+import { AdministradorComponent } from '../../administrador.component';
 
 @Component({
   selector: 'app-admit',
@@ -25,23 +28,37 @@ const posterDatos: usuario[] = [
 
 export class AdmitComponent implements OnInit {
 
-  constructor(
-    private dialog: MatDialog,
-  ) { }
+  // constructor(
+  //   private dialog: MatDialog,
+  // ) { }
+ 
+  datoCargada: boolean = true;
+   //Table
+   displayedColumns: string[] =['nombre', 'apellido', 'correo', 'cedula', 'telefono', 'Acciones'];
+   dataSource = new MatTableDataSource<IUsuario>();
+ 
+   //Filtro
+   filtro: string = ''
+ 
+   // MatPaginator Inputs
+   length = 100;
+   pageSize = 10;
+   pageSizeOptions: number[] = [5, 10, 25, 100];
+
+  constructor(private dialog: MatDialog, private _api: ApiService, private padreComp: AdministradorComponent) { }
 
   ngOnInit(): void {
+    this.padreComp.getUsuario().subscribe((respuesta: IUsuario[]) =>{
+      this.table(respuesta);
+    });
   }
-  //Table
-  displayedColumns: string[] = ['Nombre', 'Apellido', 'Edad', 'Acciones'];
-  dataSource = new MatTableDataSource<usuario>(posterDatos);
 
-  //Filtro
-  filtro: string = ''
-
-  // MatPaginator Inputs
-  length = 100;
-  pageSize = 10;
-  pageSizeOptions: number[] = [5, 10, 25, 100];
+  table(usuarios: IUsuario[]){
+    if(usuarios == []) this.datoCargada = false;
+    this.dataSource = new MatTableDataSource<IUsuario>(usuarios);
+    this.dataSource.paginator = this.paginator;
+    
+  }
 
   
   @ViewChild(MatPaginator)  paginator!: MatPaginator;

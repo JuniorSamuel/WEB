@@ -2,20 +2,11 @@ import { AgregarcategoriaComponent } from './../../../agregarcategoria/agregarca
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ICategoria } from 'src/app/modelo/categoria';
+import { AdministradorComponent } from '../../administrador.component';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 
-export interface usuario{
-  nombre:string,
-  apellido:string,
-  edad:number
-}
 
-const posterDatos: usuario[] = [
-  {nombre: 'Junior', apellido: 'De Los Santos', edad: 17},
-  {nombre: 'Elian', apellido: 'mtg', edad: 19},
-  {nombre: 'Jose', apellido: 'Upia', edad: 20},
-  {nombre: 'Keutyn', apellido: 'Ramirez', edad: 20},
-]
 
 @Component({
   selector: 'app-categoria',
@@ -24,15 +15,14 @@ const posterDatos: usuario[] = [
 })
 export class CategoriaComponent implements OnInit {
 
-  constructor(
-    private dialog: MatDialog,
-  ) { }
 
-  ngOnInit(): void {
-  }
+  datoCargada: boolean = true
+
   //Table
-  displayedColumns: string[] = ['Nombre', 'Apellido', 'Edad', 'Acciones'];
-  dataSource = new MatTableDataSource<usuario>(posterDatos);
+  // displayedColumns: string[] = ['Nombre', 'Apellido', 'Edad', 'Acciones'];
+  // dataSource = new MatTableDataSource<usuario>(posterDatos);
+  displayedColumns: string[] = ['Nombre', 'Acciones'];
+  dataSource = new MatTableDataSource<ICategoria>();
 
   //Filtro
   filtro: string = ''
@@ -42,14 +32,29 @@ export class CategoriaComponent implements OnInit {
   pageSize = 10;
   pageSizeOptions: number[] = [5, 10, 25, 100];
 
-  
-  @ViewChild(MatPaginator)  paginator!: MatPaginator;
+  constructor(private padreComp: AdministradorComponent, private dialog: MatDialog) { }
+
+  ngOnInit(): void {
+    this.padreComp.getCategoria().subscribe((respuesta: ICategoria[]) =>{
+      this.table(respuesta);
+    });
+  }
+
+  table(categoria: ICategoria[]){
+    if(categoria == []) this.datoCargada = false;
+    this.dataSource = new MatTableDataSource<ICategoria>(categoria);
+    this.dataSource.paginator = this.paginator;    
+  }
+
+
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator
   }
 
-  
+
   // MatPaginator Output
   pageEvent: PageEvent = new PageEvent;
   setPageSizeOptions(setPageSizeOptionsInput: string) {
@@ -58,9 +63,9 @@ export class CategoriaComponent implements OnInit {
     }
   }
 
-  setFiltro(evento: Event){
+  setFiltro(evento: Event) {
     console.log(evento)
-    
+
     this.dataSource.filter = this.filtro.trim().toLowerCase();
   }
   //PROBANDO MODAL
