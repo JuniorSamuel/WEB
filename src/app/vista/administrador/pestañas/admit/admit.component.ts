@@ -1,7 +1,8 @@
-
+import { AgregarAdministradorComponent } from 'src/app/vista/agregar-administrador/agregar-administrador.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 
 export interface usuario{
   nombre:string,
@@ -24,12 +25,14 @@ const posterDatos: usuario[] = [
 
 export class AdmitComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private dialog: MatDialog,
+  ) { }
 
   ngOnInit(): void {
   }
   //Table
-  displayedColumns: string[] = ['Nombre', 'Apellido', 'Edad'];
+  displayedColumns: string[] = ['Nombre', 'Apellido', 'Edad', 'Acciones'];
   dataSource = new MatTableDataSource<usuario>(posterDatos);
 
   //Filtro
@@ -63,6 +66,11 @@ export class AdmitComponent implements OnInit {
   }
 
   agregar(){
-    
+    const dialogConfig = new MatDialogConfig();
+    // dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%";
+    // dialogConfig.height = "20%";
+    this.dialog.open(AgregarAdministradorComponent,dialogConfig);  
   }
 }

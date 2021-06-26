@@ -31,7 +31,7 @@ export class CategoriaComponent implements OnInit {
   ngOnInit(): void {
   }
   //Table
-  displayedColumns: string[] = ['Nombre', 'Apellido', 'Edad'];
+  displayedColumns: string[] = ['Nombre', 'Apellido', 'Edad', 'Acciones'];
   dataSource = new MatTableDataSource<usuario>(posterDatos);
 
   //Filtro
@@ -68,8 +68,8 @@ export class CategoriaComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "50%";
-    dialogConfig.height = "30%";
+    dialogConfig.width = "25%";
+    // dialogConfig.height = "20%";
     this.dialog.open(AgregarcategoriaComponent,dialogConfig);  
   }
 }

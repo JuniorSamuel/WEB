@@ -7,10 +7,9 @@
                     placeholder="Buscar Categoria" (keyup)="setFiltro($event)" value="" [(ngModel)]="filtro">
             </form>
         </div>
-
         <div class="col-12 col-md-auto">
-            <button class="btn btn-primary" (click)="onCreate()">PROBANDO MODAL DE AGREGAR CATEGORIA  
-                <!-- <i class="bi bi-person-plus mx-1" routerLink="/Agregar_post"></i> Agregar Categoria -->
+            <button class="btn btn-success" (click)="onCreate()" > 
+                <i class="bi bi-person-plus mx-1"></i> Agregar Categoria
             </button>
         </div>
     </div>
@@ -35,6 +34,21 @@
                 <ng-container matColumnDef="Edad">
                     <th mat-header-cell *matHeaderCellDef> Edad </th>
                     <td mat-cell *matCellDef="let element"> {{element.edad}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Acciones">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <mat-cell *matCellDef="let row">
+                        <button class="btn btn-info mx-1" title="Detalles"> 
+                            <i class="bi bi-info-square"></i>
+                        </button>
+                        <button class="btn btn-warning mx-1" title="Editar"> 
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
+                        <button class="btn btn-danger mx-1" title="Eliminar"> 
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </mat-cell>
                 </ng-container>
 
 

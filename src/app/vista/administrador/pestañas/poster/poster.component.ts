@@ -1,4 +1,4 @@
-import { AgregarPostComponent } from './../../../agregar-post/agregar-post.component';
+import { AgregarAdministradorComponent } from 'src/app/vista/agregar-administrador/agregar-administrador.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -34,7 +34,7 @@ export class PosterComponent implements OnInit {
   }
 
   //Table
-  displayedColumns: string[] = ['Nombre', 'Apellido', 'Edad'];
+  displayedColumns: string[] = ['Nombre', 'Apellido', 'Edad', 'Acciones'];
   dataSource = new MatTableDataSource<usuario>(posterDatos);
 
   //Filtro
@@ -73,6 +73,6 @@ export class PosterComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "50%";
     dialogConfig.height = "96%";
-    this.dialog.open(AgregarPostComponent,dialogConfig);  
+    this.dialog.open(AgregarAdministradorComponent,dialogConfig);  
   }
 }
