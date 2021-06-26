@@ -1,10 +1,14 @@
-
+import { AgregarcategoriaComponent } from './../../../agregarcategoria/agregarcategoria.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+<<<<<<< HEAD
 import { ICategoria } from 'src/app/modelo/categoria';
 import { ApiService } from 'src/app/servicios/Api/api.service';
 import { AdministradorComponent } from '../../administrador.component';
+=======
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+>>>>>>> d799e155d2a5a298c11023901f1cb729dea18206
 
 
 
@@ -15,6 +19,12 @@ import { AdministradorComponent } from '../../administrador.component';
 })
 export class CategoriaComponent implements OnInit {
 
+<<<<<<< HEAD
+=======
+  constructor(
+    private dialog: MatDialog,
+  ) { }
+>>>>>>> d799e155d2a5a298c11023901f1cb729dea18206
 
   datoCargada: boolean = true
 
@@ -65,5 +75,14 @@ export class CategoriaComponent implements OnInit {
     console.log(evento)
 
     this.dataSource.filter = this.filtro.trim().toLowerCase();
+  }
+  //PROBANDO MODAL
+  onCreate(){
+    const dialogConfig = new MatDialogConfig();
+    // dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "50%";
+    dialogConfig.height = "30%";
+    this.dialog.open(AgregarcategoriaComponent,dialogConfig);  
   }
 }
