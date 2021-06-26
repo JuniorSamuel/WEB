@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ICategoria } from 'src/app/modelo/categoria';
+import { IUsuario } from 'src/app/modelo/usuario';
 import { IVacante } from 'src/app/modelo/vacante';
 
 const httpOptions = {
@@ -31,5 +32,9 @@ export class ApiService {
 
   public getVacantes(): Observable<IVacante[]>{
     return this._http.get<IVacante[]>('api/Vacante');
+  }
+
+  getUsuarios(): Observable<IUsuario[]>{
+    return this._http.get<IUsuario[]>('/api/Usuario');
   }
 }

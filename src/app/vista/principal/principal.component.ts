@@ -60,6 +60,7 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
     this.categorias = [];
     this._api.getCategorias().subscribe((respuesta: ICategoria[]) => {
       this.dataSource = new MatTableDataSource<ICategoria>(respuesta);
+      this.dataSource.paginator = this.paginator
       this.datoCargada = true;
     }, (err: any) => {
       this.datoCargada = false;

@@ -3,6 +3,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { IVacante } from 'src/app/modelo/vacante';
 import { ApiService } from 'src/app/servicios/Api/api.service';
+import { AdministradorComponent } from '../../administrador.component';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { ApiService } from 'src/app/servicios/Api/api.service';
 export class PostComponent implements OnInit {
 
   //#region Variables 
-    datoCargada: boolean = false;
+    datoCargada: boolean = true;
 
     vacantes: IVacante[] = [];
   
@@ -30,14 +31,20 @@ export class PostComponent implements OnInit {
     pageSize = 10;
     pageSizeOptions: number[] = [5, 10, 25, 100];
   //#endregion
-  constructor(private _api: ApiService) { }
+  constructor(private padreComp: AdministradorComponent) { }
 
   ngOnInit(): void {
-    this.getVacantes();
+    this.padreComp.getVacante().subscribe((respuesta: IVacante[]) =>{
+      this.table(respuesta);
+    });
   }
 
-
-
+  table(usuarios: IVacante[]){
+    if(usuarios == []) this.datoCargada = false;
+    this.dataSource = new MatTableDataSource<IVacante>(usuarios);
+    this.dataSource.paginator = this.paginator;
+    
+  }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -56,18 +63,5 @@ export class PostComponent implements OnInit {
 
   setFiltro(evento: Event) {
     this.dataSource.filter = this.filtro.trim().toLowerCase();
-  }
-
-  //Api
-  getVacantes() {
-    this._api.getVacantes().subscribe((respuesta: IVacante[]) => {
-      this.dataSource = new MatTableDataSource<IVacante>(respuesta);
-      this.dataSource.paginator = this.paginator;
-      if (respuesta != []) {
-        this.datoCargada = true;
-      } else {
-        this.datoCargada = false;
-      }    
-    });
   }
 }

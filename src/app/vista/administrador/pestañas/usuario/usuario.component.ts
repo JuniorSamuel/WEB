@@ -1,27 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { IUsuario } from 'src/app/modelo/usuario';
+import { ApiService } from 'src/app/servicios/Api/api.service';
+import { AdministradorComponent } from '../../administrador.component';
 
-
-
-export interface usuario{
-  nombre:string,
-  apellido:string,
-  edad:number
-}
-
-const usuarioDatos: usuario[] = [
-  {nombre: 'Junior', apellido: 'De Los Santos', edad: 17},
-  {nombre: 'maria', apellido: 'Lorenzo', edad: 19},
-  {nombre: 'Jose', apellido: 'Upia', edad: 20},
-  {nombre: 'Keutyn', apellido: 'Ramirez', edad: 20},
-  {nombre: 'Wilkendry', apellido: 'trujillo', edad: 18},
-  {nombre: 'Ramon', apellido: 'De Los Santos', edad: 17},
-  {nombre: 'Alfredo', apellido: 'Saliens', edad: 19},
-  {nombre: 'Matias', apellido: 'Mella', edad: 20},
-  {nombre: 'El lider', apellido: 'Leo', edad: 20},
-  {nombre: 'Samuel', apellido: 'El mejor', edad: 18}
-]
 
 
 @Component({
@@ -30,9 +13,12 @@ const usuarioDatos: usuario[] = [
   styleUrls: ['./usuario.component.css']
 })
 export class UsuarioComponent implements OnInit {
+
+  datoCargada:boolean = true;
+
   //Table
-  displayedColumns: string[] = ['Nombre', 'Apellido', 'Edad'];
-  dataSource = new MatTableDataSource<usuario>(usuarioDatos);
+  displayedColumns: string[] = ['nombre', 'apellido', 'correo', 'cedula', 'telefono'];
+  dataSource = new MatTableDataSource<IUsuario>();
 
   //Filtro
   filtro: string = ''
@@ -42,15 +28,26 @@ export class UsuarioComponent implements OnInit {
   pageSize = 10;
   pageSizeOptions: number[] = [5, 10, 25, 100];
 
-  constructor() { }
+  constructor(private _api: ApiService, private padreComp: AdministradorComponent) { 
+  }
 
   @ViewChild(MatPaginator)  paginator!: MatPaginator;
 
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator
   }
 
+
   ngOnInit(): void {
+    this.padreComp.getUsuario().subscribe((respuesta: IUsuario[]) =>{
+      this.table(respuesta);
+    });
+  }
+
+  table(usuarios: IUsuario[]){
+    if(usuarios == []) this.datoCargada = false;
+    this.dataSource = new MatTableDataSource<IUsuario>(usuarios);
+    this.dataSource.paginator = this.paginator;
+    
   }
 
   // MatPaginator Output
@@ -63,7 +60,6 @@ export class UsuarioComponent implements OnInit {
 
   setFiltro(evento: Event){
     console.log(evento)
-    
     this.dataSource.filter = this.filtro.trim().toLowerCase();
   }
 }

@@ -1,5 +1,5 @@
 <div>
-   
+
     <div class=" justify-content-between row">
         <div class="col-12 col-md-4">
             <form>
@@ -9,34 +9,45 @@
         </div>
 
         <div class="col-12 col-md-auto">
-            <button class="btn btn-success"> 
-                <i class="bi bi-person-plus mx-1"></i> Agregar Poster
+            <button class="btn btn-success">
+                <i class="bi bi-person-plus mx-1"></i> Agregar Usuario
             </button>
         </div>
     </div>
 
     <div class="mt-2">
-        <div>
+        <div *ngIf='datoCargada; else sinData'>
             <table mat-table [dataSource]="dataSource" class="">
 
                 <!-- Position Column -->
-                <ng-container matColumnDef="Nombre">
+                <ng-container matColumnDef="nombre">
                     <th mat-header-cell *matHeaderCellDef> Nombre </th>
                     <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
                 </ng-container>
 
                 <!-- Name Column -->
-                <ng-container matColumnDef="Apellido">
+                <ng-container matColumnDef="apellido">
                     <th mat-header-cell *matHeaderCellDef> Apellido </th>
                     <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
                 </ng-container>
 
-                <!-- Weight Column -->
-                <ng-container matColumnDef="Edad">
-                    <th mat-header-cell *matHeaderCellDef> Edad </th>
-                    <td mat-cell *matCellDef="let element"> {{element.edad}} </td>
+                <!-- Name Column -->
+                <ng-container matColumnDef="correo">
+                    <th mat-header-cell *matHeaderCellDef> Correo </th>
+                    <td mat-cell *matCellDef="let element"> {{element.correo}} </td>
                 </ng-container>
 
+                <!-- Weight Column -->
+                <ng-container matColumnDef="cedula">
+                    <th mat-header-cell *matHeaderCellDef> Cedula </th>
+                    <td mat-cell *matCellDef="let element"> {{element.cedula}} </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="telefono">
+                    <th mat-header-cell *matHeaderCellDef> Telefono </th>
+                    <td mat-cell *matCellDef="let element"> {{element.correo}} </td>
+                </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -44,5 +55,11 @@
 
             <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
         </div>
+        <ng-template #sinData>
+            <div class="w-25 mx-auto">
+                <img src="assets/ic_file.svg" class="" alt="">
+                <h2>Sin registro</h2>
+            </div>
+        </ng-template>
     </div>
 </div>
