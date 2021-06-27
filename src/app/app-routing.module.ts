@@ -17,7 +17,7 @@ import { OfertasComponent } from './vista/ofertas/ofertas.component';
 const routes: Routes = [
   { path: '', redirectTo: 'Login', pathMatch: 'full' },
   { path: "Login", component: LoginComponent},
-  { path: "Registro", component: RegistroComponent},
+  // { path: "Registro", component: RegistroComponent},
   { path: "Principal", component: PrincipalComponent},
   { path: "Agregar_post", component: AgregarPostComponent},
   { path: "Administrador", component: AdministradorComponent},
@@ -28,7 +28,7 @@ const routes: Routes = [
   
   //hasta aqui
  
-  {path: "Agregar_Categoria", component: AgregarcategoriaComponent},
+  // {path: "Agregar_Categoria", component: AgregarcategoriaComponent},
   {path: "PerfilU", component: PerfilComponent}
 ];
 
@@ -40,7 +40,7 @@ export class AppRoutingModule { }
 
 export const routesComponent = [
   LoginComponent,
-  RegistroComponent,
+  // RegistroComponent,
   PrincipalComponent,
   AgregarPostComponent,
   AdministradorComponent,
@@ -48,7 +48,7 @@ export const routesComponent = [
 
   // Prueba
   ,NavegacionComponent,
-  AgregarcategoriaComponent,
+  // AgregarcategoriaComponent,
   PerfilComponent,
   TrabajoDetallesComponent,
   PieComponent
