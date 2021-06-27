@@ -1,12 +1,10 @@
 import { AgregarPostComponent } from './../../../agregar-post/agregar-post.component';
-import { AgregarcategoriaComponent } from './../../../agregarcategoria/agregarcategoria.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { IVacante } from 'src/app/modelo/vacante';
-import { ApiService } from 'src/app/servicios/Api/api.service';
-import { AdministradorComponent } from '../../administrador.component';
+import { DatosService } from 'src/app/servicios/cargar/datos.service';
 
 
 @Component({
@@ -16,12 +14,8 @@ import { AdministradorComponent } from '../../administrador.component';
 })
 export class PostComponent implements OnInit {
 
-  // constructor(
-  //   private dialog: MatDialog,
-  // ) { }
-  //#region Variables 
+  
     datoCargada: boolean = true;
-
     vacantes: IVacante[] = [];
   
 
@@ -37,10 +31,10 @@ export class PostComponent implements OnInit {
     pageSize = 10;
     pageSizeOptions: number[] = [5, 10, 25, 100];
   //#endregion
-  constructor(private padreComp: AdministradorComponent, private dialog: MatDialog) { }
+  constructor(private datos: DatosService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.padreComp.getVacante().subscribe((respuesta: IVacante[]) =>{
+    this.datos.getVacante().subscribe((respuesta: IVacante[]) =>{
       this.table(respuesta);
     });
   }

@@ -3,8 +3,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ICategoria } from 'src/app/modelo/categoria';
-import { AdministradorComponent } from '../../administrador.component';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import { DatosService } from 'src/app/servicios/cargar/datos.service';
 
 
 
@@ -19,8 +19,6 @@ export class CategoriaComponent implements OnInit {
   datoCargada: boolean = true
 
   //Table
-  // displayedColumns: string[] = ['Nombre', 'Apellido', 'Edad', 'Acciones'];
-  // dataSource = new MatTableDataSource<usuario>(posterDatos);
   displayedColumns: string[] = ['Nombre', 'Acciones'];
   dataSource = new MatTableDataSource<ICategoria>();
 
@@ -32,10 +30,10 @@ export class CategoriaComponent implements OnInit {
   pageSize = 10;
   pageSizeOptions: number[] = [5, 10, 25, 100];
 
-  constructor(private padreComp: AdministradorComponent, private dialog: MatDialog) { }
+  constructor(private datos: DatosService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.padreComp.getCategoria().subscribe((respuesta: ICategoria[]) =>{
+    this.datos.getCategoria().subscribe((respuesta: ICategoria[]) =>{
       this.table(respuesta);
     });
   }

@@ -3,22 +3,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
-
-export interface usuario{
-  nombre:string,
-  apellido:string,
-  edad:number
-}
-
-const posterDatos: usuario[] = [
-  {nombre: 'Junior', apellido: 'De Los Santos', edad: 17},
-  {nombre: 'Elian', apellido: 'mtg', edad: 19},
-  {nombre: 'Jose', apellido: 'Upia', edad: 20},
-  {nombre: 'Keutyn', apellido: 'Ramirez', edad: 20},
-]
 import { IUsuario } from 'src/app/modelo/usuario';
-import { ApiService } from 'src/app/servicios/Api/api.service';
-import { AdministradorComponent } from '../../administrador.component';
+import { DatosService } from 'src/app/servicios/cargar/datos.service';
 
 @Component({
   selector: 'app-admit',
@@ -45,10 +31,10 @@ export class AdmitComponent implements OnInit {
    pageSize = 10;
    pageSizeOptions: number[] = [5, 10, 25, 100];
 
-  constructor(private dialog: MatDialog, private _api: ApiService, private padreComp: AdministradorComponent) { }
+  constructor(private dialog: MatDialog, private datos: DatosService) { }
 
   ngOnInit(): void {
-    this.padreComp.getUsuario().subscribe((respuesta: IUsuario[]) =>{
+    this.datos.getUsuario().subscribe((respuesta: IUsuario[]) =>{
       this.table(respuesta);
     });
   }

@@ -20,21 +20,24 @@ export class ApiService {
 
   constructor(private _http: HttpClient) { }
 
-  private host: string = 'https://api-job.azurewebsites.net/';
+  private _host: string = 'https://api-job.azurewebsites.net/';
 
-  public getCategorias(): Observable<ICategoria[]>{
-    return this._http.get<ICategoria[]>('api/Categoria');
+  
+  //GET ALL
+  getCategorias(): Observable<ICategoria[]>{
+    return this._http.get<ICategoria[]>(this._host +'api/Categoria');
   }
 
-  public getVacantesPorCategorias(idCategoria: number): Observable<IVacante[]>{
-    return this._http.get<IVacante[]>('api/Vacante/FiltroPorCategoria/'+idCategoria);
+  getVacantesPorCategorias(idCategoria: number): Observable<IVacante[]>{
+    return this._http.get<IVacante[]>(this._host +'api/Vacante/FiltroPorCategoria/'+idCategoria);
   }
 
-  public getVacantes(): Observable<IVacante[]>{
-    return this._http.get<IVacante[]>('api/Vacante');
+  getVacantes(): Observable<IVacante[]>{
+    return this._http.get<IVacante[]>(this._host+'api/Vacante');
   }
 
   getUsuarios(): Observable<IUsuario[]>{
-    return this._http.get<IUsuario[]>('/api/Usuario');
+    return this._http.get<IUsuario[]>(this._host +'api/Usuario');
   }
+
 }

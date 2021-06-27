@@ -6,6 +6,7 @@ import { IUsuario } from 'src/app/modelo/usuario';
 
 import { AdministradorComponent } from '../../administrador.component';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import { DatosService } from 'src/app/servicios/cargar/datos.service';
 
 @Component({
   selector: 'app-poster',
@@ -16,11 +17,11 @@ export class PosterComponent implements OnInit {
 
   datoCargada: boolean = true;
 
-  constructor(private padreComp: AdministradorComponent, private dialog: MatDialog) { }
+  constructor(private datos: DatosService, private dialog: MatDialog) { }
 
 
   ngOnInit(): void {
-    this.padreComp.getUsuario().subscribe((respuesta: IUsuario[]) =>{
+    this.datos.getUsuario().subscribe((respuesta: IUsuario[]) =>{
       this.table(respuesta);
     });
   }

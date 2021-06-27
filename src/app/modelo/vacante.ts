@@ -4,6 +4,8 @@ export interface IVacante {
     compania: string,
     posicion: string,
     descripcion: string,
+    telefono: number,
+    correo: string,
     horario: string,
     ubicacion: string,
 }
