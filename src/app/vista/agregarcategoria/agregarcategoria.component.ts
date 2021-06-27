@@ -9,6 +9,7 @@ import { Form, FormBuilder, FormControl, FormGroup, Validators } from '@angular/
 })
 export class AgregarcategoriaComponent implements OnInit {
 
+
   categoriaForm = new FormGroup({
     nombre : new FormControl(['', Validators.required])
   });
@@ -32,6 +33,6 @@ export class AgregarcategoriaComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log('Enviado')
+   
   }
 }

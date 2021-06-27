@@ -47,4 +47,8 @@ export class ApiService {
       console.error(err);
     });
   }
+
+  postVacante(vacante: IVacante): Observable<IVacante>{
+    return this._http.post<IVacante>(this._host+"api/Vacante", vacante);
+  }
 }

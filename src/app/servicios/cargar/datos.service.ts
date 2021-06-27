@@ -12,20 +12,20 @@ export class DatosService {
   //#region 
   private usuarios: IUsuario[];
   private categorias: ICategoria[];
-  private post: IVacante[];
+  private vacante: IVacante[];
 
   private usuarios$: Subject<IUsuario[]>;
   private categorias$: Subject<ICategoria[]>;
-  private post$: Subject<IVacante[]>;
+  private vacante$: Subject<IVacante[]>;
   //#endregion
   constructor(private _api: ApiService) { 
     this.categorias = [];
     this.usuarios = [];
-    this.post = []
+    this.vacante = []
 
     this.usuarios$ = new Subject();
     this.categorias$ = new Subject();
-    this.post$= new Subject();
+    this.vacante$= new Subject();
   }
 
   cargar() {
@@ -55,8 +55,8 @@ export class DatosService {
 
   getVacanteApi(){
     this._api.getVacantes().subscribe((respuesta: IVacante[]) => {
-      this.post = respuesta;
-      this.post$.next(this.post);
+      this.vacante = respuesta;
+      this.vacante$.next(this.vacante.sort());
     }, (err: any) =>{
       console.error(err);
     });
@@ -71,7 +71,15 @@ export class DatosService {
   }
 
   getVacante(): Observable<IVacante[]>{
-    return this.post$.asObservable();
+    return this.vacante$.asObservable();
   }
 
+  postVacante(vacante: IVacante){
+    this._api.postVacante(vacante).subscribe((vacante: IVacante) =>{
+      this.vacante.push(vacante);
+      this.vacante$.next(this.vacante)
+    }, (err: any) =>{
+      console.error(err);
+    });
+  }
  }
