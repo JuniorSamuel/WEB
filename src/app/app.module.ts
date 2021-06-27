@@ -13,7 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { UsuarioComponent } from './vista/administrador/pestañas/usuario/usuario.component';
-import { FormControl, FormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PosterComponent } from './vista/administrador/pestañas/poster/poster.component';
 import { CategoriaComponent } from './vista/administrador/pestañas/categoria/categoria.component';
 import { PostComponent } from './vista/administrador/pestañas/post/post.component';
@@ -44,13 +44,14 @@ import { AgregarAdministradorComponent } from './vista/agregar-administrador/agr
     ModalpruebaComponent,
     // MatDialogModule,
     OfertasComponent,
-    AgregarAdministradorComponent,
+    AgregarAdministradorComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MatRadioModule,
-    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatTableModule,

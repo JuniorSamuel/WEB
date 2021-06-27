@@ -34,6 +34,7 @@ export class PostComponent implements OnInit {
   constructor(private datos: DatosService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.datos.getVacanteApi();
     this.datos.getVacante().subscribe((respuesta: IVacante[]) =>{
       this.table(respuesta);
     });

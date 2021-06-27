@@ -40,10 +40,15 @@ export class ApiService {
     return this._http.get<IUsuario[]>(this._host +'api/Usuario');
   }
 
-  //INSERT ALL
-  // formData :  ICategoria;
-  // insertCategoria(){
-  //   this.categoria
-  // }
+  postCategoria(categoria: ICategoria){
+    this._http.post(this._host+"api/Categoria", categoria).subscribe( x =>{
+      console.log(x);
+    }, (err: any) => {
+      console.error(err);
+    });
+  }
 
+  postVacante(vacante: IVacante): Observable<IVacante>{
+    return this._http.post<IVacante>(this._host+"api/Vacante", vacante);
+  }
 }
