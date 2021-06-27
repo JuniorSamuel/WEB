@@ -40,4 +40,10 @@ export class ApiService {
     return this._http.get<IUsuario[]>(this._host +'api/Usuario');
   }
 
+  //INSERT ALL
+  // formData :  ICategoria;
+  // insertCategoria(){
+  //   this.categoria
+  // }
+
 }

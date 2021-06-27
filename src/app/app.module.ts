@@ -1,3 +1,4 @@
+import { ApiService } from 'src/app/servicios/Api/api.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
@@ -59,6 +60,7 @@ import { AgregarAdministradorComponent } from './vista/agregar-administrador/agr
   ],
 
   providers: [
+    ApiService,
     {
       provide: MAT_RADIO_DEFAULT_OPTIONS,
       useValue: { color: 'primary' },

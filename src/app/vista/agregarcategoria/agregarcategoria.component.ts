@@ -1,3 +1,4 @@
+import { ApiService } from 'src/app/servicios/Api/api.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -31,7 +32,7 @@ export class AgregarcategoriaComponent implements OnInit {
    pageSizeOptions: number[] = [5, 10, 25, 100];
 
   constructor(
-    private dialog: MatDialog
+    private service: ApiService, private dialog: MatDialog
   ) { }
 
   @ViewChild(MatPaginator)  paginator!: MatPaginator;
@@ -56,6 +57,10 @@ export class AgregarcategoriaComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "50%";
     this.dialog.open(AgregarcategoriaComponent,dialogConfig);
+  }
+
+  onSubmit(){
+
   }
 
 }
