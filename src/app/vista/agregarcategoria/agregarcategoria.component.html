@@ -2,7 +2,7 @@
 <div class="container">
   <h2>Categoria</h2>
   <hr>
-    <form  [formGroup] = "form" (submit)="onSubmit()">
+    <form  [formGroup]="categoriaForm" (ngSubmit)="onSubmit()">
         <div class="form-group row mt-3">
           <!-- <label class="cat">Categoría: </label> -->
           <input  type="text" class="form-control" id="Categoria" placeholder="Categoría" formControlName = 'nombre'>
