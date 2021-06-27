@@ -16,19 +16,18 @@ export class TrabajoDetallesComponent implements OnInit {
   ngOnInit(): void {
     this.rutaParametro.params.subscribe((parametro: Params) => {
       console.log(parametro)
-      
-      // this.vacante = {
-      //   idVacante: parametro.id, 
-      //   idCategoria: 0, 
-      //   compania: parametro.compania, 
-      //   posicion: parametro.posicion,
-      //   descripcion: parametro.descripcion,
-      //   telefono: parametro.telenofo,
-      //   correo: parametro.correo,
-      //   horario: parametro.horario,
-      //   ubicacion: parametro.ubicacion,
-      // };
-      // this.categoria = parametro.categoria;
+      this.vacante = {
+        idVacante: parametro.id, 
+        idCategoria: 0, 
+        compania: parametro.compania, 
+        posicion: parametro.posicion,
+        descripcion: parametro.descripcion,
+        telefono: parametro.telenofo,
+        correo: parametro.correo,
+        horario: parametro.horario,
+        ubicacion: parametro.ubicacion,
+      };
+      this.categoria = parametro.categoria;
     });
   }
 
