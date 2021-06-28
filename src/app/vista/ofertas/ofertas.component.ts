@@ -1,3 +1,4 @@
+import { TrabajoDetallesComponent } from '../trabajo-detalles/trabajo-detalles.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -5,6 +6,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { IVacante } from 'src/app/modelo/vacante';
 import { ApiService } from 'src/app/servicios/Api/api.service';
 import { DatosService } from 'src/app/servicios/cargar/datos.service';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-ofertas',
@@ -33,7 +35,7 @@ export class OfertasComponent implements OnInit {
   pageSizeOptions: number[] = [5, 10, 25, 100];
   //#endregion
 
-  constructor(private datos: DatosService, private _rutaPametros: ActivatedRoute) { }
+  constructor(private datos: DatosService, private _rutaPametros: ActivatedRoute, private dialog: MatDialog) { }
 
 
   ngOnInit(): void {
@@ -72,5 +74,13 @@ export class OfertasComponent implements OnInit {
     }, (err: any) => {
       console.error(err);
     });
+  }
+  onWacht(){
+    const dialogConfig = new MatDialogConfig();
+    // dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "50%";
+    dialogConfig.height = "96%";
+    this.dialog.open(TrabajoDetallesComponent,dialogConfig);
   }
 }
