@@ -1,9 +1,14 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { ICategoria } from 'src/app/modelo/categoria';
+import { ICategoriaVacante } from 'src/app/modelo/categoriaVacante';
+import { IVacante } from 'src/app/modelo/vacante';
 import { ApiService } from 'src/app/servicios/Api/api.service';
 import { DatosService } from 'src/app/servicios/cargar/datos.service';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import { TrabajoDetallesComponent } from '../trabajo-detalles/trabajo-detalles.component';
+import { ICategoria } from 'src/app/modelo/categoria';
+
 
 @Component({
   selector: 'app-principal',
@@ -15,12 +20,11 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
 
   //#region Variables    
     datoCargada = false;
-    categorias: ICategoria[] = [{nombre: 'Sin registros', idCategoria: 0}];
-    dataSource= new MatTableDataSource<ICategoria>(this.categorias)
-
-    //Table
-    displayedColumns: string[] = ['Nombre', 'Opciones'];
+    categorias: ICategoriaVacante[] = [];
+    vacantes: IVacante[] = [];
     
+    displayedColumns: string[] = ['Compañia', 'Posición', 'Ubicación', 'Opciones'];
+    dataSource = new MatTableDataSource<IVacante>(this.vacantes)    
     
     //Filtro
     filtro: string = ''
@@ -31,7 +35,7 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
     pageSizeOptions: number[] = [5, 10, 25, 100];
   //#endregion
 
-  constructor(private datos: DatosService) { }
+  constructor(private datos: DatosService, private dialog: MatDialog) { }
 
 
   @ViewChild(MatPaginator)  paginator!: MatPaginator;
@@ -43,6 +47,7 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.datos.getCategoriasApi();
     this.getCategotia();
+    this.datos.getVacanteApi();
   }
   
   // MatPaginator Output
@@ -59,11 +64,33 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
 
   getCategotia(){
     this.datos.getCategoria().subscribe((respuesta: ICategoria[]) => {
-      this.dataSource = new MatTableDataSource<ICategoria>(respuesta);
-      this.dataSource.paginator = this.paginator
+     this.getVacante(respuesta)
     }, (err: any) => {
       console.error(err);
     });
+  }
+
+  getVacante(categoria: ICategoria[]){
+    this.datos.getVacante().subscribe((respuesta: IVacante[]) => {
+      categoria.forEach(element => {
+        this.categorias = [{
+          idCategoria: element.idCategoria, 
+          nombre: element.nombre, 
+          vacante:  new MatTableDataSource(respuesta.filter( x => {return x.idCategoria == element.idCategoria}))}]
+        console.log(this.categorias);
+      });   
+    }, (err: any) => {
+      console.error(err);
+    });
+  }
+
+  onWacht(){
+    const dialogConfig = new MatDialogConfig();
+    // dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "50%";
+    dialogConfig.height = "96%";
+    this.dialog.open(TrabajoDetallesComponent,dialogConfig);
   }
 }
 
