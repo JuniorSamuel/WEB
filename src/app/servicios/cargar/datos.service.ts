@@ -10,9 +10,9 @@ import { ApiService } from '../Api/api.service';
 })
 export class DatosService {
   //#region 
-  private usuarios: IUsuario[];
-  private categorias: ICategoria[];
-  private vacante: IVacante[];
+  public usuarios: IUsuario[];
+  public categorias: ICategoria[];
+  public vacante: IVacante[];
 
   private usuarios$: Subject<IUsuario[]>;
   private categorias$: Subject<ICategoria[]>;
@@ -21,7 +21,7 @@ export class DatosService {
   constructor(private _api: ApiService) { 
     this.categorias = [];
     this.usuarios = [];
-    this.vacante = []
+    this.vacante = [];
 
     this.usuarios$ = new Subject();
     this.categorias$ = new Subject();
@@ -77,8 +77,16 @@ export class DatosService {
   postVacante(vacante: IVacante){
     this._api.postVacante(vacante).subscribe((vacante: IVacante) =>{
       this.vacante.push(vacante);
-      this.vacante$.next(this.vacante)
-      console.log('dAsdadads')
+      this.vacante$.next(this.vacante);
+    }, (err: any) =>{
+      console.error(err);
+    });
+  }
+
+  postCategoria(categoria: ICategoria){
+    this._api.postCategoria(categoria).subscribe((categoria: ICategoria) =>{
+      this.categorias.push(categoria);
+      this.categorias$.next(this.categorias);
     }, (err: any) =>{
       console.error(err);
     });

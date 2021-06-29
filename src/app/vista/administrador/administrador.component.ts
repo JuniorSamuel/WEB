@@ -15,21 +15,21 @@ import { DatosService } from 'src/app/servicios/cargar/datos.service';
 export class AdministradorComponent implements OnInit {
 
   usuarios:IUsuario[] = [];
-  poster: IUsuario[] = [];
-  admit:IUsuario[] = [];
+  private observador$: Subject<IUsuario[]>;
 
-  constructor(private _datos: DatosService) {
-
+  constructor(private _datos: DatosService) { 
+    this.observador$ = new Subject()
   }
 
   ngOnInit(): void {
         this._datos.getUsuariosApi();
         this._datos.getUsuario().subscribe((respuesta: IUsuario[]) => {
-          this.usuarios = respuesta.filter(x => { x.idRol = 3});
-          this.poster = respuesta.filter(x => { x.idRol = 2});
-          this.admit = respuesta.filter(x => { x.idRol = 1});
+          this.usuarios = respuesta;
+          this.observador$.next(this.usuarios)
         })
   }
 
-
+  getUsuario(): Observable<IUsuario[]> {
+    return this.observador$.asObservable();
+  }
 }

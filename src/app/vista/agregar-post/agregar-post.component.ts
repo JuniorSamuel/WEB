@@ -43,8 +43,6 @@ export class AgregarPostComponent implements OnInit {
         horario: this.postForm.value.horario,
         ubicacion: this.postForm.value.ubicacion
       }
-    console.log('ok',this.vacante);
     this._datos.postVacante(this.vacante);
-    console.log('OK');
   }
 }

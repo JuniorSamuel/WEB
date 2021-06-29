@@ -22,7 +22,7 @@ export class PosterComponent implements OnInit {
 
   ngOnInit(): void {
     this.datos.getUsuario().subscribe((respuesta: IUsuario[]) =>{
-      this.table(respuesta);
+      this.table(respuesta.filter(x => {return x.idRol == 2}));
     });
   }
 

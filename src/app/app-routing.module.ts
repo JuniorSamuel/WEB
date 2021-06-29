@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: "Agregar_post", component: AgregarPostComponent},
   { path: "Administrador", component: AdministradorComponent},
   { path: "Ofertas/:id/:categoria", component: OfertasComponent},
-  { path: "Vacante/:id/:categoria/:compania/:posicion/:descripcion/:horario/:ubicacion/:telefono/:correo", component: TrabajoDetallesComponent},
+  { path: "Vacante", component: TrabajoDetallesComponent},
   // Prueba
   { path: "Nav", component: NavegacionComponent},
   

@@ -27,7 +27,8 @@ import { OfertasComponent } from './vista/ofertas/ofertas.component';
 import {MatDialogModule} from '@angular/material/dialog';//PARA PRUEBA
 import { AgregarcategoriaComponent } from './vista/agregarcategoria/agregarcategoria.component';//PARA PRUEBA
 import { AgregarPostComponent } from './vista/agregar-post/agregar-post.component';
-import { AgregarAdministradorComponent } from './vista/agregar-administrador/agregar-administrador.component';//PARA PRUEBA
+import { AgregarAdministradorComponent } from './vista/agregar-administrador/agregar-administrador.component';
+import { AgregarCategoriaComponent } from './vista/agregar-categoria/agregar-categoria.component';//PARA PRUEBA
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { AgregarAdministradorComponent } from './vista/agregar-administrador/agr
     ModalpruebaComponent,
     // MatDialogModule,
     OfertasComponent,
-    AgregarAdministradorComponent
+    AgregarAdministradorComponent,
+    AgregarCategoriaComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ICategoria } from 'src/app/modelo/categoria';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { DatosService } from 'src/app/servicios/cargar/datos.service';
+import { IUsuario } from 'src/app/modelo/usuario';
+import { AgregarCategoriaComponent } from 'src/app/vista/agregar-categoria/agregar-categoria.component';
 
 
 
@@ -33,9 +35,13 @@ export class CategoriaComponent implements OnInit {
   constructor(private datos: DatosService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.datos.getCategoria().subscribe((respuesta: ICategoria[]) =>{
-      this.table(respuesta);
-    });
+    this.table(this.datos.categorias)
+    if(this.datos.categorias != []){
+      this.datos.getCategoriasApi();
+      this.datos.getCategoria().subscribe((respuesta: ICategoria[]) => {
+        this.table(respuesta);
+      });
+    }
   }
 
   table(categoria: ICategoria[]){
@@ -73,6 +79,6 @@ export class CategoriaComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "25%";
     // dialogConfig.height = "20%";
-    this.dialog.open(AgregarcategoriaComponent,dialogConfig);  
+    this.dialog.open(AgregarCategoriaComponent,dialogConfig);  
   }
 }

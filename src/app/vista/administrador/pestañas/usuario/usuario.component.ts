@@ -44,7 +44,9 @@ export class UsuarioComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource(this.padreComp.usuarios)
+   this.padreComp.getUsuario().subscribe((respuesta: IUsuario[]) => {
+     this.table(respuesta.filter(x => {return x.idRol ==3}));
+   });
   }
 
   table(usuarios: IUsuario[]){
@@ -63,8 +65,7 @@ export class UsuarioComponent implements OnInit {
   }
 
   setFiltro(evento: Event){
-    console.log(evento)
-    this.dataSource.filter = this.filtro.trim().toLowerCase();
+   
   }
   onCreate(){
     const dialogConfig = new MatDialogConfig();
