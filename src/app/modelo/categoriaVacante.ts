@@ -4,5 +4,5 @@ import { IVacante } from "./vacante";
 export interface ICategoriaVacante {
     idCategoria: number,
     nombre: string,
-    vacante: MatTableDataSource<IVacante>
+    vacante: IVacante[]
 }

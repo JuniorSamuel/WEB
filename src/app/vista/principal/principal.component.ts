@@ -76,7 +76,7 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
         this.categorias = [{
           idCategoria: element.idCategoria, 
           nombre: element.nombre, 
-          vacante:  new MatTableDataSource(respuesta.filter( x => {return x.idCategoria == element.idCategoria}))}]
+          vacante: respuesta.filter( x => {return x.idCategoria == element.idCategoria})}]
         console.log(this.categorias);
       });   
     }, (err: any) => {
