@@ -34,7 +34,7 @@ export class UsuarioComponent implements OnInit {
   pageSizeOptions: number[] = [5, 10, 25, 100];
 
   
-  constructor(private dialog: MatDialog, private datos: DatosService) { 
+  constructor(private dialog: MatDialog, private datos: DatosService, private padreComp: AdministradorComponent) { 
   }
 
   @ViewChild(MatPaginator)  paginator!: MatPaginator;
@@ -44,9 +44,7 @@ export class UsuarioComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.datos.getUsuario().subscribe((respuesta: IUsuario[]) =>{
-      this.table(respuesta);
-    });
+    this.dataSource = new MatTableDataSource(this.padreComp.usuarios)
   }
 
   table(usuarios: IUsuario[]){

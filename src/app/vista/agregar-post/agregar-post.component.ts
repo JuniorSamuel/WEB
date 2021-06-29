@@ -1,7 +1,9 @@
+import { DataSource } from '@angular/cdk/collections';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IVacante } from 'src/app/modelo/vacante';
 import { ApiService } from 'src/app/servicios/Api/api.service';
+import { DatosService } from 'src/app/servicios/cargar/datos.service';
 
 @Component({
   selector: 'app-agregar-post',
@@ -22,7 +24,7 @@ export class AgregarPostComponent implements OnInit {
     ubicacion: new FormControl('',[Validators.required])
   });
 
-  constructor(private _api: ApiService) { }
+  constructor(private _api: ApiService, private _datos: DatosService) { }
 
   ngOnInit(): void {
   }
@@ -41,7 +43,8 @@ export class AgregarPostComponent implements OnInit {
         horario: this.postForm.value.horario,
         ubicacion: this.postForm.value.ubicacion
       }
-    console.log(this.vacante)
-    this._api.postVacante(this.vacante);
+    console.log('ok',this.vacante);
+    this._datos.postVacante(this.vacante);
+    console.log('OK');
   }
 }

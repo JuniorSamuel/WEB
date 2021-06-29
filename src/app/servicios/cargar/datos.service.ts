@@ -56,7 +56,7 @@ export class DatosService {
   getVacanteApi(){
     this._api.getVacantes().subscribe((respuesta: IVacante[]) => {
       this.vacante = respuesta;
-      this.vacante$.next(this.vacante.sort());
+      this.vacante$.next(this.vacante);
     }, (err: any) =>{
       console.error(err);
     });
@@ -78,6 +78,7 @@ export class DatosService {
     this._api.postVacante(vacante).subscribe((vacante: IVacante) =>{
       this.vacante.push(vacante);
       this.vacante$.next(this.vacante)
+      console.log('dAsdadads')
     }, (err: any) =>{
       console.error(err);
     });
