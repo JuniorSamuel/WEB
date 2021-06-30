@@ -1,6 +1,6 @@
 import { DataSource } from '@angular/cdk/collections';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { IVacante } from 'src/app/modelo/vacante';
 import { ApiService } from 'src/app/servicios/Api/api.service';
 import { DatosService } from 'src/app/servicios/cargar/datos.service';
@@ -13,6 +13,7 @@ import { DatosService } from 'src/app/servicios/cargar/datos.service';
 export class AgregarPostComponent implements OnInit {
 
   vacante: IVacante | undefined;
+  
   postForm = new FormGroup({
     idCategoria: new FormControl ('',[Validators.required]),
     campania: new FormControl ('',[Validators.required]),
@@ -23,8 +24,19 @@ export class AgregarPostComponent implements OnInit {
     horario: new FormControl('', [Validators.required]),
     ubicacion: new FormControl('',[Validators.required])
   });
+  //   postForm = this.fb.group({
+  //   idCategoria: ['',Validators.required],
+  //   campania: ['',Validators.required],
+  //   posicion: ['', Validators.required],
+  //   descripcion: ['',Validators.required],
+  //   telefono: ['', [Validators.required, Validators.minLength(10)]],
+  //   correo: ['',Validators.email],
+  //   horario: ['', Validators.required],
+  //   ubicacion: ['',Validators.required]
+  // });
+// get campania(){return this.postForm.get('campania'); }
 
-  constructor(private _api: ApiService, private _datos: DatosService) { }
+  constructor(private _api: ApiService, private _datos: DatosService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
