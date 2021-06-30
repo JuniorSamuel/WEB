@@ -7,5 +7,5 @@ export interface IVacante {
     telefono: number,
     correo: string,
     horario: string,
-    ubicacion: string,
+    ubicacion: string
 }
