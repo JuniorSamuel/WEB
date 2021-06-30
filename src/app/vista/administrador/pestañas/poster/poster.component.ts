@@ -35,7 +35,7 @@ export class PosterComponent implements OnInit {
   //Table
   // displayedColumns: string[] = ['Nombre', 'Apellido', 'Edad', 'Acciones'];
   // dataSource = new MatTableDataSource<usuario>(posterDatos);
-  displayedColumns: string[] = ['nombre', 'apellido', 'correo', 'cedula', 'telefono', 'Acciones'];
+  displayedColumns: string[] = ['nombre','correo', 'Acciones'];
   dataSource = new MatTableDataSource<IUsuario>();
 
   //Filtro
@@ -74,6 +74,20 @@ export class PosterComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "50%";
     dialogConfig.height = "96%";
+    this.dialog.open(AgregarAdministradorComponent,dialogConfig);  
+  }
+
+  eliminar(id: number){
+    this.datos.deleteUsuario(id);
+  }
+
+  editar(usuario: IUsuario){
+    const dialogConfig = new MatDialogConfig();
+    // dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "50%";
+    dialogConfig.height = "96%";
+    dialogConfig.data = usuario;
     this.dialog.open(AgregarAdministradorComponent,dialogConfig);  
   }
 }

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ICategoria } from 'src/app/modelo/categoria';
 import { DatosService } from 'src/app/servicios/cargar/datos.service';
 
@@ -12,18 +13,41 @@ export class AgregarCategoriaComponent implements OnInit {
 
   categoria: ICategoria | undefined;
   formCagoria = new FormGroup({
-    nombre:  new FormControl('', [Validators.required])
+    idCategoria: new FormControl(''),
+    nombre: new FormControl('', [Validators.required])
   });
-  constructor(private _dato: DatosService) { }
+  constructor(public dialogRef: MatDialogRef<AgregarCategoriaComponent>, private _dato: DatosService, @Inject(MAT_DIALOG_DATA) public editar: ICategoria) { }
 
   ngOnInit(): void {
+    if(this.editar != null){
+      this.onEdit();
+    }
   }
 
-  onSubmit(){
-    this.categoria = {
-      idCategoria: 0,
-      nombre: this.formCagoria.value.nombre
+  onSubmit() {
+    if (this.editar == null) {
+      this.categoria = {
+        idCategoria: 0,
+        nombre: this.formCagoria.value.nombre
+      }
+      this._dato.postCategoria(this.categoria);
+    } else {
+      this.categoria = {
+        idCategoria: this.formCagoria.value.idCategoria,
+        nombre: this.formCagoria.value.nombre
+      }
+      this._dato.putCategoria(this.categoria);
     }
-    this._dato.postCategoria(this.categoria);
+
+    this.onClickNo()
+  }
+
+  onClickNo(): void {
+    this.dialogRef.close();
+  }
+
+  onEdit() {
+    this.formCagoria.controls['idCategoria'].setValue(this.editar.idCategoria);
+    this.formCagoria.controls['nombre'].setValue(this.editar.nombre);
   }
 }

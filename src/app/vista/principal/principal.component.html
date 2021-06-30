@@ -11,24 +11,39 @@
     </div>
   </div>
 
-  <div *ngFor='let categoria of categorias' >
-      <caption>{{categoria.nombre}}</caption>
-      <table>
-        <thead>
-           <tr>
-             <th> Compañia </th>
-             <th> Posición </th>
-             <th> Ubicación </th>
-           </tr>
-        </thead>
+  <div class="table table-s" *ngFor='let categoria of cat'>
+    <table class="table my-3">
+      <thead>
+        <tr>
+          <th colspan="4" class=" text-center"> {{categoria.nombre}} </th>
+        </tr>
+        <tr>
+          <th> Compañia </th>
+          <th> Posición </th>
+          <th> Ubicación </th>
+          <th>  </th>
+        </tr>
+      </thead>
         <tbody>
-          <tr *ngFor= 'let categ of categoria.vacante' >
-            <td> {{categ.compania}}</td>
-            <td> {{categ.posicion}}</td>
-            <td> {{categ.ubicacion}}</td>
+          <tr *ngFor='let vacante of vacantes; index as i'>
+            <td *ngIf='vacante.idCategoria == categoria.idCategoria && i<=fila'> {{vacante.compania}} </td>
+            <td *ngIf='vacante.idCategoria == categoria.idCategoria && i<=fila'> {{vacante.posicion}} </td>
+            <td *ngIf='vacante.idCategoria == categoria.idCategoria && i<=fila'> {{vacante.ubicacion}} </td>
+            <td *ngIf='vacante.idCategoria == categoria.idCategoria && i<=fila'> <a class="btn btn-success" (click)="onWacht()"><i class="bi bi-eye"></i> Ver </a></td>
           </tr>
         </tbody>
-      </table>
+        <tfoot>
+          <tr>
+            <td colspan="4" class=" text-center mx-auto" >
+              <a class=" text-decoration-none" routerLink="/Ofertas/{{categoria.idCategoria}}/{{categoria.nombre}}"> <i class="bi bi-eye"> Ver mas vacantes
+              </i></a>
+            </td>          
+          </tr>
+        </tfoot>
+      <ng-template>
+
+      </ng-template>
+    </table>
   </div>
 </div>
 

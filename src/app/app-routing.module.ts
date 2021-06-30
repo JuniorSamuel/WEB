@@ -13,6 +13,7 @@ import { PerfilComponent } from './vista/perfil/perfil.component';
 import { AgregarcategoriaComponent } from './vista/agregarcategoria/agregarcategoria.component';
 import { TrabajoDetallesComponent } from './vista/trabajo-detalles/trabajo-detalles.component';
 import { OfertasComponent } from './vista/ofertas/ofertas.component';
+import { CargarComponent } from './vista/cargar/cargar.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'Login', pathMatch: 'full' },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: "Administrador", component: AdministradorComponent},
   { path: "Ofertas/:id/:categoria", component: OfertasComponent},
   { path: "Vacante", component: TrabajoDetallesComponent},
+  { path: "Cargardo", component: CargarComponent},
   // Prueba
   { path: "Nav", component: NavegacionComponent},
   

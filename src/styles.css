@@ -6,11 +6,23 @@
 
 table{
     width: 100%;
-    background-color: #094068;
+    border: 1px;
 }
 
-thead{
-    background-color: #094068;
+.table-s h2{
+    color: white;
+    background-color: #0E609C;
+    margin-bottom: 0%;
+}
+
+thead, tfoot{
+    background-color: #0E609C;
+    color: white;
+    
+}
+
+tfoot a:hover{
+    color: #b3dcfa;
 }
 
 .hm{

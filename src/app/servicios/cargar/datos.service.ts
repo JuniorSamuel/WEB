@@ -9,6 +9,8 @@ import { ApiService } from '../Api/api.service';
   providedIn: 'root'
 })
 export class DatosService {
+  
+  
   //#region 
   public usuarios: IUsuario[];
   public categorias: ICategoria[];
@@ -90,5 +92,37 @@ export class DatosService {
     }, (err: any) =>{
       console.error(err);
     });
+  }
+
+  postUsuario(usuario: IUsuario){
+    this._api.postUsuario(usuario).subscribe((usuario: IUsuario) => {
+      this.usuarios.push(usuario);
+      this.usuarios$.next(this.usuarios)
+    }, (err: any) => {
+      console.error(err)
+    })
+  }
+
+  deleteCategoria(id: number){
+    this._api.deleteCategoria(id).subscribe();
+  }
+
+  deleteUsuario(id: number) {
+    this._api.deleteUsuario(id).subscribe();
+  }
+  putCategoria(categoria: ICategoria){
+    this._api.putCategoria(categoria).subscribe(x => {
+      
+    }, (err: any) => {
+      console.error(err)
+    })
+  }
+
+  putUsuario(usuario: IUsuario) {
+   this._api.putUsuario(usuario).subscribe(x => {
+
+   }, (err: any) => {
+     console.error(err)
+   })
   }
  }

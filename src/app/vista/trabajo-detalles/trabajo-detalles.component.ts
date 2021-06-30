@@ -15,7 +15,6 @@ export class TrabajoDetallesComponent implements OnInit {
 
   ngOnInit(): void {
     this.rutaParametro.params.subscribe((parametro: Params) => {
-      console.log(parametro)
       this.vacante = {
         idVacante: parametro.id, 
         idCategoria: 0, 

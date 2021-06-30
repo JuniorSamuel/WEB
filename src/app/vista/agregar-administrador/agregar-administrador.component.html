@@ -1,11 +1,12 @@
 <div class="container">
     <h2>Agregar Administrador</h2>
     <hr>
-    <form>
+    <form [formGroup]="formUsuario">
         <div class="form-group row mt-3 ">
             <div class=" col-sm-12 col-lg-8">
                 <label for="Nombre">Nombre:</label>
-                <input class="form-control lg-3 " type="text" name="Nombre" id="Nombre" placeholder="Nombre">
+                <input class="form-control lg-3 " type="text" name="Nombre" id="Nombre" placeholder="Nombre"
+                formControlName="nombre">
             </div>
         </div>
         <!-- <div class="form-group  mt-3">
@@ -19,41 +20,46 @@
         <div class="form-group  mt-3">
             <div class="col-sm-12 col-lg-8">
                 <label for="Apellido">Apellido:</label>
-                <input class="form-control" type="text" name="Apellido" id="Apellido" placeholder="Apellido">
+                <input class="form-control" type="text" name="Apellido" id="Apellido" placeholder="Apellido"
+                formControlName="apellido">
             </div>
         </div>
         <div class="form-group  mt-3">
             <div class="col-sm-12 col-lg-8">
             <label for="Cedula">Cedula:</label>
-            <input class="form-control" type="number" name="Cedula" id="Cedula" placeholder="Cedula">
+            <input class="form-control" type="number" name="Cedula" id="Cedula" placeholder="Cedula" 
+            formControlName="cedula">
         </div></div>
         <div class="form-group  mt-3">
             <div class="col-sm-12 col-lg-8">
             <label for="Telefono">Telefono:</label>
-            <input class="form-control" type="number" name="Telefono" id="Telefono" placeholder="Telefono">
+            <input class="form-control" type="number" name="Telefono" id="Telefono" placeholder="Telefono"
+            formControlName="telefono">
         </div></div>
         <div class="form-group  mt-3">
             <div class="col-sm-12 col-lg-8">
             <label for="Correo">Correo:</label>
-            <input class="form-control" type="email" name="Correo" id="Correo" placeholder="Correo">
+            <input class="form-control" type="email" name="Correo" id="Correo" placeholder="Correo" formControlName="correo">
         </div></div>
-        <div class="form-group  mt-3">
-            <div class="col-sm-12 col-lg-8">
-            <label for="Contraseña">Contraseña:</label>
-            <input class="form-control" type="password" name="Contraseña" id="Contraseña" placeholder="Contraseña">
-        </div></div>
-        <div class="form-group  mt-3">
-            <div class="col-sm-12 col-lg-8">
-            <label for="Confirmar Contraseña">Confirmar Contraseña:</label>
-            <input class="form-control" type="password" name="Confirmar Contraseña" id="Confirmar Contraseña" placeholder="Confirmar Contraseña">
-        </div></div>
+        <div *ngIf="editar == null">
+            <div class="form-group  mt-3">
+                <div class="col-sm-12 col-lg-8">
+                <label for="Contraseña">Contraseña:</label>
+                <input class="form-control" type="password" name="Contraseña" id="Contraseña" placeholder="Contraseña">
+            </div></div>
+            <div class="form-group  mt-3">
+                <div class="col-sm-12 col-lg-8">
+                <label for="Confirmar Contraseña">Confirmar Contraseña:</label>
+                <input class="form-control" type="password" name="Confirmar Contraseña" id="Confirmar Contraseña" placeholder="Confirmar Contraseña">
+            </div></div>
+        </div>
 
         <div class="form-group row mt-3">
             <div class="col-sm-12 col-md-2">
                 <button type="submit" class="btn bg-blue-p text-center">Registrarse</button>
             </div>
             <div class="col-sm-12 col-md-2">   
-                <input type="reset" value="Cancelar" class="btn btn-danger">
+                <input type="reset" value="Cancelar" class="btn btn-danger" (click)="onClickNo()">
             </div>
         </div>
     </form>
