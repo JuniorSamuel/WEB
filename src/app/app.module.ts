@@ -31,6 +31,8 @@ import { AgregarAdministradorComponent } from './vista/agregar-administrador/agr
 import { AgregarCategoriaComponent } from './vista/agregar-categoria/agregar-categoria.component';
 import { CargarComponent } from './vista/cargar/cargar.component';//PARA PRUEBA
 
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,6 +64,7 @@ import { CargarComponent } from './vista/cargar/cargar.component';//PARA PRUEBA
     MatPaginatorModule,
     MatInputModule, 
     MatDialogModule,
+    MatFormFieldModule,//validaciones
   ],
 
   providers: [
