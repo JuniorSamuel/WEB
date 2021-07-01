@@ -14,29 +14,29 @@ export class AgregarPostComponent implements OnInit {
 
   vacante: IVacante | undefined;
   
-  postForm = new FormGroup({
-    idCategoria: new FormControl ('',[Validators.required]),
-    campania: new FormControl ('',[Validators.required]),
-    posicion: new FormControl ('', [Validators.required]),
-    descripcion: new FormControl('',[ Validators.required]),
-    telefono: new FormControl('', [Validators.required]),
-    correo: new FormControl('', [Validators.required, Validators.email]),
-    horario: new FormControl('', [Validators.required]),
-    ubicacion: new FormControl('',[Validators.required])
-  });
-  //   postForm = this.fb.group({
-  //   idCategoria: ['',Validators.required],
-  //   campania: ['',Validators.required],
-  //   posicion: ['', Validators.required],
-  //   descripcion: ['',Validators.required],
-  //   telefono: ['', [Validators.required, Validators.minLength(10)]],
-  //   correo: ['',Validators.email],
-  //   horario: ['', Validators.required],
-  //   ubicacion: ['',Validators.required]
+  // postForm = new FormGroup({
+  //   idCategoria: new FormControl ('',[Validators.required]),
+  //   campania: new FormControl ('',[Validators.required]),
+  //   posicion: new FormControl ('', [Validators.required]),
+  //   descripcion: new FormControl('',[ Validators.required]),
+  //   telefono: new FormControl('', [Validators.required]),
+  //   correo: new FormControl('', [Validators.required, Validators.email]),
+  //   horario: new FormControl('', [Validators.required]),
+  //   ubicacion: new FormControl('',[Validators.required])
   // });
+    postForm = this.formBuilder.group({
+    idCategoria: ['',Validators.required],
+    campania: ['',Validators.required],
+    posicion: ['', Validators.required],
+    descripcion: ['',[Validators.required, Validators.maxLength(80)]],
+    telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(20)]],
+    correo: ['',[Validators.required, Validators.email]],
+    horario: ['', Validators.required],
+    ubicacion: ['',Validators.required]
+  });
 // get campania(){return this.postForm.get('campania'); }
 
-  constructor(private _api: ApiService, private _datos: DatosService, private fb: FormBuilder) { }
+  constructor(private _api: ApiService, private _datos: DatosService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
   }

@@ -31,6 +31,7 @@ import { AgregarAdministradorComponent } from './vista/agregar-administrador/agr
 import { AgregarCategoriaComponent } from './vista/agregar-categoria/agregar-categoria.component';//PARA PRUEBA
 
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { RegistrarComponent } from './vista/registrar/registrar.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     // MatDialogModule,
     OfertasComponent,
     AgregarAdministradorComponent,
-    AgregarCategoriaComponent
+    AgregarCategoriaComponent,
+    RegistrarComponent,
   ],
   imports: [
     BrowserModule,

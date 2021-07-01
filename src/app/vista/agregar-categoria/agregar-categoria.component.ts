@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ICategoria } from 'src/app/modelo/categoria';
 import { DatosService } from 'src/app/servicios/cargar/datos.service';
 
@@ -11,10 +11,10 @@ import { DatosService } from 'src/app/servicios/cargar/datos.service';
 export class AgregarCategoriaComponent implements OnInit {
 
   categoria: ICategoria | undefined;
-  formCagoria = new FormGroup({
-    nombre:  new FormControl('', [Validators.required])
+  formCagoria = this.formBuilder.group({
+    nombre: ['', Validators.required]
   });
-  constructor(private _dato: DatosService) { }
+  constructor(private _dato: DatosService,private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
   }

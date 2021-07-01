@@ -1,4 +1,4 @@
-import { RegistroComponent } from '../registro/registro.component';
+import { RegistrarComponent } from './../registrar/registrar.component';
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "55%";
     // dialogConfig.height = "20%";
-    this.dialog.open(RegistroComponent,dialogConfig);  
+    this.dialog.open(RegistrarComponent,dialogConfig);  
   }
 
 }
