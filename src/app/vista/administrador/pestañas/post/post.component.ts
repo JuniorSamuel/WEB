@@ -87,13 +87,13 @@ export class PostComponent implements OnInit {
     this.dialog.open(AgregarPostComponent,dialogConfig);
   }
 
-  onWacht(vacante: IVacante, categoria: string){
+  onWacht(vacante: IVacante){
     const dialogConfig = new MatDialogConfig();
     // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "50%";
     dialogConfig.height = "96%";
-    dialogConfig.data = {vacante, categoria};
+    dialogConfig.data = {vacante};
     this.dialog.open(TrabajoDetallesComponent,dialogConfig);
   }
   
