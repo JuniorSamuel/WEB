@@ -17,6 +17,7 @@ export class AgregarPostComponent implements OnInit {
   postForm = new FormGroup({
     idCategoria: new FormControl('', [Validators.required]),
     campania: new FormControl('', [Validators.required]),
+    idUsuario: new FormControl('', [Validators.required]),
     posicion: new FormControl('', [Validators.required]),
     descripcion: new FormControl('', [Validators.required]),
     telefono: new FormControl('', [Validators.required]),
@@ -38,19 +39,31 @@ export class AgregarPostComponent implements OnInit {
 
 
   onSubmit() {
-    this.vacante =
-    {
-      idVacante: 0,
-      idCategoria: this.postForm.value.idCategoria,
-      compania: this.postForm.value.campania,
-      posicion: this.postForm.value.posicion,
-      descripcion: this.postForm.value.descripcion,
-      telefono: this.postForm.value.telefono,
-      correo: this.postForm.value.correo,
-      horario: this.postForm.value.horario,
-      ubicacion: this.postForm.value.ubicacion
+    if (this.editar == null) {
+      this._datos.postVacante({
+        idVacante: 0,
+        idCategoria: this.postForm.value.idCategoria,
+        compania: this.postForm.value.campania,
+        posicion: this.postForm.value.posicion,
+        descripcion: this.postForm.value.descripcion,
+        telefono: this.postForm.value.telefono,
+        correo: this.postForm.value.correo,
+        horario: this.postForm.value.horario,
+        ubicacion: this.postForm.value.ubicacion
+      });
+    } else {
+      this._datos.putVacante({
+        idVacante: this.postForm.value.idVacante,
+        idCategoria: this.postForm.value.idCategoria,
+        compania: this.postForm.value.campania,
+        posicion: this.postForm.value.posicion,
+        descripcion: this.postForm.value.descripcion,
+        telefono: this.postForm.value.telefono,
+        correo: this.postForm.value.correo,
+        horario: this.postForm.value.horario,
+        ubicacion: this.postForm.value.ubicacion
+      });
     }
-    this._datos.postVacante(this.vacante);
   }
 
   onEdit() {

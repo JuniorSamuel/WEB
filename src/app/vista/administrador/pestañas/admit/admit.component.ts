@@ -79,18 +79,15 @@ export class AdmitComponent implements OnInit {
 
 
   eliminar(id: number){
-    this.datos.deleteUsuario(id);
+    this.datos.deleteUsuario(id).subscribe( x => {
+      this.datos.getUsuariosApi();
+      this.datos.getUsuario();
+      console.log('Ok..............................');
+    }, (err: any) => {
+      console.error(err);
+    });
   }
 
-  editar(usuario: IUsuario){
-    const dialogConfig = new MatDialogConfig();
-    // dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = "50%";
-    dialogConfig.height = "96%";
-    dialogConfig.data = usuario;
-    this.dialog.open(AgregarAdministradorComponent,dialogConfig);  
-  }
   onDetalle(usuario: IUsuario, editar: boolean){
     const dialogConfig = new MatDialogConfig();
     // dialogConfig.disableClose = true;

@@ -23,7 +23,7 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
     categorias: ICategoriaVacante[] = [];
     cat: ICategoria[] =  [];
     vacantes: IVacante[] = [];
-    fila: number = 8
+    fila: number = 10;
     
     displayedColumns: string[] = ['Compañia', 'Posición', 'Ubicación', 'Opciones'];
     dataSource = new MatTableDataSource<IVacante>(this.vacantes)    
@@ -50,7 +50,7 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
     this.datos.getCategoriasApi();
     this.getCategoria();
     this.datos.getVacanteApi();
-    
+
   }
   
   // MatPaginator Output
@@ -69,8 +69,7 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
   getCategoria(){
     this.datos.getCategoria().subscribe( (respuesta: ICategoria[]) => {
       this.getVacante();
-      this.cat = respuesta;
-      
+      this.cat = respuesta;      
     });
   }
 

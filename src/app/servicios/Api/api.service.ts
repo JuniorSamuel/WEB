@@ -65,11 +65,11 @@ export class ApiService {
   }
 
   deletePost(id: number): Observable<any>{
-    return this._http.delete(this._host+'api/Vacante?VacanteId=' + id)
+    return this._http.delete(this._host+'api/Vacante?VacanteId=' + id,{responseType: 'text' })
   }
 
   deleteUsuario(id: number): Observable<any>{
-    return this._http.delete(this._host+'api/Usuario?UsuarioId=' + id)
+    return this._http.delete(this._host+'api/Usuario?UsuarioId=' + id, {responseType: 'text' })
   }
 
   //Put
