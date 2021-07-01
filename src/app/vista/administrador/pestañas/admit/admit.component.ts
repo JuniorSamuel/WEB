@@ -93,7 +93,13 @@ export class AdmitComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log('Selecciono elimiar el ', id);
-        this.datos.deleteUsuario(id);
+        this.datos.deleteUsuario(id).subscribe( x => {
+          this.datos.getUsuariosApi();
+          this.datos.getUsuario();
+
+        }, (err: any) => {
+          console.error(err);
+        });
         Swal.fire(
           'Eliminado!',
           'Ha sido eliminado.',
@@ -103,15 +109,6 @@ export class AdmitComponent implements OnInit {
     })
   }
 
-  editar(usuario: IUsuario){
-    const dialogConfig = new MatDialogConfig();
-    // dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = "50%";
-    dialogConfig.height = "96%";
-    dialogConfig.data = usuario;
-    this.dialog.open(AgregarAdministradorComponent,dialogConfig);  
-  }
   onDetalle(usuario: IUsuario, editar: boolean){
     const dialogConfig = new MatDialogConfig();
     // dialogConfig.disableClose = true;

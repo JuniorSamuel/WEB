@@ -46,7 +46,9 @@ export class DatosService {
   getUsuariosApi() {
     this._api.getUsuarios().subscribe((respuesta: IUsuario[]) => {
       this.usuarios = respuesta;
+      console.log('api');
       this.usuarios$.next(this.usuarios);
+      console.log('Prueba...');
     }, (err: any) => {
       console.error(err);
     });
@@ -122,23 +124,16 @@ export class DatosService {
     })
   }
 
-  deleteCategoria(id: number){
-    this._api.deleteCategoria(id).subscribe(x => {
-      this.getCategoriasApi;
-    });
+  deleteCategoria(id: number): Observable<any>{
+    return this._api.deleteCategoria(id)
   }
 
-  deleteUsuario(id: number) {
-    this._api.deleteUsuario(id).subscribe(x => {
-      this.getUsuariosApi();
-    });
-
+  deleteUsuario(id: number): Observable<any>{
+    return this._api.deleteUsuario(id)
   }
 
-  deleteVacante(id: number) {
-    this._api.deletePost(id).subscribe(x => {
-      this.getVacanteApi();
-    });
+  deleteVacante(id: number): Observable<any> {
+    return this._api.deletePost(id);
   }
   
   putCategoria(categoria: ICategoria){
