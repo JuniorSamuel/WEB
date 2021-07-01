@@ -74,14 +74,13 @@ export class AdmitComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "60%";
-    // dialogConfig.height = "20%";
+    dialogConfig.width = "50%";
+    dialogConfig.height = "96%";
     this.dialog.open(AgregarAdministradorComponent,dialogConfig);  
   }
 
 
   eliminar(id: number){
-    this.datos.deleteUsuario(id);
     Swal.fire({
       title: 'Esta seguro que desea eliminarlo?',
       text: "No podra revertir los cambios!",
@@ -94,7 +93,7 @@ export class AdmitComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log('Selecciono elimiar el ', id);
-        this.datos.deleteCategoria(id);
+        this.datos.deleteUsuario(id);
         Swal.fire(
           'Eliminado!',
           'Ha sido eliminado.',
