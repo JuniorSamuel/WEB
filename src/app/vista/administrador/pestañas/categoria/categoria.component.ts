@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ICategoria } from 'src/app/modelo/categoria';
-import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {MatDialog, MatDialogConfig, MatDialogRef} from '@angular/material/dialog';
 import { DatosService } from 'src/app/servicios/cargar/datos.service';
 import { IUsuario } from 'src/app/modelo/usuario';
 import { AgregarCategoriaComponent } from 'src/app/vista/agregar-categoria/agregar-categoria.component';
@@ -78,7 +78,25 @@ export class CategoriaComponent implements OnInit {
     // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "25%";
+  
+
     // dialogConfig.height = "20%";
     this.dialog.open(AgregarCategoriaComponent,dialogConfig);  
+  }
+
+  eliminar(id: number){
+    console.log(id)
+    this.datos.deleteCategoria(id);
+  }
+
+  editar(categoria: any){
+    const dialogConfig = new MatDialogConfig();
+    // dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "25%";
+    dialogConfig.data = categoria
+
+    // dialogConfig.height = "20%";
+    this.dialog.open(AgregarCategoriaComponent,dialogConfig);
   }
 }

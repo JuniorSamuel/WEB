@@ -24,31 +24,16 @@
                     <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
                 </ng-container>
 
-                <!-- Name Column -->
-                <ng-container matColumnDef="Apellido">
-                    <th mat-header-cell *matHeaderCellDef> Apellido </th>
-                    <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
-                </ng-container>
-
-                <!-- Weight Column -->
-                <ng-container matColumnDef="Edad">
-                    <th mat-header-cell *matHeaderCellDef> Edad </th>
-                    <td mat-cell *matCellDef="let element"> {{element.edad}} </td>
-                </ng-container>
-
                 <ng-container matColumnDef="Acciones">
                     <th mat-header-cell *matHeaderCellDef></th>
-                    <mat-cell *matCellDef="let row">
-                        <button class="btn btn-info mx-1" title="Detalles"> 
-                            <i class="bi bi-info-square"></i>
-                        </button>
-                        <button class="btn btn-warning mx-1" title="Editar"> 
+                    <td mat-cell *matCellDef="let element" class="d-flex justify-content-end p-1">
+                        <button class="btn btn-warning mx-1" (click)="editar(element)"title="Editar"> 
                             <i class="bi bi-pencil-square"></i>
                         </button>
-                        <button class="btn btn-danger mx-1" title="Eliminar"> 
-                            <i class="bi bi-trash"></i>
+                        <button class="btn btn-danger mx-1"  title="Eliminar"> 
+                            <i class="bi bi-trash" (click)="eliminar(element.idCategoria)"></i>
                         </button>
-                    </mat-cell>
+                    </td>
                 </ng-container>
 
 

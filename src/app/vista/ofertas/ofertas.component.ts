@@ -75,12 +75,13 @@ export class OfertasComponent implements OnInit {
       console.error(err);
     });
   }
-  onWacht(){
+  onWacht(element: IVacante){
     const dialogConfig = new MatDialogConfig();
     // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "50%";
     dialogConfig.height = "96%";
+    dialogConfig.data = element;
     this.dialog.open(TrabajoDetallesComponent,dialogConfig);
   }
 }

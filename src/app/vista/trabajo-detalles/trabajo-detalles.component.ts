@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Params } from '@angular/router';
 import { IVacante } from 'src/app/modelo/vacante';
+import { AgregarCategoriaComponent } from '../agregar-categoria/agregar-categoria.component';
 
 @Component({
   selector: 'app-trabajo-detalles',
@@ -11,24 +13,10 @@ export class TrabajoDetallesComponent implements OnInit {
 
   categoria!: string;
   vacante!: IVacante;
-  constructor(private rutaParametro: ActivatedRoute) { }
+  constructor(public dialogRef: MatDialogRef<AgregarCategoriaComponent>,  @Inject(MAT_DIALOG_DATA) public detalle: {vacante: IVacante, categoria: string}) { }
 
   ngOnInit(): void {
-    this.rutaParametro.params.subscribe((parametro: Params) => {
-      console.log(parametro)
-      this.vacante = {
-        idVacante: parametro.id, 
-        idCategoria: 0, 
-        compania: parametro.compania, 
-        posicion: parametro.posicion,
-        descripcion: parametro.descripcion,
-        telefono: parametro.telenofo,
-        correo: parametro.correo,
-        horario: parametro.horario,
-        ubicacion: parametro.ubicacion,
-      };
-      this.categoria = parametro.categoria;
-    });
+   
   }
 
 }

@@ -21,7 +21,9 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
   //#region Variables    
     datoCargada = false;
     categorias: ICategoriaVacante[] = [];
+    cat: ICategoria[] =  [];
     vacantes: IVacante[] = [];
+    fila: number = 8
     
     displayedColumns: string[] = ['Compañia', 'Posición', 'Ubicación', 'Opciones'];
     dataSource = new MatTableDataSource<IVacante>(this.vacantes)    
@@ -46,8 +48,9 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.datos.getCategoriasApi();
-    this.getCategotia();
+    this.getCategoria();
     this.datos.getVacanteApi();
+    
   }
   
   // MatPaginator Output
@@ -59,37 +62,41 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
   }
 
   setFiltro(){
-    this.dataSource.filter = this.filtro.trim().toLowerCase();
+    //this.dataSource.filter = this.filtro.trim().toLowerCase();
+    this.categorias.find
   }
 
-  getCategotia(){
-    this.datos.getCategoria().subscribe((respuesta: ICategoria[]) => {
-     this.getVacante(respuesta)
-    }, (err: any) => {
-      console.error(err);
+  getCategoria(){
+    this.datos.getCategoria().subscribe( (respuesta: ICategoria[]) => {
+      this.getVacante();
+      this.cat = respuesta;
+      
     });
   }
 
-  getVacante(categoria: ICategoria[]){
+  getVacante(){
     this.datos.getVacante().subscribe((respuesta: IVacante[]) => {
-      categoria.forEach(element => {
-        this.categorias = [{
-          idCategoria: element.idCategoria, 
-          nombre: element.nombre, 
-          vacante: respuesta.filter( x => {return x.idCategoria == element.idCategoria})}]
-        console.log(this.categorias);
-      });   
-    }, (err: any) => {
-      console.error(err);
-    });
+      this.vacantes  =respuesta;
+      console.log(this.vacantes)
+    })
   }
 
-  onWacht(){
+  async cargador(){
+    
+  }
+
+  filtroVacante(num: number){
+    console.log('OK');
+    return this.vacantes.filter(x => { x.idCategoria == num});
+  }
+
+  onWacht(vacante: IVacante, categoria: string){
     const dialogConfig = new MatDialogConfig();
     // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "50%";
     dialogConfig.height = "96%";
+    dialogConfig.data = {vacante, categoria};
     this.dialog.open(TrabajoDetallesComponent,dialogConfig);
   }
 }

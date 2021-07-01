@@ -13,7 +13,8 @@
                 name="categoria" 
                 id="validationServer01"
                 placeholder="Categoria" 
-                formControlName="idCategoria">
+                formControlName="idCategoria"
+                autofocus>
 
                 <div *ngIf="postForm.get('idCategoria')?.errors && postForm.get('idCategoria')?.touched">
                     <p *ngIf="postForm.get('idCategoria')?.hasError('required')" class="color-red">
@@ -26,7 +27,7 @@
         <div class="form-group  mt-3">
             <label for="tiempo">Tiempo:</label>
             <mat-radio-group id="tiempo" aria-label="Select an option" formControlName='horario'>
-                <mat-radio-button value='Tiempo completo' class="px-2 bg-radio-blup" checked>Tiempo completo</mat-radio-button>
+                <mat-radio-button value='Tiempo completo' class="px-2 bg-radio-blup">Tiempo completo</mat-radio-button>
                 <mat-radio-button value='Medio tiempo' class="px-2 bg-radio-blup">Medio tiempo</mat-radio-button>
                 <mat-radio-button value='Freelancer' class="px-2 bg-radio-blup">Freelancer</mat-radio-button>
             </mat-radio-group>

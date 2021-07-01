@@ -22,7 +22,7 @@ export class UsuarioComponent implements OnInit {
   //Table
   // displayedColumns: string[] = ['Nombre', 'Apellido', 'Edad', 'Acciones'];
   // dataSource = new MatTableDataSource<usuario>(usuarioDatos);
-  displayedColumns: string[] = ['nombre', 'apellido', 'correo', 'cedula', 'telefono', 'Acciones'];
+  displayedColumns: string[] = ['nombre', 'correo', 'Acciones'];
   dataSource = new MatTableDataSource<IUsuario>();
 
   //Filtro
@@ -45,7 +45,7 @@ export class UsuarioComponent implements OnInit {
 
   ngOnInit(): void {
    this.padreComp.getUsuario().subscribe((respuesta: IUsuario[]) => {
-     this.table(respuesta.filter(x => {return x.idRol ==3}));
+     this.table(respuesta.filter(x => {return x.idRol ==2}));
    });
   }
 
@@ -65,8 +65,10 @@ export class UsuarioComponent implements OnInit {
   }
 
   setFiltro(evento: Event){
-   
+    this.dataSource.filter = this.filtro.trim().toLowerCase();
   }
+
+  
   onCreate(){
     const dialogConfig = new MatDialogConfig();
     // dialogConfig.disableClose = true;
@@ -75,6 +77,22 @@ export class UsuarioComponent implements OnInit {
     dialogConfig.height = "96%";
     this.dialog.open(AgregarAdministradorComponent,dialogConfig);  
   }
+
+  eliminar(id: number){
+    console.log(id)
+    this.datos.deleteUsuario(id);
+  }
+
+  onDetalle(usuario: IUsuario, editar: boolean){
+    const dialogConfig = new MatDialogConfig();
+    
+    // dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "50%";
+    dialogConfig.height = "96%";
+    dialogConfig.data = {usuario, editar};
+    this.dialog.open(AgregarAdministradorComponent,dialogConfig);  
+  } 
 }
 
 
