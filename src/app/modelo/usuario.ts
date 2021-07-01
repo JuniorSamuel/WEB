@@ -5,5 +5,6 @@ export interface IUsuario {
     apellido:	string,
     correo:	string,
     cedula:	number,
-    telefono: number
+    telefono: number,
+    contrasena: string
 }

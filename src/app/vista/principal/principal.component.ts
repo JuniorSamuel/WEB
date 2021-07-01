@@ -90,34 +90,13 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
     return this.vacantes.filter(x => { x.idCategoria == num});
   }
 
-  // getCategotia(){
-  //   this.datos.getCategoria().subscribe((respuesta: ICategoria[]) => {
-  //    this.getVacante(respuesta)
-  //   }, (err: any) => {
-  //     console.error(err);
-  //   });
-  // }
-
-  // getVacante(categoria: ICategoria[]){
-  //   this.datos.getVacante().subscribe((respuesta: IVacante[]) => {
-  //     categoria.forEach(element => {
-  //       this.categorias = [{
-  //         idCategoria: element.idCategoria, 
-  //         nombre: element.nombre, 
-  //         vacante: respuesta.filter( x => {return x.idCategoria == element.idCategoria})}]
-  //       console.log(this.categorias);
-  //     });   
-  //   }, (err: any) => {
-  //     console.error(err);
-  //   });
-  // }
-
-  onWacht(){
+  onWacht(vacante: IVacante, categoria: string){
     const dialogConfig = new MatDialogConfig();
     // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "50%";
     dialogConfig.height = "96%";
+    dialogConfig.data = {vacante, categoria};
     this.dialog.open(TrabajoDetallesComponent,dialogConfig);
   }
 }

@@ -29,7 +29,7 @@
             <td *ngIf='vacante.idCategoria == categoria.idCategoria && i<=fila'> {{vacante.compania}} </td>
             <td *ngIf='vacante.idCategoria == categoria.idCategoria && i<=fila'> {{vacante.posicion}} </td>
             <td *ngIf='vacante.idCategoria == categoria.idCategoria && i<=fila'> {{vacante.ubicacion}} </td>
-            <td *ngIf='vacante.idCategoria == categoria.idCategoria && i<=fila'> <a class="btn btn-success" (click)="onWacht()"><i class="bi bi-eye"></i> Ver </a></td>
+            <td *ngIf='vacante.idCategoria == categoria.idCategoria && i<=fila'> <a class="btn btn-success justify-content-around" (click)="onWacht(vacante,categoria.nombre)"><i class="bi bi-eye"></i> Ver </a></td>
           </tr>
         </tbody>
         <tfoot>

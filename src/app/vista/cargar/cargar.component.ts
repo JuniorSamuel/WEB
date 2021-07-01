@@ -18,8 +18,10 @@ export class CargarComponent implements OnInit {
   ngOnInit(): void {
     this.datos.getCategoriasApi();
     this.datos.getVacanteApi();
+    this.datos.getRolApi();
     this.getCategoria();
     this.getVacante()
+
   }
   cargado() {
    if(this.categoriasCargadas && this.vacantesCargadas){

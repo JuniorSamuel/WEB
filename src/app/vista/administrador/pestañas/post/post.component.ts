@@ -7,6 +7,7 @@ import { IVacante } from 'src/app/modelo/vacante';
 import { DatosService } from 'src/app/servicios/cargar/datos.service';
 
 import Swal from 'sweetalert2';
+import { TrabajoDetallesComponent } from 'src/app/vista/trabajo-detalles/trabajo-detalles.component';
 
 @Component({
   selector: 'app-post',
@@ -75,26 +76,28 @@ export class PostComponent implements OnInit {
     dialogConfig.height = "96%";
     this.dialog.open(AgregarPostComponent,dialogConfig);
   }
-  onPrueba(){
-    console.log('probando alertas');
-    Swal.fire({
-      title: 'ESTA SEGURO?',
-      text: "NO PODRA REVERTIR LOS CAMBIOS!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'SI, HACERLO!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        
-        console.log('PASE POR AQUI');
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
-      }
-    })
+
+  onEditar(vacante: IVacante){
+    const dialogConfig = new MatDialogConfig();
+    // dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "50%";
+    dialogConfig.height = "96%";
+    dialogConfig.data = vacante;
+    this.dialog.open(AgregarPostComponent,dialogConfig);
+  }
+
+  onWacht(vacante: IVacante, categoria: string){
+    const dialogConfig = new MatDialogConfig();
+    // dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "50%";
+    dialogConfig.height = "96%";
+    dialogConfig.data = {vacante, categoria};
+    this.dialog.open(TrabajoDetallesComponent,dialogConfig);
+  }
+  
+  eliminar(id: number){
+    this.datos.deleteVacante(id);
   }
 }

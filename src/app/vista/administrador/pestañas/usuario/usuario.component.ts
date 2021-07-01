@@ -45,7 +45,7 @@ export class UsuarioComponent implements OnInit {
 
   ngOnInit(): void {
    this.padreComp.getUsuario().subscribe((respuesta: IUsuario[]) => {
-     this.table(respuesta.filter(x => {return x.idRol ==3}));
+     this.table(respuesta.filter(x => {return x.idRol ==2}));
    });
   }
 
@@ -65,7 +65,7 @@ export class UsuarioComponent implements OnInit {
   }
 
   setFiltro(evento: Event){
-   
+    this.dataSource.filter = this.filtro.trim().toLowerCase();
   }
 
   
@@ -83,15 +83,16 @@ export class UsuarioComponent implements OnInit {
     this.datos.deleteUsuario(id);
   }
 
-  editar(usuario: IUsuario){
+  onDetalle(usuario: IUsuario, editar: boolean){
     const dialogConfig = new MatDialogConfig();
+    
     // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "50%";
     dialogConfig.height = "96%";
-    dialogConfig.data = usuario;
+    dialogConfig.data = {usuario, editar};
     this.dialog.open(AgregarAdministradorComponent,dialogConfig);  
-  }
+  } 
 }
 
 

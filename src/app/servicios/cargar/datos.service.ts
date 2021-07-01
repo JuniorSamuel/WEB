@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { ICategoria } from 'src/app/modelo/categoria';
+import { IRol } from 'src/app/modelo/rol';
 import { IUsuario } from 'src/app/modelo/usuario';
 import { IVacante } from 'src/app/modelo/vacante';
 import { ApiService } from '../Api/api.service';
@@ -15,19 +16,24 @@ export class DatosService {
   public usuarios: IUsuario[];
   public categorias: ICategoria[];
   public vacante: IVacante[];
+  public rol: IRol[];
 
   private usuarios$: Subject<IUsuario[]>;
   private categorias$: Subject<ICategoria[]>;
   private vacante$: Subject<IVacante[]>;
+  private rol$: Subject<IRol[]>;
+
   //#endregion
   constructor(private _api: ApiService) { 
     this.categorias = [];
     this.usuarios = [];
     this.vacante = [];
+    this.rol = [];
 
     this.usuarios$ = new Subject();
     this.categorias$ = new Subject();
     this.vacante$= new Subject();
+    this.rol$ = new Subject();
   }
 
   cargar() {
@@ -64,6 +70,15 @@ export class DatosService {
     });
   }
 
+  getRolApi(){
+    this._api.getRol().subscribe((respuesta: IRol[]) =>{
+      this.rol = respuesta;
+      this.rol$.next(this.rol);
+    }, (err: any) => {
+      console.error(err);
+    });
+  }
+
   getUsuario(): Observable<IUsuario[]> {
     return this.usuarios$.asObservable();
   }
@@ -74,6 +89,10 @@ export class DatosService {
 
   getVacante(): Observable<IVacante[]>{
     return this.vacante$.asObservable();
+  }
+
+  getRol(): Observable<IRol[]> {
+    return this.rol$.asObservable();
   }
 
   postVacante(vacante: IVacante){
@@ -104,12 +123,23 @@ export class DatosService {
   }
 
   deleteCategoria(id: number){
-    this._api.deleteCategoria(id).subscribe();
+    this._api.deleteCategoria(id).subscribe(x => {
+      console.log(x)
+    });
   }
 
   deleteUsuario(id: number) {
-    this._api.deleteUsuario(id).subscribe();
+    this._api.deleteUsuario(id).subscribe(x => {
+      console.log(x)
+    });
   }
+
+  deleteVacante(id: number) {
+    this._api.deletePost(id).subscribe(x => {
+      console.log(x)
+    });
+  }
+  
   putCategoria(categoria: ICategoria){
     this._api.putCategoria(categoria).subscribe(x => {
       
@@ -125,4 +155,12 @@ export class DatosService {
      console.error(err)
    })
   }
+
+  putVacante(vacante: IVacante) {
+    this._api.putVacante(vacante).subscribe(x => {
+ 
+    }, (err: any) => {
+      console.error(err)
+    })
+   }
  }

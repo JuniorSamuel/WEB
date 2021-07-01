@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ICategoria } from 'src/app/modelo/categoria';
+import { IRol } from 'src/app/modelo/rol';
 import { IUsuario } from 'src/app/modelo/usuario';
 import { IVacante } from 'src/app/modelo/vacante';
 
@@ -17,7 +18,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ApiService {
- 
+  
 
   constructor(private _http: HttpClient) { }
 
@@ -39,6 +40,10 @@ export class ApiService {
 
   getUsuarios(): Observable<IUsuario[]>{
     return this._http.get<IUsuario[]>(this._host +'api/Usuario');
+  }
+
+  getRol(): Observable<IRol[]> {
+    return this._http.get<IRol[]>(this._host+ "api/Rol")
   }
 
   //Post
@@ -75,4 +80,10 @@ export class ApiService {
   putUsuario(usuario: IUsuario) {
     return this._http.put(this._host+ 'api/Usuario', usuario)
   }
+
+  putVacante(vacante: IVacante) {
+    return this._http.put(this._host+ 'api/Vacante', vacante)
+  }
+
 }
+

@@ -2,6 +2,7 @@ import { ReturnStatement } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { ICategoria } from 'src/app/modelo/categoria';
+import { IRol } from 'src/app/modelo/rol';
 import { IUsuario } from 'src/app/modelo/usuario';
 import { IVacante } from 'src/app/modelo/vacante';
 import { ApiService } from 'src/app/servicios/Api/api.service';
@@ -16,6 +17,7 @@ export class AdministradorComponent implements OnInit {
 
   usuarios:IUsuario[] = [];
   private observador$: Subject<IUsuario[]>;
+  rol: IRol[] = [];
 
   constructor(private _datos: DatosService) { 
     this.observador$ = new Subject()
@@ -31,5 +33,14 @@ export class AdministradorComponent implements OnInit {
 
   getUsuario(): Observable<IUsuario[]> {
     return this.observador$.asObservable();
+  }
+
+  getRol() {
+    this._datos.getRol().subscribe((respuesta: IRol[]) => {
+      this.rol = respuesta;
+      console.log(this.rol)
+    }, (err: any) => {
+        console.error(err)
+    }); 
   }
 }
