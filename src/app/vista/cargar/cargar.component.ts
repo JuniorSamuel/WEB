@@ -26,7 +26,7 @@ export class CargarComponent implements OnInit {
   cargado() {
    if(this.categoriasCargadas && this.vacantesCargadas){
      
-      //this.routing.navigate(['Principal']);
+      this.routing.navigate(['Principal']);
    }
      
   }
