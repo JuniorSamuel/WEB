@@ -1,9 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IVacante } from 'src/app/modelo/vacante';
 import { ApiService } from 'src/app/servicios/Api/api.service';
 import { DatosService } from 'src/app/servicios/cargar/datos.service';
+
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-agregar-post',
@@ -14,19 +16,18 @@ export class AgregarPostComponent implements OnInit {
 
   vacante: IVacante | undefined;
 
-  postForm = new FormGroup({
-    idCategoria: new FormControl('', [Validators.required]),
-    campania: new FormControl('', [Validators.required]),
-    idUsuario: new FormControl('', [Validators.required]),
-    posicion: new FormControl('', [Validators.required]),
-    descripcion: new FormControl('', [Validators.required]),
-    telefono: new FormControl('', [Validators.required]),
-    correo: new FormControl('', [Validators.required, Validators.email]),
-    horario: new FormControl('', [Validators.required]),
-    ubicacion: new FormControl('', [Validators.required])
+    postForm = this.formBuilder.group({
+    idCategoria: ['',Validators.required],
+    campania: ['',Validators.required],
+    posicion: ['', Validators.required],
+    descripcion: ['',[Validators.required, Validators.maxLength(80)]],
+    telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(20)]],
+    correo: ['',[Validators.required, Validators.email]],
+    horario: ['', Validators.required],
+    ubicacion: ['',Validators.required]
   });
 
-  constructor(private _datos: DatosService, @Inject(MAT_DIALOG_DATA) public editar: IVacante) { }
+  constructor(public dialogRef: MatDialogRef<AgregarPostComponent>, private _datos: DatosService, @Inject(MAT_DIALOG_DATA) public editar: IVacante, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     if (this.editar != null) {
@@ -35,8 +36,6 @@ export class AgregarPostComponent implements OnInit {
       this.postForm.controls['horario'].setValue('Tiempo completo');
     }
   }
-
-
 
   onSubmit() {
     if (this.editar == null) {
@@ -51,19 +50,54 @@ export class AgregarPostComponent implements OnInit {
         horario: this.postForm.value.horario,
         ubicacion: this.postForm.value.ubicacion
       });
-    } else {
-      this._datos.putVacante({
-        idVacante: this.postForm.value.idVacante,
-        idCategoria: this.postForm.value.idCategoria,
-        compania: this.postForm.value.campania,
-        posicion: this.postForm.value.posicion,
-        descripcion: this.postForm.value.descripcion,
-        telefono: this.postForm.value.telefono,
-        correo: this.postForm.value.correo,
-        horario: this.postForm.value.horario,
-        ubicacion: this.postForm.value.ubicacion
-      });
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Ha sido guardado.',
+        showConfirmButton: false,
+        timer: 1500
+      })
+  } else {
+    this.vacante = {
+      idVacante: 0,
+      idCategoria: this.postForm.value.idCategoria,
+      compania: this.postForm.value.campania,
+      posicion: this.postForm.value.posicion,
+      descripcion: this.postForm.value.descripcion,
+      telefono: this.postForm.value.telefono,
+      correo: this.postForm.value.correo,
+      horario: this.postForm.value.horario,
+      ubicacion: this.postForm.value.ubicacion
     }
+    Swal.fire({
+      title: 'Quiere guardar los cambios?',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: 'Guardar',
+      denyButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._datos.putVacante( {
+          idVacante: this.postForm.value.idCategoria,
+          idCategoria: this.postForm.value.idCategoria,
+          compania: this.postForm.value.campania,
+          posicion: this.postForm.value.posicion,
+          descripcion: this.postForm.value.descripcion,
+          telefono: this.postForm.value.telefono,
+          correo: this.postForm.value.correo,
+          horario: this.postForm.value.horario,
+          ubicacion: this.postForm.value.ubicacion});
+        Swal.fire('Editado!', '', 'success')
+      } else if (result.isDenied) {
+        Swal.fire('Los cambios no se guardaron', '', 'info')
+      }
+    })
+  }
+  this.onClickNo()
+  }
+
+  onClickNo(): void {
+    this.dialogRef.close();
   }
 
   onEdit() {

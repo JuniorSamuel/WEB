@@ -6,6 +6,8 @@ import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { IUsuario } from 'src/app/modelo/usuario';
 import { DatosService } from 'src/app/servicios/cargar/datos.service';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-admit',
   templateUrl: './admit.component.html',
@@ -79,13 +81,32 @@ export class AdmitComponent implements OnInit {
 
 
   eliminar(id: number){
-    this.datos.deleteUsuario(id).subscribe( x => {
-      this.datos.getUsuariosApi();
-      this.datos.getUsuario();
-      console.log('Ok..............................');
-    }, (err: any) => {
-      console.error(err);
-    });
+    Swal.fire({
+      title: 'Esta seguro que desea eliminarlo?',
+      text: "No podra revertir los cambios!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminala!',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log('Selecciono elimiar el ', id);
+        this.datos.deleteUsuario(id).subscribe( x => {
+          this.datos.getUsuariosApi();
+          this.datos.getUsuario();
+
+        }, (err: any) => {
+          console.error(err);
+        });
+        Swal.fire(
+          'Eliminado!',
+          'Ha sido eliminado.',
+          'success'
+        )
+      }
+    })
   }
 
   onDetalle(usuario: IUsuario, editar: boolean){

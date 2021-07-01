@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormGroupName, Validators, FormBuilder} from '@angular/forms';
+import { FormControl, FormGroup, FormGroupName, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
-  selector: 'app-registro',
-  templateUrl: './registro.component.html',
-  styleUrls: ['./registro.component.css']
+  selector: 'app-registrar',
+  templateUrl: './registrar.component.html',
+  styleUrls: ['./registrar.component.css']
 })
-export class RegistroComponent implements OnInit {
+export class RegistrarComponent implements OnInit {
 
   formRegis = this.formBuilder.group({
     nombre: ['',Validators.required],
@@ -21,10 +21,6 @@ export class RegistroComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-  }
-
-  onSubmit(){
-
   }
 
 }

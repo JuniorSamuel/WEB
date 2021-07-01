@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormGroupName, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormGroupName, Validators, FormBuilder  } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IRol } from 'src/app/modelo/rol';
 import { IUsuario } from 'src/app/modelo/usuario';
@@ -13,32 +13,29 @@ import { AdministradorComponent } from '../administrador/administrador.component
 })
 export class AgregarAdministradorComponent implements OnInit {
 
-
   habilitar: boolean = true;
   usuario: IUsuario | undefined;
-  contrasena: string = '';
-  formUsuario = new FormGroup({
-    idUsuario: new FormControl('', [Validators.required]),
-    nombre: new FormControl('', [Validators.required]),
-    apellido: new FormControl('', [Validators.required]),
-    cedula: new FormControl('', [Validators.required]),
-    telefono: new FormControl('', [Validators.required, Validators.email]),
-    correo: new FormControl('', [Validators.required]),
-    rol: new FormControl('', [Validators.required]),
-    contrasena1: new FormControl('', [Validators.required]),
-    contrasena2: new FormControl('', [Validators.required])
-  });
+  contrasena: string = '';  
 
+  formUsuario = this.formBuilder.group({
+    idUsuario: ['',Validators.required],
+    nombre: ['',Validators.required],
+    apellido: ['',Validators.required],
+    cedula: ['', Validators.required, [Validators.min(40000000000), Validators.max(40000000002)]],
+    telefono: ['',[Validators.required, Validators.min(8999999999), Validators.max(9000000002)]],
+    correo: ['', [Validators.required, Validators.email]],
+    contrasena1: ['',[Validators.required, Validators.minLength(8)]],
+    contrasena2: ['', [Validators.required, Validators.minLength(8)]],
+    rol: ['',Validators.required]
+  });
   constructor(
     public dialogRef: MatDialogRef<AgregarAdministradorComponent>,
     private _dato: DatosService,
-    @Inject(MAT_DIALOG_DATA) public editar: { usuario: IUsuario, editar: boolean },
-  ) {
-
-
-  }
+    @Inject(MAT_DIALOG_DATA) public editar: { usuario: IUsuario, editar: boolean }, private formBuilder: FormBuilder
+  ){}
 
   ngOnInit(): void {
+    console.log(this.editar);
     if (this.editar != null) {
       this.onEdit();
       if (!this.editar.editar) {

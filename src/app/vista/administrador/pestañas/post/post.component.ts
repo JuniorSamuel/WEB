@@ -98,6 +98,26 @@ export class PostComponent implements OnInit {
   }
   
   eliminar(id: number){
-    this.datos.deleteVacante(id);
+    // this.datos.deleteVacante(id);
+    Swal.fire({
+      title: 'Esta seguro que desea eliminarlo?',
+      text: "No podra revertir los cambios!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminala!',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log('Selecciono elimiar el ', id);
+        this.datos.deleteVacante(id);
+        Swal.fire(
+          'Eliminado!',
+          'Ha sido eliminado.',
+          'success'
+        )
+      }
+    })
   }
 }
