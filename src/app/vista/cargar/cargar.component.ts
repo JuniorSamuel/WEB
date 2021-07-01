@@ -25,11 +25,10 @@ export class CargarComponent implements OnInit {
   }
   cargado() {
    if(this.categoriasCargadas && this.vacantesCargadas){
-     console.log('Cargado');
-      this.routing.navigate(['Principal']);
-   }else{
-     console.log('No cargado')
+     
+      //this.routing.navigate(['Principal']);
    }
+     
   }
 
   getCategoria(){

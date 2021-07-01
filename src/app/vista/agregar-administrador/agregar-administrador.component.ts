@@ -81,10 +81,10 @@ export class AgregarAdministradorComponent implements OnInit {
         correo: this.formUsuario.value.correo,
         contrasena: this.formUsuario.value.contrasena1
       }
+     
       this._dato.putUsuario(this.usuario);
     }
-
-    console.log(this.usuario)
+    
     this.onClickNo()
   }
 

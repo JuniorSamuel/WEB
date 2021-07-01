@@ -4,6 +4,7 @@
     color: whitesmoke;
 }
 
+
 table{
     width: 100%;
     border: 1px;
@@ -26,11 +27,11 @@ tfoot a:hover{
 }
 
 .hm{
-    min-height: 500px;
+    min-height: 80%;
 }
 
 h1{
-    color: chartreuse;
+    color: #707070;
 }
 
 

@@ -1,6 +1,7 @@
 import { RegistroComponent } from '../registro/registro.component';
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,8 @@ import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 export class LoginComponent implements OnInit {
 
   constructor(
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private rout: Router
   ) { }
 
   ngOnInit(): void {
@@ -22,6 +24,10 @@ export class LoginComponent implements OnInit {
     dialogConfig.width = "55%";
     // dialogConfig.height = "20%";
     this.dialog.open(RegistroComponent,dialogConfig);  
+  }
+
+  login(){
+    this.rout.navigate(['Cargardo']);
   }
 
 }
