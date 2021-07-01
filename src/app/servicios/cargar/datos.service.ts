@@ -124,25 +124,26 @@ export class DatosService {
 
   deleteCategoria(id: number){
     this._api.deleteCategoria(id).subscribe(x => {
-      console.log(x)
+      this.getCategoriasApi;
     });
   }
 
   deleteUsuario(id: number) {
     this._api.deleteUsuario(id).subscribe(x => {
-      console.log(x)
+      this.getUsuariosApi();
     });
+
   }
 
   deleteVacante(id: number) {
     this._api.deletePost(id).subscribe(x => {
-      console.log(x)
+      this.getVacanteApi();
     });
   }
   
   putCategoria(categoria: ICategoria){
     this._api.putCategoria(categoria).subscribe(x => {
-      
+      this.getCategoriasApi();
     }, (err: any) => {
       console.error(err)
     })
@@ -150,7 +151,7 @@ export class DatosService {
 
   putUsuario(usuario: IUsuario) {
    this._api.putUsuario(usuario).subscribe(x => {
-
+      this.getUsuariosApi();
    }, (err: any) => {
      console.error(err)
    })
@@ -158,7 +159,7 @@ export class DatosService {
 
   putVacante(vacante: IVacante) {
     this._api.putVacante(vacante).subscribe(x => {
- 
+      this.getVacanteApi()
     }, (err: any) => {
       console.error(err)
     })
