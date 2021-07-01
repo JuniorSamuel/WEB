@@ -4,7 +4,6 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Params } from '@angular/router';
 import { IVacante } from 'src/app/modelo/vacante';
-import { ApiService } from 'src/app/servicios/Api/api.service';
 import { DatosService } from 'src/app/servicios/cargar/datos.service';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 
