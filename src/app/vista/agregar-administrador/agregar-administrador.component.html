@@ -12,8 +12,8 @@
                 id="nombre" 
                 placeholder="Nombre"
                 formControlName="nombre">
-                <div *ngIf="formAdmi.get('nombre')?.errors && formAdmi.get('nombre')?.touched">
-                    <p *ngIf="formAdmi.get('nombre')?.hasError('required')" class="color-red">
+                <div *ngIf="formUsuario.get('nombre')?.errors && formUsuario.get('nombre')?.touched">
+                    <p *ngIf="formUsuario.get('nombre')?.hasError('required')" class="color-red">
                         *Nombre es requerido.*
                     </p>
                 </div>
@@ -39,7 +39,6 @@
         </div>
         <div class="form-group row mt-3">
             <div class="col-sm-12 col-md-2">
-                <button type="submit" class="btn bg-blue-p text-center" [disabled]="formAdmi.invalid">Guardar</button>
                 <select class="form-select" name="select" formControlName="rol">
                     <option value="3"> Poster</option>
                     <option value="2"> Usuario</option>
@@ -58,14 +57,14 @@
             id="cedula" 
             placeholder="Cedula"
             formControlName="cedula">
-            <div *ngIf="formAdmi.get('cedula')?.errors && formAdmi.get('cedula')?.touched">
-                <p *ngIf="formAdmi.get('cedula')?.hasError('required')" class="color-red">
+            <div *ngIf="formUsuario.get('cedula')?.errors && formUsuario.get('cedula')?.touched">
+                <p *ngIf="formUsuario.get('cedula')?.hasError('required')" class="color-red">
                     *Cedula es requerido.*
                 </p>
-                <p *ngIf="formAdmi.get('cedula')?.hasError('min')" class="color-red">
+                <p *ngIf="formUsuario.get('cedula')?.hasError('min')" class="color-red">
                     *Cedula Invalido.MN*
                 </p>
-                <p *ngIf="formAdmi.get('cedula')?.hasError('max')" class="color-red">
+                <p *ngIf="formUsuario.get('cedula')?.hasError('max')" class="color-red">
                     *Cedula Invalido.MX*
                 </p>
             </div>
@@ -80,14 +79,14 @@
             id="telefono" 
             placeholder="Telefono"
             formControlName="telefono">
-            <div *ngIf="formAdmi.get('telefono')?.errors && formAdmi.get('telefono')?.touched">
-                <p *ngIf="formAdmi.get('telefono')?.hasError('required')" class="color-red">
+            <div *ngIf="formUsuario.get('telefono')?.errors && formUsuario.get('telefono')?.touched">
+                <p *ngIf="formUsuario.get('telefono')?.hasError('required')" class="color-red">
                     *Telefono es requerido.*
                 </p>
-                <p *ngIf="formAdmi.get('telefono')?.hasError('min')" class="color-red">
+                <p *ngIf="formUsuario.get('telefono')?.hasError('min')" class="color-red">
                     *Telefono Invalido.MN*
                 </p>
-                <p *ngIf="formAdmi.get('telefono')?.hasError('max')" class="color-red">
+                <p *ngIf="formUsuario.get('telefono')?.hasError('max')" class="color-red">
                     *Telefono Invalido.MX*
                 </p>
             </div>
@@ -102,11 +101,11 @@
             id="correo" 
             placeholder="Correo"
             formControlName="correo">
-            <div *ngIf="formAdmi.get('correo')?.errors && formAdmi.get('correo')?.touched">
-                <p *ngIf="formAdmi.get('correo')?.hasError('required')" class="color-red">
+            <div *ngIf="formUsuario.get('correo')?.errors && formUsuario.get('correo')?.touched">
+                <p *ngIf="formUsuario.get('correo')?.hasError('required')" class="color-red">
                     *Correo es requerido.*
                 </p>
-                <p *ngIf="formAdmi.get('correo')?.hasError('email')" class="color-red">
+                <p *ngIf="formUsuario.get('correo')?.hasError('email')" class="color-red">
                     *Correo Invalido.*
                 </p>
             </div>
@@ -121,11 +120,11 @@
             id="contrasena1" 
             placeholder="Contraseña"
             formControlName="contrasena1">
-            <div *ngIf="formAdmi.get('contrasena1')?.errors && formAdmi.get('contrasena1')?.touched">
-                <p *ngIf="formAdmi.get('contrasena1')?.hasError('required')" class="color-red">
+            <div *ngIf="formUsuario.get('contrasena1')?.errors && formUsuario.get('contrasena1')?.touched">
+                <p *ngIf="formUsuario.get('contrasena1')?.hasError('required')" class="color-red">
                     *Contraseña es requerido.*
                 </p>
-                <p *ngIf="formAdmi.get('contrasena1')?.hasError('minlength')" class="color-red">
+                <p *ngIf="formUsuario.get('contrasena1')?.hasError('minlength')" class="color-red">
                     *Contraseña Invalido.MN*
                 </p>
             </div>
@@ -140,11 +139,11 @@
             id="contrasena2" 
             placeholder="Confirmar Contraseña"
             formControlName="contrasena2">
-            <div *ngIf="formAdmi.get('contrasena2')?.errors && formAdmi.get('contrasena2')?.touched">
-                <p *ngIf="formAdmi.get('contrasena2')?.hasError('required')" class="color-red">
+            <div *ngIf="formUsuario.get('contrasena2')?.errors && formUsuario.get('contrasena2')?.touched">
+                <p *ngIf="formUsuario.get('contrasena2')?.hasError('required')" class="color-red">
                     *Contraseña es requerido.*
                 </p>
-                <p *ngIf="formAdmi.get('contrasena2')?.hasError('minlength')" class="color-red">
+                <p *ngIf="formUsuario.get('contrasena2')?.hasError('minlength')" class="color-red">
                     *Contraseña Invalido.MN*
                 </p>
             </div>
@@ -152,7 +151,7 @@
 
         <div class="form-group row mt-3">
             <div class="col-sm-12 col-md-2">
-                <button type="submit" class="btn bg-blue-p text-center" [disabled]="formAdmi.invalid">Guardar</button>
+                <button type="submit" class="btn bg-blue-p text-center" [disabled]="formUsuario.invalid">Guardar</button>
             </div>
             <div class="col-sm-12 col-md-2">
                 <input type="reset" value="Cancelar" class="btn btn-danger" (click)="onClickNo()">
