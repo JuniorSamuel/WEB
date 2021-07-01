@@ -33,6 +33,7 @@ import { CargarComponent } from './vista/cargar/cargar.component';//PARA PRUEBA
 
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { RegistrarComponent } from './vista/registrar/registrar.component';
+import { MisPostComponent } from './vista/mis-post/mis-post.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,9 @@ import { RegistrarComponent } from './vista/registrar/registrar.component';
     AgregarAdministradorComponent,
     AgregarCategoriaComponent,
     RegistrarComponent,
-    CargarComponent
+    CargarComponent,
+    // CargarComponent,
+    MisPostComponent
   ],
   imports: [
     BrowserModule,
