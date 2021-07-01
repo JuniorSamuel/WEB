@@ -83,7 +83,27 @@ export class CategoriaComponent implements OnInit {
 
   eliminar(id: number){
     console.log(id);
-    this.datos.deleteCategoria(id);
+    // this.datos.deleteCategoria(id);
+    Swal.fire({
+      title: 'Esta seguro que desea eliminarlo?',
+      text: "No podra revertir los cambios!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminala!',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log('Selecciono elimiar el ', id);
+        this.datos.deleteCategoria(id);
+        Swal.fire(
+          'Eliminado!',
+          'Ha sido eliminado.',
+          'success'
+        )
+      }
+    })
   }
 
   editar(categoria: any){
