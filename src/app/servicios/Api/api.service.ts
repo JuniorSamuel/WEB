@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ICategoria } from 'src/app/modelo/categoria';
+import { ILogin } from 'src/app/modelo/login';
+import { ILoginRespuesta } from 'src/app/modelo/login-respuesta';
 import { IRol } from 'src/app/modelo/rol';
 import { IUsuario } from 'src/app/modelo/usuario';
 import { IVacante } from 'src/app/modelo/vacante';
@@ -24,7 +26,6 @@ export class ApiService {
 
   private _host: string = 'https://api-job.azurewebsites.net/';
 
-  
   //GET ALL
   getCategorias(): Observable<ICategoria[]>{
     return this._http.get<ICategoria[]>(this._host +'api/Categoria');
@@ -59,6 +60,11 @@ export class ApiService {
   postUsuario(usuario: IUsuario): Observable<IUsuario>{
     return this._http.post<IUsuario>(this._host+'api/Usuario', usuario);
   }
+
+  login(user: ILogin): Observable<ILoginRespuesta>{
+    return this._http.post<ILoginRespuesta>(this._host + "api/Login/login", user);
+  }
+
   //Delete
   deleteCategoria(id: number): Observable<any>{
     return this._http.delete(this._host + "api/Categoria?CategoriaId=" + id);

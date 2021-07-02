@@ -12,7 +12,7 @@
             </div>
             <div class="col-sm-9 text-secondary">
               <label>
-                Nombres Apellidos
+                {{usuario.nombre + '' + usuario.apellido}}
               </label>
             </div>
           </div>
@@ -22,7 +22,7 @@
               <h3 class="mb-0">Correo electronico:</h3>
             </div>
             <div class="col-sm-9 text-secondary">
-              ejemplo@ejemplo.com
+              {{usuario.correo}}
             </div>
           </div>
           <hr>
@@ -31,7 +31,7 @@
               <h3 class="mb-0">Telefono:</h3>
             </div>
             <div class="col-sm-9 text-secondary">
-              (809) xxx-xxxx
+              {{usuario.telefono}}
             </div>
           </div>
           <hr>
@@ -40,7 +40,7 @@
               <h3 class="mb-0">Cedula:</h3>
             </div>
             <div class="col-sm-9 text-secondary">
-              402-xxxxxxx-x
+              {{usuario.cedula}}
             </div>
           </div>
           <hr>
@@ -48,19 +48,25 @@
             <div class="col-sm-3">
               <h3 class="mb-0">Rol:</h3>
             </div>
-            <div class="col-sm-9 text-secondary">
-              Poster
+            <div class="col-sm-9 text-secondary" *ngIf='usuario.idRol == 1'>
+                Administrador
+            </div>
+            <div class="col-sm-9 text-secondary" *ngIf='usuario.idRol == 3'>
+                Poster
+            </div>
+            <div class="col-sm-9 text-secondary" *ngIf='usuario.idRol == 2'>
+                Usuario
             </div>
           </div>
           <hr>
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-sm-3">
               <h3 class="mb-0">Direccion:</h3>
             </div>
             <div class="col-sm-9 text-secondary">
-              Republica Dominicana
+                {{usuario.}}
             </div>
-          </div><br>
+          </div><br> -->
           <div class="row">
             <div class="col-sm-12">
               <a class="btn btn-info " target="__blank">Editar Perfil</a>

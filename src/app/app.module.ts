@@ -7,7 +7,7 @@ import { MatInputModule} from '@angular/material/input';
 
 import { AppRoutingModule, routesComponent } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -34,6 +34,7 @@ import { CargarComponent } from './vista/cargar/cargar.component';//PARA PRUEBA
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { RegistrarComponent } from './vista/registrar/registrar.component';
 import { MisPostComponent } from './vista/mis-post/mis-post.component';
+import { JwtInteceptorInterceptor } from './servicios/intercepto/jwt-inteceptor.interceptor';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,11 @@ import { MisPostComponent } from './vista/mis-post/mis-post.component';
 
   providers: [
     ApiService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInteceptorInterceptor,
+      multi: true
+    },
     {
       provide: MAT_RADIO_DEFAULT_OPTIONS,
       useValue: { color: 'primary' },

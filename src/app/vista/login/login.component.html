@@ -6,35 +6,32 @@
                     <img src="assets/login.svg" class="image">
                 </div>
             </div>
-        </div>        
+        </div>
         <div class="col-lg-6">
             <div class="card2 card border-0 px-4 py-5">
                 <h1 class="t-2">Job.com</h1>
-                <div class="row px-3">
-                    <label class="mb-1">
-                        <h6 class="mb-0 text-sm">Usuario</h6>
-                    </label>
-                    <input class="mb-4" type="text" name="email" placeholder="Usuario">
-                </div>
-                <div class="row px-3">
-                    <label class="mb-1">
-                        <h6 class="mb-0 text-sm">Contraseña</h6>
-                    </label>
-                    <input type="password" name="password" placeholder="Contraseña">
-                </div>
-                <div class="row px-3 mb-4">
-                    <!-- <div class="custom-control custom-checkbox custom-control-inline">
-                        <input id="chk1" type="checkbox" name="chk" class="custom-control-input">
-                        <label for="chk1" class="custom-control-label text-sm">Remember me</label>
-                    </div>  -->
-                    <a href="#" class="ml-auto mb-0 text-sm">¿Olvide la contraseñá?</a>
-                </div>
-                <div class="row mb-3 px-3">
-                    <button type="submit" class="btn bg-blue-p text-center" (click)="login()">Login</button>
-                </div>
+                <form [formGroup]='loginForm'>
+                    <div class="row px-3">
+                        <label class="mb-1">
+                            <h6 class="mb-0 text-sm">Usuario</h6>
+                        </label>
+                        <input class="mb-4" type="text" name="email" placeholder="Usuario" formControlName="correo">
+                    </div>
+                    <div class="row px-3">
+                        <label class="mb-1">
+                            <h6 class="mb-0 text-sm">Contraseña</h6>
+                        </label>
+                        <input type="password" name="password" placeholder="Contraseña" formControlName= "contrasena">
+                    </div>
+                    <div class="row px-3 mb-4">
+                        <!-- <a href="#" class="ml-auto mb-0 text-sm">¿Olvide la contraseñá?</a> -->
+                    </div>
+                    <div class="row mb-3 px-3">
+                        <button type="submit" class="btn bg-blue-p text-center" (click)="login()">Login</button>
+                    </div>
+                </form>
                 <div class="row mb-4 px-3">
                     <small class="font-weight-bold">No tengo cuenta
-                        <!-- <a class="text-danger" routerLink="/Registro">Registrarse</a> -->
                         <a class="text-danger" (click)="onCreate()">Registrarse</a>
                     </small>
                 </div>

@@ -15,6 +15,7 @@ import Swal from 'sweetalert2';
 })
 export class AgregarAdministradorComponent implements OnInit {
 
+  
   habilitar: boolean = true;
   usuario: IUsuario | undefined;
   contrasena: string = '';  
@@ -37,7 +38,6 @@ export class AgregarAdministradorComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
-    console.log(this.editar);
     if (this.editar != null) {
       this.onEdit();
       if (!this.editar.editar) {
