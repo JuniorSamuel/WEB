@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ActivatedRoute, Params } from '@angular/router';
 import { IVacante } from 'src/app/modelo/vacante';
 import { AgregarCategoriaComponent } from '../agregar-categoria/agregar-categoria.component';
 

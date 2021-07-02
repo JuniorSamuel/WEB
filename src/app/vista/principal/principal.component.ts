@@ -76,7 +76,6 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
   getVacante(){
     this.datos.getVacante().subscribe((respuesta: IVacante[]) => {
       this.vacantes  =respuesta;
-      console.log(this.vacantes)
     })
   }
 

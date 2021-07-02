@@ -13,6 +13,7 @@ import { AdministradorComponent } from '../administrador/administrador.component
 })
 export class AgregarAdministradorComponent implements OnInit {
 
+  
   habilitar: boolean = true;
   usuario: IUsuario | undefined;
   contrasena: string = '';  
@@ -21,7 +22,7 @@ export class AgregarAdministradorComponent implements OnInit {
     idUsuario: ['',Validators.required],
     nombre: ['',Validators.required],
     apellido: ['',Validators.required],
-    cedula: ['', Validators.required, [Validators.min(40000000000), Validators.max(40000000002)]],
+    cedula: ['', Validators.required],
     telefono: ['',[Validators.required, Validators.min(8999999999), Validators.max(9000000002)]],
     correo: ['', [Validators.required, Validators.email]],
     contrasena1: ['',[Validators.required, Validators.minLength(8)]],
@@ -35,7 +36,6 @@ export class AgregarAdministradorComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
-    console.log(this.editar);
     if (this.editar != null) {
       this.onEdit();
       if (!this.editar.editar) {

@@ -13,17 +13,21 @@ import { TrabajoDetallesComponent } from './vista/trabajo-detalles/trabajo-detal
 import { OfertasComponent } from './vista/ofertas/ofertas.component';
 import { CargarComponent } from './vista/cargar/cargar.component';
 import { MisPostComponent } from './vista/mis-post/mis-post.component';
+import { UserGuardGuard } from './servicios/guard/user-guard.guard';
+import { IniciadoGuard } from './servicios/guard/iniciado.guard';
+import { AdmitGuard } from './servicios/guard/admit.guard';
+import { PostGuard } from './servicios/guard/post.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'Login', pathMatch: 'full' },
-  { path: "Login", component: LoginComponent},
-  { path: "Principal", component: PrincipalComponent},
-  { path: "Agregar_post", component: AgregarPostComponent},
-  { path: "Administrador", component: AdministradorComponent},
-  { path: "Ofertas/:id/:categoria", component: OfertasComponent},
-  { path: "Vacante", component: TrabajoDetallesComponent},
-  { path: "Cargardo", component: CargarComponent},
-  { path: "Mis_post", component: MisPostComponent},
+  { path: "Login", component: LoginComponent, canActivate: [IniciadoGuard]},
+  { path: "Principal", component: PrincipalComponent, canActivate: [UserGuardGuard]},
+  { path: "Agregar_post", component: AgregarPostComponent, canActivate: [UserGuardGuard, PostGuard]},
+  { path: "Administrador", component: AdministradorComponent, canActivate: [UserGuardGuard, AdmitGuard]},
+  { path: "Ofertas/:id/:categoria", component: OfertasComponent, canActivate: [UserGuardGuard]},
+  { path: "Vacante", component: TrabajoDetallesComponent, canActivate: [UserGuardGuard]},
+  { path: "Cargardo", component: CargarComponent, canActivate: [UserGuardGuard]},
+  { path: "Mis_post", component: MisPostComponent, canActivate: [UserGuardGuard]},
   // Prueba
   { path: "Nav", component: NavegacionComponent},
   

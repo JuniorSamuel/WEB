@@ -66,7 +66,6 @@ export class OfertasComponent implements OnInit {
   }
 
   getVacante() {
-    //this.datos.getVacante(this.id).subscribe((respuesta: IVacante[]) =>{
     this.datos.getVacante().subscribe((respuesta: IVacante[]) => {
       this.dataSource = new MatTableDataSource(respuesta.filter( ( x) => { return x.idCategoria == this.id}));
       this.dataSource.paginator = this.paginator
@@ -74,13 +73,14 @@ export class OfertasComponent implements OnInit {
       console.error(err);
     });
   }
-  onWacht(element: IVacante){
+  onWacht(vacante: IVacante){
     const dialogConfig = new MatDialogConfig();
     // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "50%";
     dialogConfig.height = "96%";
-    dialogConfig.data = element;
+    dialogConfig.data = {vacante: vacante, categoria: this.categoria };
+    console.log(vacante.horario)
     this.dialog.open(TrabajoDetallesComponent,dialogConfig);
   }
 }
