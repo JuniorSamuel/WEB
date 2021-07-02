@@ -55,7 +55,7 @@ import { MisPostComponent } from './vista/mis-post/mis-post.component';
     RegistrarComponent,
     CargarComponent,
     // CargarComponent,
-    MisPostComponent
+    MisPostComponent,
   ],
   imports: [
     BrowserModule,

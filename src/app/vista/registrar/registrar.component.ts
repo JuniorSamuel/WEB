@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormGroupName, Validators, FormBuilder } from '@angular/forms';
+import { MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-registrar',
@@ -18,9 +19,13 @@ export class RegistrarComponent implements OnInit {
     contrasena2: ['', [Validators.required, Validators.minLength(8)]]
   });
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, public dialogRef: MatDialogRef<RegistrarComponent>) { }
 
   ngOnInit(): void {
+  }
+
+  onClickNo(): void {
+    this.dialogRef.close();
   }
 
 }

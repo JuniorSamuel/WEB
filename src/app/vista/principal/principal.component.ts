@@ -29,7 +29,8 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
     dataSource = new MatTableDataSource<IVacante>(this.vacantes)    
     
     //Filtro
-    filtro: string = ''
+    filtro: string = '';
+    pipeprincipal = '';
 
     // MatPaginator Inputs
     length = 100;

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { IUsuario } from './../../modelo/usuario';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-perfil',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilComponent implements OnInit {
 
-  constructor() { }
+  // user!: string;
+  // usuario!= IUsuario;
+  
+  constructor( ) { }
 
   ngOnInit(): void {
   }
