@@ -8,7 +8,7 @@ import { ApiService } from 'src/app/servicios/Api/api.service';
 import { AdministradorComponent } from '../../administrador.component';
 import { DatosService } from 'src/app/servicios/cargar/datos.service';
 
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-usuario',
@@ -80,7 +80,32 @@ export class UsuarioComponent implements OnInit {
 
   eliminar(id: number){
     console.log(id)
-    this.datos.deleteUsuario(id);
+    Swal.fire({
+      title: 'Esta seguro que desea eliminarlo?',
+      text: "No podra revertir los cambios!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminala!',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log('Selecciono elimiar el ', id);
+        this.datos.deleteUsuario(id).subscribe( x => {
+          this.datos.getUsuariosApi();
+          this.datos.getUsuario();
+
+        }, (err: any) => {
+          console.error(err);
+        });
+        Swal.fire(
+          'Eliminado!',
+          'Ha sido eliminado.',
+          'success'
+        )
+      }
+    })
   }
 
   onDetalle(usuario: IUsuario, editar: boolean){

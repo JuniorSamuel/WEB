@@ -6,6 +6,8 @@ import { IUsuario } from 'src/app/modelo/usuario';
 import { DatosService } from 'src/app/servicios/cargar/datos.service';
 import { AdministradorComponent } from '../administrador/administrador.component';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-agregar-administrador',
   templateUrl: './agregar-administrador.component.html',
@@ -19,11 +21,11 @@ export class AgregarAdministradorComponent implements OnInit {
   contrasena: string = '';  
 
   formUsuario = this.formBuilder.group({
-    idUsuario: ['',Validators.required],
+    idUsuario: [''],
     nombre: ['',Validators.required],
     apellido: ['',Validators.required],
     cedula: ['', Validators.required],
-    telefono: ['',[Validators.required, Validators.min(8999999999), Validators.max(9000000002)]],
+    telefono: ['',Validators.required],
     correo: ['', [Validators.required, Validators.email]],
     contrasena1: ['',[Validators.required, Validators.minLength(8)]],
     contrasena2: ['', [Validators.required, Validators.minLength(8)]],
@@ -63,9 +65,24 @@ export class AgregarAdministradorComponent implements OnInit {
           contrasena: this.contrasena
         }
         this._dato.postUsuario(this.usuario);
-        alert('Usuarios registrado');
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Ha sido guardado.',
+          showConfirmButton: false,
+          timer: 1500
+          
+        })
       }else{
-        alert('Contraseña no coinciden');
+        // alert('Contraseña no coinciden');
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Contraseñas no coinciden!',
+          text: 'Debe confirmar la contraseña.',
+          showConfirmButton: false,
+          timer: 2000
+        })
       }
     } else {
       this.usuario = {
@@ -78,7 +95,28 @@ export class AgregarAdministradorComponent implements OnInit {
         correo: this.formUsuario.value.correo,
         contrasena: this.formUsuario.value.contrasena1
       }
-     
+      Swal.fire({
+        title: 'Quiere guardar los cambios?',
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: 'Guardar',
+        denyButtonText: 'Cancelar',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this._dato.putUsuario( {
+            idUsuario: this.formUsuario.value.idUsuario,
+            nombre: this.formUsuario.value.nombre,
+            apellido: this.formUsuario.value.apellido,
+            idRol: this.formUsuario.value.rol,
+            cedula: this.formUsuario.value.cedula,
+            telefono: this.formUsuario.value.telefono,
+            correo: this.formUsuario.value.correo,
+            contrasena: this.formUsuario.value.contrasena1});
+          Swal.fire('Editado!', '', 'success')
+        } else if (result.isDenied) {
+          Swal.fire('Los cambios no se guardaron', '', 'info')
+        }
+      })
       this._dato.putUsuario(this.usuario);
     }
     

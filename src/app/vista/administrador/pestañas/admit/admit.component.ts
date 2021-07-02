@@ -74,8 +74,8 @@ export class AdmitComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "60%";
-    // dialogConfig.height = "20%";
+    dialogConfig.width = "50%";
+    dialogConfig.height = "96%";
     this.dialog.open(AgregarAdministradorComponent,dialogConfig);  
   }
 
