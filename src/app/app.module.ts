@@ -56,7 +56,7 @@ import { JwtInteceptorInterceptor } from './servicios/intercepto/jwt-inteceptor.
     RegistrarComponent,
     CargarComponent,
     // CargarComponent,
-    MisPostComponent
+    MisPostComponent,
   ],
   imports: [
     BrowserModule,

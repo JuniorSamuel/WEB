@@ -39,8 +39,8 @@ export class LoginComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "55%";
-    // dialogConfig.height = "20%";
+    dialogConfig.width = "50%";
+    dialogConfig.height = "96%";
     this._dialog.open(RegistrarComponent,dialogConfig);  
   }
 

@@ -1,9 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { ICategoriaVacante } from 'src/app/modelo/categoriaVacante';
 import { IVacante } from 'src/app/modelo/vacante';
-import { ApiService } from 'src/app/servicios/Api/api.service';
 import { DatosService } from 'src/app/servicios/cargar/datos.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { TrabajoDetallesComponent } from '../trabajo-detalles/trabajo-detalles.component';
@@ -30,7 +28,8 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<IVacante>()
 
   //Filtro
-  filtro: string = ''
+  filtro: string = '';
+  pipeprincipal = '';
 
   // MatPaginator Inputs
   length = 100;
