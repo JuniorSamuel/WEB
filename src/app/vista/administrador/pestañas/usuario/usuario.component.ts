@@ -64,7 +64,7 @@ export class UsuarioComponent implements OnInit {
     }
   }
 
-  setFiltro(evento: Event){
+  setFiltro(){
     this.dataSource.filter = this.filtro.trim().toLowerCase();
   }
 
@@ -119,5 +119,3 @@ export class UsuarioComponent implements OnInit {
     this.dialog.open(AgregarAdministradorComponent,dialogConfig);  
   } 
 }
-
-

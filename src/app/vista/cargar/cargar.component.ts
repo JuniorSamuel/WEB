@@ -11,6 +11,7 @@ import { DatosService } from 'src/app/servicios/cargar/datos.service';
 })
 export class CargarComponent implements OnInit {
 
+  usuariosCargador = [];
   vacantesCargadas: boolean= false;
   categoriasCargadas: boolean = false;
   constructor(private datos: DatosService, private routing: Router) { }
