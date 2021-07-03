@@ -39,8 +39,8 @@ export class ApiService {
     return this._http.get<IVacante[]>(this._host+'api/Vacante');
   }
 
-  getUsuarios(): Observable<IUsuario[]>{
-    return this._http.get<IUsuario[]>(this._host +'api/Usuario');
+  getUsuarios(): Observable<any>{
+    return this._http.get<any[]>(this._host +'api/Usuario');
   }
 
   getRol(): Observable<IRol[]> {

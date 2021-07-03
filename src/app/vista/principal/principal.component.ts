@@ -80,10 +80,6 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
     })
   }
 
-  async cargador(){
-    
-  }
-
   filtroVacante(num: number){
     console.log('OK');
     return this.vacantes.filter(x => { x.idCategoria == num});

@@ -44,11 +44,9 @@ export class DatosService {
 
   //Api
   getUsuariosApi() {
-    this._api.getUsuarios().subscribe((respuesta: IUsuario[]) => {
-      this.usuarios = respuesta;
-      console.log('api');
+    this._api.getUsuarios().subscribe((respuesta: any) => {
+      this.usuarios = respuesta.dato;
       this.usuarios$.next(this.usuarios);
-      console.log('Prueba...');
     }, (err: any) => {
       console.error(err);
     });
