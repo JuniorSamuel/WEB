@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormGroupName, Validators, FormBuilder } from '@angular/forms';
 import { MatDialogRef} from '@angular/material/dialog';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-registrar',
   templateUrl: './registrar.component.html',
