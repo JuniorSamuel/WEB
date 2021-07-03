@@ -35,4 +35,7 @@ export class TrabajoDetallesComponent implements OnInit {
     this.categoria = this.temp[0].nombre;
   }
 
+  onClick(): void{
+    this.dialogRef.close();
+  }
 }
