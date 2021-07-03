@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: "Administrador", component: AdministradorComponent, canActivate: [UserGuardGuard, AdmitGuard]},
   { path: "Ofertas/:id/:categoria", component: OfertasComponent, canActivate: [UserGuardGuard]},
   { path: "Vacante", component: TrabajoDetallesComponent, canActivate: [UserGuardGuard]},
-  { path: "Cargardo", component: CargarComponent, canActivate: [UserGuardGuard]},
+  { path: "Cargando", component: CargarComponent, canActivate: [UserGuardGuard]},
   { path: "Mis_post", component: MisPostComponent, canActivate: [UserGuardGuard]},
   // Prueba
   { path: "Nav", component: NavegacionComponent},

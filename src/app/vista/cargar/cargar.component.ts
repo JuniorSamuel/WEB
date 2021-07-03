@@ -35,7 +35,6 @@ export class CargarComponent implements OnInit {
   getCategoria(){
     this.datos.getCategoria().subscribe( (respuesta: ICategoria[]) => {
       this.categoriasCargadas = true;
-      console.log(respuesta);
       this.cargado();
       
     });
@@ -44,7 +43,6 @@ export class CargarComponent implements OnInit {
   getVacante(){
     this.datos.getVacante().subscribe((respuesta: IVacante[]) => {
       this.vacantesCargadas= true;
-      console.log(respuesta);
       this.cargado();
     })
   }

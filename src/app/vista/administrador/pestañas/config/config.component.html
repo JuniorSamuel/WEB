@@ -1,1 +1,6 @@
-<p>config works!</p>
+<form [formGroup]="formConf">
+    <label for="fila">Cantidad de fila:</label>
+    <input type="number" name="fila" id="fila" 
+    formControlName='fila'>
+    <button type="submit" (click)='onSubmit()'> Guardar</button>
+</form>
