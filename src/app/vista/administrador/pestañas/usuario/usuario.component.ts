@@ -2,9 +2,8 @@ import { AgregarAdministradorComponent } from 'src/app/vista/agregar-administrad
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { IUsuario } from 'src/app/modelo/usuario';
-import { ApiService } from 'src/app/servicios/Api/api.service';
 import { AdministradorComponent } from '../../administrador.component';
 import { DatosService } from 'src/app/servicios/cargar/datos.service';
 
@@ -17,11 +16,10 @@ import Swal from 'sweetalert2';
 })
 export class UsuarioComponent implements OnInit {
 
-  datoCargada:boolean = true;
+  //#region Variables
+  datoCargada: boolean = true;
 
   //Table
-  // displayedColumns: string[] = ['Nombre', 'Apellido', 'Edad', 'Acciones'];
-  // dataSource = new MatTableDataSource<usuario>(usuarioDatos);
   displayedColumns: string[] = ['nombre', 'correo', 'Acciones'];
   dataSource = new MatTableDataSource<IUsuario>();
 
@@ -32,29 +30,37 @@ export class UsuarioComponent implements OnInit {
   length = 100;
   pageSize = 10;
   pageSizeOptions: number[] = [5, 10, 25, 100];
+  //#endregion
 
-  
-  constructor(private dialog: MatDialog, private datos: DatosService, private padreComp: AdministradorComponent) { 
+  constructor(
+    private dialog: MatDialog,
+    private datos: DatosService
+  ) {
+
   }
-
-  @ViewChild(MatPaginator)  paginator!: MatPaginator;
-
-  ngAfterViewInit(): void {
-  }
-
 
   ngOnInit(): void {
-   this.padreComp.getUsuario().subscribe((respuesta: IUsuario[]) => {
-     this.table(respuesta.filter(x => {return x.idRol ==2}));
-   });
+    this.table(this.datos.usuarios.filter(x => {return x.idRol ==2}))
+
+      this.datos.getUsuario().subscribe((respuesta: IUsuario[]) => {
+        this.table(respuesta)
+      });
   }
 
-  table(usuarios: IUsuario[]){
-    if(usuarios == []) this.datoCargada = false;
+  table(usuarios: IUsuario[]) {
+    console.log(usuarios);
+    if (usuarios == []) this.datoCargada = false;
     this.dataSource = new MatTableDataSource<IUsuario>(usuarios);
     this.dataSource.paginator = this.paginator;
-    
+
   }
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator
+  }
+
 
   // MatPaginator Output
   pageEvent: PageEvent = new PageEvent;
@@ -64,21 +70,21 @@ export class UsuarioComponent implements OnInit {
     }
   }
 
-  setFiltro(){
+  setFiltro() {
     this.dataSource.filter = this.filtro.trim().toLowerCase();
   }
 
-  
-  onCreate(){
+
+  onCreate() {
     const dialogConfig = new MatDialogConfig();
     // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "50%";
     dialogConfig.height = "96%";
-    this.dialog.open(AgregarAdministradorComponent,dialogConfig);  
+    this.dialog.open(AgregarAdministradorComponent, dialogConfig);
   }
 
-  eliminar(id: number){
+  eliminar(id: number) {
     console.log(id)
     Swal.fire({
       title: 'Esta seguro que desea eliminarlo?',
@@ -92,7 +98,7 @@ export class UsuarioComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log('Selecciono elimiar el ', id);
-        this.datos.deleteUsuario(id).subscribe( x => {
+        this.datos.deleteUsuario(id).subscribe(x => {
           this.datos.getUsuariosApi();
           this.datos.getUsuario();
 
@@ -108,14 +114,14 @@ export class UsuarioComponent implements OnInit {
     })
   }
 
-  onDetalle(usuario: IUsuario, editar: boolean){
+  onDetalle(usuario: IUsuario, editar: boolean) {
     const dialogConfig = new MatDialogConfig();
-    
+
     // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "50%";
     dialogConfig.height = "96%";
-    dialogConfig.data = {usuario, editar};
-    this.dialog.open(AgregarAdministradorComponent,dialogConfig);  
-  } 
+    dialogConfig.data = { usuario, editar };
+    this.dialog.open(AgregarAdministradorComponent, dialogConfig);
+  }
 }

@@ -58,6 +58,7 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
     if(this.categorias.length == 0 || this.vacantes.length == 0){
       this._route.navigate(['Cargando']);
     }
+    console.log(this.categorias.filter(x => x['nombre'].toLocaleLowerCase().includes(this.filtro)));
   }
 
   // MatPaginator Output
@@ -68,13 +69,10 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
     }
   }
 
-  setFiltro() {
-    //this.dataSource.filter = this.filtro.trim().toLowerCase();
-  }
+
 
   
   filtroVacante(num: number) {
-    console.log('OK');
     return this.vacantes.filter(x => { x.idCategoria == num });
   }
 

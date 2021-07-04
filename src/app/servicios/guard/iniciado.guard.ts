@@ -16,7 +16,7 @@ export class IniciadoGuard implements CanActivate {
 
     const cookie = this.cookieS.check('token');
     if (cookie) {
-      this.router.navigate(['/Cargardo'])
+      this.router.navigate(['/Cargando'])
     } else {
       return true;
     }
