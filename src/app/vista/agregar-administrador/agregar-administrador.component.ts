@@ -69,24 +69,34 @@ export class AgregarAdministradorComponent implements OnInit {
           contrasena: this.contrasena
         }
         this._dato.postUsuario(this.usuario);
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Ha sido guardado.',
-          showConfirmButton: false,
-          timer: 1500
-          
-        })
+        Swal.fire(
+          'Guardado',
+          'Ha sido guardado con exito!',
+          'success'
+        )
+        // Swal.fire({
+        //   position: 'top-end',
+        //   icon: 'success',
+        //   title: 'Ha sido guardado.',
+        //   showConfirmButton: false,
+        //   timer: 1500
+        // })
       }else{
         // alert('Contraseña no coinciden');
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'Contraseñas no coinciden!',
-          text: 'Debe confirmar la contraseña.',
-          showConfirmButton: false,
-          timer: 2000
-        })
+        Swal.fire(
+          'Contraseñas no coinciden!',
+          'Debe coincidir ambas contraseñas.',
+          'error'
+        )
+        // Swal.fire({
+        //   position: 'top-end',
+        //   icon: 'error',
+        //   title: 'Contraseñas no coinciden!',
+        //   text: 'Debe confirmar la contraseña.',
+        //   showConfirmButton: false,
+        //   timer: 2000
+        // })
+        // this.onSubmit();
       }
     } else {
       this.usuario = {
