@@ -44,7 +44,7 @@ export class UsuarioComponent implements OnInit {
 
 
   ngOnInit(): void {
-   this.padreComp.getUsuario().subscribe((respuesta: IUsuario[]) => {
+   this.datos.getUsuario().subscribe((respuesta: IUsuario[]) => {
      this.table(respuesta.filter(x => {return x.idRol ==2}));
    });
   }
