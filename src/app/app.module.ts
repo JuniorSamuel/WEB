@@ -13,7 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { UsuarioComponent } from './vista/administrador/pestañas/usuario/usuario.component';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PosterComponent } from './vista/administrador/pestañas/poster/poster.component';
 import { CategoriaComponent } from './vista/administrador/pestañas/categoria/categoria.component';
 import { PostComponent } from './vista/administrador/pestañas/post/post.component';
@@ -35,6 +35,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { RegistrarComponent } from './vista/registrar/registrar.component';
 import { MisPostComponent } from './vista/mis-post/mis-post.component';
 import { JwtInteceptorInterceptor } from './servicios/intercepto/jwt-inteceptor.interceptor';
+import { FiltroTablaPipe } from './pipe/filtro-tabla.pipe';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { JwtInteceptorInterceptor } from './servicios/intercepto/jwt-inteceptor.
     CargarComponent,
     // CargarComponent,
     MisPostComponent,
+    FiltroTablaPipe,
   ],
   imports: [
     BrowserModule,

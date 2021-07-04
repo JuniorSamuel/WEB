@@ -55,7 +55,8 @@ export class LoginComponent implements OnInit {
         this._cookie.set('telefono', respuesta.data.telefono+'');
         this._cookie.set('correo', respuesta.data.correo);
         this._cookie.set('rol', respuesta.data.idRol+'')
-        this._rout.navigate(['Cargardo']);
+        this._cookie.set('fila', '10');
+        this._rout.navigate(['Cargando']);
       } else {
         alert(respuesta.mensaje);
       }

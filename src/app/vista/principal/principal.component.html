@@ -6,12 +6,12 @@
     <div class="col-12 col-md-4">
       <form>
         <input class=" form-control" type="text" name="buscarCategoria" id="buscarCategoria"
-          placeholder="Buscar Categoria" (keyup)="setFiltro()" value="" [(ngModel)]="pipeprincipal">
+          placeholder="Buscar Categoria"  value="" [(ngModel)]="filtro">
       </form>
     </div>
   </div>
 
-  <div class="table table-s" *ngFor='let categoria of cat'>
+  <div class="table table-s" *ngFor='let categoria of categorias | filtroTabla: filtro'>
     <table class="table my-3">
       <thead>
         <tr>

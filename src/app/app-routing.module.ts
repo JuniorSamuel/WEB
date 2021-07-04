@@ -21,20 +21,14 @@ import { PostGuard } from './servicios/guard/post.guard';
 const routes: Routes = [
   { path: '', redirectTo: 'Login', pathMatch: 'full' },
   { path: "Login", component: LoginComponent, canActivate: [IniciadoGuard]},
-  { path: "Principal", component: PrincipalComponent, canActivate: [UserGuardGuard]},
-  { path: "Agregar_post", component: AgregarPostComponent, canActivate: [UserGuardGuard, PostGuard]},
-  { path: "Administrador", component: AdministradorComponent, canActivate: [UserGuardGuard, AdmitGuard]},
+  { path: "Principal", component: PrincipalComponent, canActivate: [UserGuardGuard]},  
   { path: "Ofertas/:id/:categoria", component: OfertasComponent, canActivate: [UserGuardGuard]},
   { path: "Vacante", component: TrabajoDetallesComponent, canActivate: [UserGuardGuard]},
-  { path: "Cargardo", component: CargarComponent, canActivate: [UserGuardGuard]},
+  { path: "Cargando", component: CargarComponent, canActivate: [UserGuardGuard]},
   { path: "Mis_post", component: MisPostComponent, canActivate: [UserGuardGuard]},
-  // Prueba
-  { path: "Nav", component: NavegacionComponent},
-  
-  //hasta aqui
- 
-  // {path: "Agregar_Categoria", component: AgregarcategoriaComponent},
-  {path: "PerfilU", component: PerfilComponent}
+  { path: "Agregar_post", component: AgregarPostComponent, canActivate: [UserGuardGuard, PostGuard]},
+  { path: "Administrador", component: AdministradorComponent, canActivate: [UserGuardGuard, AdmitGuard]},
+  { path: "PerfilU", component: PerfilComponent}
 ];
 
 @NgModule({
@@ -45,15 +39,11 @@ export class AppRoutingModule { }
 
 export const routesComponent = [
   LoginComponent,
-  // RegistroComponent,
   PrincipalComponent,
   AgregarPostComponent,
   AdministradorComponent,
-  OfertasComponent
-
-  // Prueba
-  ,NavegacionComponent,
-  // AgregarcategoriaComponent,
+  OfertasComponent,
+  NavegacionComponent,
   PerfilComponent,
   TrabajoDetallesComponent,
   PieComponent

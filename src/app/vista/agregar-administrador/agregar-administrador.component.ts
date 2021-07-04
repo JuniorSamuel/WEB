@@ -44,9 +44,11 @@ export class AgregarAdministradorComponent implements OnInit {
       this.onEdit();
       if (!this.editar.editar) {
         this.onInavilitar();
+        this.habilitar = false;
       }
     } else {
-      this.formUsuario.controls['rol'].setValue("2")
+      this.formUsuario.controls['rol'].setValue("2");
+      
     }
   }
 
@@ -119,7 +121,6 @@ export class AgregarAdministradorComponent implements OnInit {
           Swal.fire('Los cambios no se guardaron', '', 'info')
         }
       })
-      // this._dato.putUsuario(this.usuario);
     }
     
     this.onClickNo()

@@ -1,5 +1,6 @@
 <div class="container mt-2">
-    <h1>{{detalle.categoria}} - {{detalle.vacante.horario}}</h1>
+    <h1>{{categoria}} - {{detalle.vacante.horario}}</h1>
+    <b>Publicado - {{detalle.vacante.fecha}}</b>
     <b>{{detalle.vacante.ubicacion}}</b> <br>
     <b>{{detalle.vacante.compania}}</b> <br>
     <h2 class="mt-2">Contacto:</h2>
@@ -19,5 +20,8 @@
         <p class="Descripcion">
             {{detalle.vacante.descripcion}}
         </p>
+    </div>
+    <div>
+        <button class="btn btn-danger" (click)="onClick()">Cerrar</button>
     </div>
 </div>
