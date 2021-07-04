@@ -15,5 +15,4 @@ export class FiltroTablaPipe implements PipeTransform {
    }
     return resul;
   }
-
 }

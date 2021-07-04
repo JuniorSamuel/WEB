@@ -27,8 +27,8 @@ export class AgregarAdministradorComponent implements OnInit {
     cedula: ['', Validators.required],
     telefono: ['',Validators.required],
     correo: ['', [Validators.required, Validators.email]],
-    // contrasena1: ['',[Validators.required, Validators.minLength(8)]],
-    // contrasena2: ['', [Validators.required, Validators.minLength(8)]],
+    contrasena1: [''],
+    contrasena2: [''],
     rol: ['',Validators.required]
   });
   constructor(
@@ -42,9 +42,11 @@ export class AgregarAdministradorComponent implements OnInit {
       this.onEdit();
       if (!this.editar.editar) {
         this.onInavilitar();
+        this.habilitar = false;
       }
     } else {
-      this.formUsuario.controls['rol'].setValue("2")
+      this.formUsuario.controls['rol'].setValue("2");
+      
     }
   }
 
@@ -117,7 +119,6 @@ export class AgregarAdministradorComponent implements OnInit {
           Swal.fire('Los cambios no se guardaron', '', 'info')
         }
       })
-      // this._dato.putUsuario(this.usuario);
     }
     
     this.onClickNo()
