@@ -32,13 +32,13 @@ export class PerfilComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  onDetalle(usuario: IUsuario, editar: boolean){
+  onDetalle(){
     const dialogConfig = new MatDialogConfig();
     // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "50%";
     dialogConfig.height = "96%";
-    dialogConfig.data = {usuario, editar};
+    dialogConfig.data = {usuario: this.usuario, editar: true};
     this.dialog.open(AgregarAdministradorComponent,dialogConfig);  
   }
 }

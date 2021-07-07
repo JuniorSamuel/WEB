@@ -49,7 +49,8 @@ export class LoginComponent implements OnInit {
   login(){
     
     this._api.login({ correo: this.loginForm.value.correo, contrasena: this.loginForm.value.contrasena}).subscribe((respuesta: ILoginRespuesta) => {
-      if (respuesta.exito == 1 || respuesta ==null) {
+      console.log('respuesta');
+      if (respuesta.exito == 1) {
               this._cookie.set('token', respuesta.data.token);
         this._cookie.set('ID', respuesta.data.idUsuario+'');
         this._cookie.set('nombre', respuesta.data.nombre);
@@ -63,6 +64,8 @@ export class LoginComponent implements OnInit {
         alert(respuesta.mensaje);
       }
     }, (err: any) => {
+      console.log('respuesta error');
+      this.alertBothIncorrect();
       console.error(err);
     });
   }
@@ -82,7 +85,7 @@ export class LoginComponent implements OnInit {
   }
   alertBothIncorrect(){
     Swal.fire(
-      'Usuario y Contraseña Incorrectos!',
+      'Usuario y/o Contraseña Incorrectos!',
       'Debe ingresar un Usuario y una Contraseña validos!',
       'error',
     )
