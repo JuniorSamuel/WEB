@@ -65,6 +65,10 @@ export class ApiService {
     return this._http.post<ILoginRespuesta>(this._host + "api/Login/login", user);
   }
 
+  registralUsuario(usuario: IUsuario): Observable<IUsuario>{
+    return this._http.post<IUsuario>(this._host+'api/Login/Registro', usuario);
+  }
+
   //Delete
   deleteCategoria(id: number): Observable<any>{
     return this._http.delete(this._host + "api/Categoria?CategoriaId=" + id);

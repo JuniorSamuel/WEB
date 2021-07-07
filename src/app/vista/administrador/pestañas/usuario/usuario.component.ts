@@ -35,15 +35,11 @@ export class UsuarioComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private datos: DatosService
-  ) {
-
-  }
+  ) { }
 
   ngOnInit(): void {
-    this.table(this.datos.usuarios.filter(x => {return x.idRol ==2}))
-
       this.datos.getUsuario().subscribe((respuesta: IUsuario[]) => {
-        this.table(respuesta)
+        this.table(this.datos.usuarios.filter(x => {return x.idRol ==2}));
       });
   }
 

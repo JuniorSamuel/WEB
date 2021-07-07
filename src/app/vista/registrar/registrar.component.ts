@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormGroupName, Validators, FormBuilder } from '@angular/forms';
 import { MatDialogRef} from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { ILoginRespuesta } from 'src/app/modelo/login-respuesta';
 import { IUsuario } from 'src/app/modelo/usuario';
+import { ApiService } from 'src/app/servicios/Api/api.service';
 import { DatosService } from 'src/app/servicios/cargar/datos.service';
 
 import Swal from 'sweetalert2';
@@ -28,7 +32,12 @@ export class RegistrarComponent implements OnInit {
     rol: ['',Validators.required]
   });
 
-  constructor(private formBuilder: FormBuilder, public dialogRef: MatDialogRef<RegistrarComponent>,private _dato: DatosService,) { }
+  constructor(
+    private formBuilder: FormBuilder, 
+    public dialogRef: MatDialogRef<RegistrarComponent>,
+    private _api: ApiService, 
+    private _cookie: CookieService,
+    private _router: Router) { }
 
   ngOnInit(): void {
   }
@@ -45,7 +54,30 @@ export class RegistrarComponent implements OnInit {
         correo: this.formRegis.value.correo,
         contrasena: this.contrasena
       }
-      this._dato.postUsuario(this.usuario);
+      this._api.registralUsuario(this.usuario).subscribe((respuesta: IUsuario) => {
+        // this._api.login({ correo: respuesta.correo, contrasena: respuesta.contrasena}).subscribe((respuesta: ILoginRespuesta) => {
+        //   if (respuesta.exito == 1) {
+        //           this._cookie.set('token', respuesta.data.token);
+        //     this._cookie.set('ID', respuesta.data.idUsuario+'');
+        //     this._cookie.set('nombre', respuesta.data.nombre);
+        //     this._cookie.set('apellido', respuesta.data.apellido)
+        //     this._cookie.set('cedula', respuesta.data.cedula+'');
+        //     this._cookie.set('telefono', respuesta.data.telefono+'');
+        //     this._cookie.set('correo', respuesta.data.correo);
+        //     this._cookie.set('rol', respuesta.data.idRol+'')
+        //     this._cookie.set('fila', '10');
+        //     this._router.navigate(['Cargando']);
+        //   } else {
+        //     alert(respuesta.mensaje);
+        //   }
+        // }, (err: any) => {
+        //   console.error(err);
+        // });
+
+      }, (err: any) => {
+        console.log(err)
+      });
+      ;
       this.onClickNo();
       Swal.fire({
         position: 'top-end',
