@@ -8,6 +8,8 @@ import { ILoginRespuesta } from 'src/app/modelo/login-respuesta';
 import { CookieService } from 'ngx-cookie-service';
 import { FormBuilder, Validators } from '@angular/forms';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -47,7 +49,8 @@ export class LoginComponent implements OnInit {
   login(){
     
     this._api.login({ correo: this.loginForm.value.correo, contrasena: this.loginForm.value.contrasena}).subscribe((respuesta: ILoginRespuesta) => {
-      if (respuesta.exito == 1 || respuesta ==null) {
+      console.log('respuesta');
+      if (respuesta.exito == 1) {
               this._cookie.set('token', respuesta.data.token);
         this._cookie.set('ID', respuesta.data.idUsuario+'');
         this._cookie.set('nombre', respuesta.data.nombre);
@@ -62,8 +65,31 @@ export class LoginComponent implements OnInit {
         alert(respuesta.mensaje);
       }
     }, (err: any) => {
+      console.log('respuesta error');
+      this.alertBothIncorrect();
       console.error(err);
     });
+  }
+  alertPasswordIncorrect(){
+    Swal.fire(
+      'Contraseña Incorrecta!',
+      'Debe ingresar una contraseña valida!',
+      'error',
+    )
+  }
+  alertUserIncorrect(){
+    Swal.fire(
+      'Usuario Incorrecto!',
+      'Debe ingresar un Usuario valido!',
+      'error',
+    )
+  }
+  alertBothIncorrect(){
+    Swal.fire(
+      'Usuario y/o Contraseña Incorrectos!',
+      'Debe ingresar un Usuario y una Contraseña validos!',
+      'error',
+    )
   }
 
 }
