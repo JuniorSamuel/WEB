@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit {
               this._cookie.set('token', respuesta.data.token);
         this._cookie.set('ID', respuesta.data.idUsuario+'');
         this._cookie.set('nombre', respuesta.data.nombre);
+        this._cookie.set('apellido', respuesta.data.apellido)
         this._cookie.set('cedula', respuesta.data.cedula+'');
         this._cookie.set('telefono', respuesta.data.telefono+'');
         this._cookie.set('correo', respuesta.data.correo);

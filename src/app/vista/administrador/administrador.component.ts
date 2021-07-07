@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { IRol } from 'src/app/modelo/rol';
 import { IUsuario } from 'src/app/modelo/usuario';
-
 import { DatosService } from 'src/app/servicios/cargar/datos.service';
 
 @Component({
@@ -12,9 +11,9 @@ import { DatosService } from 'src/app/servicios/cargar/datos.service';
 })
 export class AdministradorComponent implements OnInit {
 
-  usuarios: IUsuario[];
-  private observador$: Subject<IUsuario[]>;
-  rol: IRol[];
+  usuarios: IUsuario[] = [];
+  private observador$: Subject<IUsuario[]> = new Subject();
+  rol: IRol[] = [];
 
   constructor(
     private _datos: DatosService

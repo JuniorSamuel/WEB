@@ -14,7 +14,7 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item active" *ngIf='rol==1'>
-                        <a class="nav-link" (click)='admit()'> Administrador </a>
+                        <a class="nav-link" routerLink='/Administrador'> Administrador </a>
                     </li>
                     <li class="nav-item" *ngIf='rol==3'>
                         <a class="nav-link" routerLink="/Mis_post"> Ver mis post </a>

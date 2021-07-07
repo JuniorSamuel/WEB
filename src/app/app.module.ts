@@ -57,7 +57,7 @@ import { FiltroTablaPipe } from './pipe/filtro-tabla.pipe';
     RegistrarComponent,
     CargarComponent,
     // CargarComponent,
-    MisPostComponent,
+    MisPostComponent,  
     FiltroTablaPipe,
   ],
   imports: [

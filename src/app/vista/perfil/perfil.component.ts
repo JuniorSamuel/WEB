@@ -15,8 +15,7 @@ export class PerfilComponent implements OnInit {
     this.usuario = {
       idUsuario: parseInt(this.cookieS.get('ID')),
       nombre: cookieS.get('nombre'), 
-      // apellido: 'No carga', 
-      apellido: ('apellido'), 
+      apellido: cookieS.get('apellido'), 
       telefono: parseInt(this.cookieS.get('telefono')),
       cedula: parseInt(this.cookieS.get('cedula')),
       idRol: parseInt(this.cookieS.get('rol')),

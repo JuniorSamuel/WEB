@@ -37,7 +37,6 @@ export class CategoriaComponent implements OnInit {
   ngOnInit(): void {
     this.table(this.datos.categorias);
     if(this.datos.categorias != []){
-      this.datos.getCategoriasApi();
       this.datos.getCategoria().subscribe((respuesta: ICategoria[]) => {
         this.table(respuesta);
       });
