@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AgregarcategoriaComponent } from './agregarcategoria.component';
+import { CargarAdmitComponent } from './cargar-admit.component';
 
-describe('AgregarcategoriaComponent', () => {
-  let component: AgregarcategoriaComponent;
-  let fixture: ComponentFixture<AgregarcategoriaComponent>;
+describe('CargarAdmitComponent', () => {
+  let component: CargarAdmitComponent;
+  let fixture: ComponentFixture<CargarAdmitComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AgregarcategoriaComponent ]
+      declarations: [ CargarAdmitComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AgregarcategoriaComponent);
+    fixture = TestBed.createComponent(CargarAdmitComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

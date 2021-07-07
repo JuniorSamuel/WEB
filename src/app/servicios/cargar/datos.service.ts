@@ -96,6 +96,7 @@ export class DatosService {
   }
 
   postVacante(vacante: IVacante){
+    console.log(vacante);
     this._api.postVacante(vacante).subscribe((vacante: IVacante) =>{
       this.vacante.push(vacante);
       this.vacante$.next(this.vacante);
@@ -151,6 +152,7 @@ export class DatosService {
   }
 
   putVacante(vacante: IVacante) {
+    console.log(vacante);
     this._api.putVacante(vacante).subscribe(x => {
       this.getVacanteApi()
     }, (err: any) => {
