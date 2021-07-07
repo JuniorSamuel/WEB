@@ -24,6 +24,7 @@ export class AdministradorComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this._datos.getUsuariosApi()
     if (this.usuarios.length == 0) {
       this._datos.getUsuariosApi();
       this._datos.getUsuario().subscribe((respuesta: IUsuario[]) => {

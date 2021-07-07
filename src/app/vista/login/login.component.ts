@@ -49,7 +49,6 @@ export class LoginComponent implements OnInit {
   login(){
     
     this._api.login({ correo: this.loginForm.value.correo, contrasena: this.loginForm.value.contrasena}).subscribe((respuesta: ILoginRespuesta) => {
-      console.log('respuesta');
       if (respuesta.exito == 1) {
               this._cookie.set('token', respuesta.data.token);
         this._cookie.set('ID', respuesta.data.idUsuario+'');
