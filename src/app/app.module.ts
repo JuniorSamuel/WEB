@@ -7,9 +7,10 @@ import { MatInputModule} from '@angular/material/input';
 
 import { AppRoutingModule, routesComponent } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { UsuarioComponent } from './vista/administrador/pestañas/usuario/usuario.component';
@@ -76,6 +77,7 @@ import { CargarAdmitComponent } from './vista/cargar-admit/cargar-admit.componen
   ],
 
   providers: [
+    routesComponent,
     ApiService,
     {
       provide: HTTP_INTERCEPTORS,
