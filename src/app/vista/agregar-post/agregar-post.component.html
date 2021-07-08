@@ -163,7 +163,7 @@
 
         <div class="form-group row mt-3">
             <div class="col-sm-12 col-md-2">
-                <button type="submit" value="Agregar" class="btn btn-success" [disabled]="postForm.invalid">Guardar</button>
+                <button type="submit" value="Agregar" class="btn btn-success" (click)="onSubmit()" [disabled]="postForm.invalid">Guardar</button>
             </div>
             <div class="col-sm-12 col-md-2">
                 <button type="reset" value="Cancelar" class="btn btn-danger" (click)="onClickNo()">Cancelar</button>

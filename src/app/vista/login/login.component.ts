@@ -61,11 +61,12 @@ export class LoginComponent implements OnInit {
         this._cookie.set('fila', '10');
         this._rout.navigate(['Cargando']);
       } else {
-        alert(respuesta.mensaje);
+        // alert(respuesta.mensaje);
+        this.alertBothIncorrect();
       }
     }, (err: any) => {
       console.log('respuesta error');
-      this.alertBothIncorrect();
+      // this.alertBothIncorrect();
       console.error(err);
     });
   }
