@@ -26,6 +26,15 @@ export class ApiService {
 
   private _host: string = 'https://api-job.azurewebsites.net/';
 
+  //Verificación
+  VerificarAuth(): Observable<any>{
+    return this._http.get<any>(this._host + 'api/Verificar');
+  }
+
+  VerificarUser(usuario: IUsuario): Observable<any>{
+    return this._http.post(this._host + 'api/Verificar', usuario);
+  }
+
   //GET ALL
   getCategorias(): Observable<ICategoria[]>{
     return this._http.get<ICategoria[]>(this._host +'api/Categoria');

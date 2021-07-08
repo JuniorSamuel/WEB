@@ -35,6 +35,7 @@ export class AdministradorComponent implements OnInit {
     if(this.categorias.length == 0 || this.vacantes.length == 0 || this.usuarios.length == 0){
       this._router.navigate(['Cargando_Administrador']);
     }
+    
     this._datos.getUsuariosApi()
     if (this.usuarios.length == 0) {
       this._datos.getUsuariosApi();
