@@ -45,7 +45,7 @@ export class AgregarPostComponent implements OnInit {
 
   onSubmit() {
     if (this.editar == null) {
-      this._datos.postVacante({
+      this.vacante={
         idVacante: 0,
         idCategoria: this.postForm.value.idCategoria,
         compania: this.postForm.value.campania,
@@ -57,7 +57,8 @@ export class AgregarPostComponent implements OnInit {
         ubicacion: this.postForm.value.ubicacion,
         idUsuario: this.postForm.value.idUsuario,
         fecha: new Date()
-      });
+      };
+      this._datos.postVacante(this.vacante);
       Swal.fire({
         position: 'top-end',
         icon: 'success',

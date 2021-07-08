@@ -112,7 +112,11 @@ export class PostComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log('Selecciono elimiar el ', id);
-        this.datos.deleteVacante(id);
+        this.datos.deleteVacante(id).subscribe((respuesta: any) => {
+          console.log(respuesta)
+        }, (err: any) => {
+          console.error(err)
+        });
         Swal.fire(
           'Eliminado!',
           'Ha sido eliminado.',
