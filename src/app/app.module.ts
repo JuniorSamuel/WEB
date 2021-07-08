@@ -25,7 +25,6 @@ import { ModalpruebaComponent } from './vista/administrador/pestañas/usuario/mo
 import { OfertasComponent } from './vista/ofertas/ofertas.component';
 
 import {MatDialogModule} from '@angular/material/dialog';//PARA PRUEBA
-import { AgregarcategoriaComponent } from './vista/agregarcategoria/agregarcategoria.component';//PARA PRUEBA
 import { AgregarPostComponent } from './vista/agregar-post/agregar-post.component';
 import { AgregarAdministradorComponent } from './vista/agregar-administrador/agregar-administrador.component';
 import { AgregarCategoriaComponent } from './vista/agregar-categoria/agregar-categoria.component';
@@ -36,6 +35,7 @@ import { RegistrarComponent } from './vista/registrar/registrar.component';
 import { MisPostComponent } from './vista/mis-post/mis-post.component';
 import { JwtInteceptorInterceptor } from './servicios/intercepto/jwt-inteceptor.interceptor';
 import { FiltroTablaPipe } from './pipe/filtro-tabla.pipe';
+import { CargarAdmitComponent } from './vista/cargar-admit/cargar-admit.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +58,7 @@ import { FiltroTablaPipe } from './pipe/filtro-tabla.pipe';
     CargarComponent,
     // CargarComponent,
     MisPostComponent,  
-    FiltroTablaPipe,
+    FiltroTablaPipe, CargarAdmitComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,7 +89,7 @@ import { FiltroTablaPipe } from './pipe/filtro-tabla.pipe';
   ],
   bootstrap: [AppComponent],
 
-  entryComponents:[AgregarcategoriaComponent, AgregarPostComponent] //PARA ABRIR DIALOG
+  entryComponents:[AgregarCategoriaComponent, AgregarPostComponent] //PARA ABRIR DIALOG
 
 })
 export class AppModule { }

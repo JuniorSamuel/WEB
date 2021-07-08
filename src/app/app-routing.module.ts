@@ -17,6 +17,7 @@ import { UserGuardGuard } from './servicios/guard/user-guard.guard';
 import { IniciadoGuard } from './servicios/guard/iniciado.guard';
 import { AdmitGuard } from './servicios/guard/admit.guard';
 import { PostGuard } from './servicios/guard/post.guard';
+import { CargarAdmitComponent } from './vista/cargar-admit/cargar-admit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'Login', pathMatch: 'full' },
@@ -28,7 +29,8 @@ const routes: Routes = [
   { path: "Mis_post", component: MisPostComponent, canActivate: [UserGuardGuard]},
   { path: "Agregar_post", component: AgregarPostComponent, canActivate: [UserGuardGuard, PostGuard]},
   { path: "Administrador", component: AdministradorComponent, canActivate: [UserGuardGuard, AdmitGuard]},
-  { path: "PerfilU", component: PerfilComponent}
+  { path: "PerfilU", component: PerfilComponent},
+  { path: "Cargando_Administrador", component: CargarAdmitComponent, canActivate: [UserGuardGuard, AdmitGuard] }
 ];
 
 @NgModule({
@@ -46,5 +48,6 @@ export const routesComponent = [
   NavegacionComponent,
   PerfilComponent,
   TrabajoDetallesComponent,
-  PieComponent
+  PieComponent,
+  CargarAdmitComponent
 ];

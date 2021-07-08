@@ -44,7 +44,6 @@ export class UsuarioComponent implements OnInit {
   }
 
   table(usuarios: IUsuario[]) {
-    console.log(usuarios);
     if (usuarios == []) this.datoCargada = false;
     this.dataSource = new MatTableDataSource<IUsuario>(usuarios);
     this.dataSource.paginator = this.paginator;

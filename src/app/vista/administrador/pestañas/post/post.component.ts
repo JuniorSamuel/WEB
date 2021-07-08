@@ -37,10 +37,12 @@ export class PostComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.datos.getVacante().subscribe((respuesta: IVacante[]) => {
-      this.table(respuesta);
-    });
-    this.table(this.datos.vacante)
+    this.table(this.datos.vacante);
+    if (this.datos.vacante != []) {
+      this.datos.getVacante().subscribe((respuesta: IVacante[]) => {
+        this.table(respuesta);
+      });
+    }
   }
 
   table(usuarios: IVacante[]) {

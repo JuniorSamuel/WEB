@@ -51,9 +51,11 @@ export class MisPostComponent implements OnInit {
   }
   ngOnInit(): void {
     if (this.vacantes.length == 0) {
+      console.log('Cero')
       this._datos.getVacanteApi();
       this.getVacante();
     }
+    this.tabla(this._datos.vacante);
   }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -95,9 +97,20 @@ export class MisPostComponent implements OnInit {
     dialogConfig.data = { vacante };
     this.dialog.open(TrabajoDetallesComponent, dialogConfig);
   }
+
+  onCreate() {
+    const dialogConfig = new MatDialogConfig();
+    // dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "50%";
+    dialogConfig.height = "96%";
+    this.dialog.open(AgregarPostComponent, dialogConfig);
+  }
+  
   eliminar(id: number) {
     this._datos.deleteVacante(id);
   }
+  
   onEditar(vacante: IVacante) {
     const dialogConfig = new MatDialogConfig();
     // dialogConfig.disableClose = true;
