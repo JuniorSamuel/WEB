@@ -8,7 +8,7 @@ describe('CargarAdmitComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CargarAdmitComponent ]
+      imports: [ CargarAdmitComponent ]
     })
     .compileComponents();
   });
@@ -17,9 +17,5 @@ describe('CargarAdmitComponent', () => {
     fixture = TestBed.createComponent(CargarAdmitComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
   });
 });
