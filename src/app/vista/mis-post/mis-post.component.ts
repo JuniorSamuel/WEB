@@ -120,13 +120,5 @@ export class MisPostComponent implements OnInit {
     dialogConfig.data = vacante;
     this.dialog.open(AgregarPostComponent, dialogConfig);
   }
-  onCreate() {
-    const dialogConfig = new MatDialogConfig();
-    // dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = "50%";
-    dialogConfig.height = "96%";
-    this.dialog.open(AgregarPostComponent, dialogConfig);
-  }
 }
 

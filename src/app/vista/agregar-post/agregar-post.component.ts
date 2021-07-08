@@ -68,8 +68,7 @@ export class AgregarPostComponent implements OnInit {
         ubicacion: this.postForm.value.ubicacion,
         idUsuario: this.id,
         fecha: new Date()
-      };
-      this._datos.postVacante(this.vacante);
+      });
       Swal.fire({
         position: 'top-end',
         icon: 'success',
