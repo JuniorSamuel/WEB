@@ -107,8 +107,10 @@ export class AgregarAdministradorComponent implements OnInit {
         cedula: this.formUsuario.value.cedula,
         telefono: this.formUsuario.value.telefono,
         correo: this.formUsuario.value.correo,
-        contrasena: this.formUsuario.value.contrasena1
+        contrasena: this.contrasena
       }
+
+      console.log(this.usuario)
       Swal.fire({
         title: 'Quiere guardar los cambios?',
         showDenyButton: true,
@@ -125,7 +127,7 @@ export class AgregarAdministradorComponent implements OnInit {
             cedula: this.formUsuario.value.cedula,
             telefono: this.formUsuario.value.telefono,
             correo: this.formUsuario.value.correo,
-            contrasena: this.formUsuario.value.contrasena1});
+            contrasena: this.contrasena});
           Swal.fire('Editado!', '', 'success')
         } else if (result.isDenied) {
           Swal.fire('Los cambios no se guardaron', '', 'info')

@@ -52,8 +52,9 @@ export class RegistrarComponent implements OnInit {
         cedula: this.formRegis.value.cedula,
         telefono: this.formRegis.value.telefono,
         correo: this.formRegis.value.correo,
-        contrasena: this.contrasena
+        contrasena: this.formRegis.value.contrasena1
       }
+      console.log(this.usuario)
       this._api.registralUsuario(this.usuario).subscribe((respuesta: IUsuario) => {
         // this._api.login({ correo: respuesta.correo, contrasena: respuesta.contrasena}).subscribe((respuesta: ILoginRespuesta) => {
         //   if (respuesta.exito == 1) {

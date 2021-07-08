@@ -31,7 +31,6 @@
                 <select class="form-select" name="select" formControlName="rol">
                     <option value="3"> Poster</option>
                     <option value="2"> Usuario</option>
-                    <option value="1"> Administrador</option>
                 </select>
                 <div *ngIf="formRegis.get('rol')?.errors && formRegis.get('rol')?.touched">
                     <p *ngIf="formRegis.get('rol')?.hasError('required')" class="color-red">
