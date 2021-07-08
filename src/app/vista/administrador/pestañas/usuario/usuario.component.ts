@@ -80,7 +80,6 @@ export class UsuarioComponent implements OnInit {
   }
 
   eliminar(id: number) {
-    console.log(id)
     Swal.fire({
       title: 'Esta seguro que desea eliminarlo?',
       text: "No podra revertir los cambios!",
@@ -92,7 +91,6 @@ export class UsuarioComponent implements OnInit {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log('Selecciono elimiar el ', id);
         this.datos.deleteUsuario(id).subscribe(x => {
           this.datos.getUsuariosApi();
           this.datos.getUsuario();

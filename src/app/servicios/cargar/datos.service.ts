@@ -54,7 +54,6 @@ private userVal$: Subject<boolean>;
   //Verificar
   verificarAuth(): boolean{
     this._api.VerificarAuth().subscribe( x => {
-      console.log('ai',x);
       this.auth = x;      
     },(err: HttpErrorResponse) => {
       if (err.status === 401) {
