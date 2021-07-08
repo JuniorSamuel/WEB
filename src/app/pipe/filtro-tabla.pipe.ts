@@ -13,6 +13,7 @@ export class FiltroTablaPipe implements PipeTransform {
        resul.push(elemento);
      }
    }
+
     return resul;
   }
 }

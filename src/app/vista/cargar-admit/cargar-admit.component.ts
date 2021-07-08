@@ -35,9 +35,12 @@ export class CargarAdmitComponent implements OnInit {
 
     this._api.VerificarUser(this._datos.getUsuarioCookei()).subscribe((respuesta: boolean) => {
       this._datos.userVal = respuesta;
-      if(respuesta) this.cargado()
-      else this._datos.deleteCookie();
-      this._router.navigate(['Login'])
+      if(respuesta) {
+        this.cargado()
+      }else {
+        this._datos.deleteCookie();
+        this._router.navigate(['Login']);
+      }
     });
     
     if(this._datos.categorias != []){
@@ -79,7 +82,6 @@ export class CargarAdmitComponent implements OnInit {
     this._datos.getCategoria().subscribe((respuesta: ICategoria[]) => {
       this.categoriasCargadas = true;
       this.cargado();
-
     });
   }
 

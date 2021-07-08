@@ -43,7 +43,7 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
     private _dialog: MatDialog, private cookie: CookieService
   ) {
     this.categorias = _datos.categorias;
-    this.vacantes = _datos.vacante;
+    this.vacantes = _datos.vacante.sort();
     this.fila = parseInt(cookie.get('fila'))
   }
 
@@ -58,7 +58,6 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
     if(this.categorias.length == 0 || this.vacantes.length == 0){
       this._route.navigate(['Cargando']);
     }
-    console.log(this.categorias.filter(x => x['nombre'].toLocaleLowerCase().includes(this.filtro)));
   }
 
   // MatPaginator Output
@@ -68,8 +67,6 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
       this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
     }
   }
-
-
 
   
   filtroVacante(num: number) {
