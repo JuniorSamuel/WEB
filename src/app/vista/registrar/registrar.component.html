@@ -109,14 +109,13 @@
                 </div>
             </div>
         </div>
-            <div class="form-group row mt-3">
-                <div class="col-sm-12 col-md-2">
-                    <button type="submit" class="btn bg-blue-p text-center" [disabled]="formRegis.invalid"
-                    (click)="onSubmit()">Registrarse</button>
-                </div>
-                <div class="col-sm-12 col-md-2">
-                    <input type="reset" value="Cancelar" class="btn btn-danger" (click)="onClickNo()">
-                </div>
+            <div class="form-group row mt-3" style="display:flex; flex-wrap:wrap;  " >
+                
+                <ul style="list-style:  none; text-decoration:none; display:flex; flex-wrap:wrap;">
+                    <li> <button type="submit" class="btn bg-blue-p text-center" [disabled]="formRegis.invalid"(click)="onSubmit() " style="height:37px; margin-left:5px; " >Registrarse</button></li>
+                    <li><input type="reset" value="Cancelar" class="btn btn-danger" (click)="onClickNo()" style="margin:0px 0px 0px 10px;   width:100px;"></li>
+                </ul>
+                
             </div>
     </form>
 </div>
